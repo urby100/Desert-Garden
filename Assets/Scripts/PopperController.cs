@@ -5,12 +5,11 @@ using UnityEngine;
 public class PopperController : MonoBehaviour
 {
     public float globalDelay = 0f;//za drugačni delay ko je več enakih 
-    public float popDelayUp = 2f;
-    public float popDelayDown = 1f;
+    public float popDelayUp = 0.7f;
+    public float popDelayDown = 0.7f;
     public GameObject popperBody;
     float popTime;
-    float moveSpeedUp = 0.04f;
-    float moveSpeedDown = 0.1f;
+    float moveSpeed = 0.04f;
     bool moveIt = true;
     bool direction = true;// gor ali dol
     Vector3 targetUp ;
@@ -49,14 +48,14 @@ public class PopperController : MonoBehaviour
             popperBody.transform.position = Vector3.SmoothDamp(popperBody.transform.position,
                                                                 targetUp,
                                                                 ref velocity,
-                                                                moveSpeedUp);
+                                                                moveSpeed);
         }
         else
         {
             popperBody.transform.position = Vector3.SmoothDamp(popperBody.transform.position,
                                                                 targetDown,
                                                                 ref velocity,
-                                                                moveSpeedDown);
+                                                                moveSpeed);
         }
         
     }

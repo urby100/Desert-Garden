@@ -66,6 +66,10 @@
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\PopperController.cs" />
+    <Compile Include="Assets\Scripts\SpinnerController.cs" />
+    <Compile Include="Assets\Scripts\SpitterController.cs" />
+    <Compile Include="Assets\Scripts\SpitterProjectileController.cs" />
+    <Compile Include="Assets\Scripts\SpitterPuddleController.cs" />
     <Compile Include="Assets\Scripts\StopperController.cs" />
     <Compile Include="Assets\Scripts\StopperProjectileController.cs" />
     <Compile Include="Assets\Tilemap\Brushes\Tint Brush Smooth\Scripts\TintTextureGenerator.cs" />
