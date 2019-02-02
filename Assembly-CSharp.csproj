@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\AirplaneController.cs" />
     <Compile Include="Assets\Scripts\Animations.cs" />
     <Compile Include="Assets\Scripts\ColliderController.cs" />
+    <Compile Include="Assets\Scripts\CrawlerController.cs" />
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\PopperController.cs" />

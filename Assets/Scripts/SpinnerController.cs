@@ -13,6 +13,7 @@ public class SpinnerController : MonoBehaviour
     float wingFlapRate = 0.4f;
     float wingFlapDelay;
     float multiplier = 1f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,6 @@ public class SpinnerController : MonoBehaviour
             force = 1;
             wingFlapRate = 1f;
         }
-        Debug.Log("Angle: " + normalizedAngle * 360 + " -Speed: " + pivotPoint.jointSpeed + " -Velocity: " + spinnerBodyRb.velocity);
+        //Debug.Log("Angle: " + normalizedAngle * 360 + " -Speed: " + pivotPoint.jointSpeed + " -Velocity: " + spinnerBodyRb.velocity);
     }
 }
