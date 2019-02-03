@@ -103,6 +103,14 @@ public class Move : MonoBehaviour
         {//limitiram premik levo in desno
             moveInput = 0;
         }
+        if (moveInput == -1)
+        {
+            transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+        else if (moveInput == 1)
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
         //jump
 

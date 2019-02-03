@@ -36,7 +36,7 @@ public class Animations : MonoBehaviour
 
             moving = 0;
         }
-        if (moving == -1)
+        /*if (moving == -1)
         {
             sr.flipX = true;
         }
@@ -44,7 +44,7 @@ public class Animations : MonoBehaviour
         {
             sr.flipX = false;
 
-        }
+        }*/
 
         //hurt
         if (hurting && Time.time >= hurtStart)

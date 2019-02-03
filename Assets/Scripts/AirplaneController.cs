@@ -8,6 +8,7 @@ public class AirplaneController : MonoBehaviour
     public GameObject bombObject;
     public GameObject playerObject;
     public GameObject wingsObject;
+    public List<Sprite> bombSprites;
 
     Rigidbody2D wingsObjectRigidbody;
     Rigidbody2D stuffObjectRigidbody;
@@ -41,7 +42,27 @@ public class AirplaneController : MonoBehaviour
             timeShot = Time.time + delayShot;
         }
         if (shoot && Time.time < timeShot) {
-            bombObject.GetComponent<SpriteRenderer>().color = bombObject.GetComponent<SpriteRenderer>().color+ new Color(Time.deltaTime,0,0);
+            bombObject.GetComponent<SpriteRenderer>().color = 
+                new Color(bombObject.GetComponent<SpriteRenderer>().color.r,
+                Mathf.Clamp(bombObject.GetComponent<SpriteRenderer>().color.g-(Time.deltaTime*0.4f*(timeShot-Time.time)),0,255),
+                bombObject.GetComponent<SpriteRenderer>().color.b);
+            
+            //spremeni obraz bombe
+            if ((timeShot - Time.time) < (delayShot/4*3) && 
+                (timeShot - Time.time) > (delayShot / 4 * 2))//4 sličice, če delay 2s... more biti med 1.5s in 1s
+            {
+                bombObject.GetComponent<SpriteRenderer>().sprite = bombSprites[1];
+            }
+            else if ((timeShot - Time.time) < (delayShot / 4 * 2) &&
+                (timeShot - Time.time) > (delayShot / 4 ))
+            {
+                bombObject.GetComponent<SpriteRenderer>().sprite = bombSprites[2];
+            }
+            else if ((timeShot - Time.time) < (delayShot / 4 ) &&
+                (timeShot - Time.time) > 0f)
+            {
+                bombObject.GetComponent<SpriteRenderer>().sprite = bombSprites[3];
+            }
         }
     }
     void FixedUpdate()
