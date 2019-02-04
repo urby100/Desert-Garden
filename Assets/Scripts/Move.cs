@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     public bool crouchRequest;
     public bool tiredRequest;
     public bool hurtRequest;
+    public bool sceneDontMoveRequest;
     bool moveAfterHurt;
 
 
@@ -91,7 +92,7 @@ public class Move : MonoBehaviour
         {
             moveInput = 0;
         }
-        if (tiredRequest || hurtRequest )//če je umrl ali bil zadet
+        if (tiredRequest || hurtRequest || sceneDontMoveRequest)//če je umrl ali bil zadet ali je v sceni
         {
             moveInput = 0;
         }
