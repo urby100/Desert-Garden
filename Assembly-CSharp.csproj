@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\PopperController.cs" />
+    <Compile Include="Assets\Scripts\ScrewdriverController.cs" />
     <Compile Include="Assets\Scripts\SpinnerController.cs" />
     <Compile Include="Assets\Scripts\SpitterController.cs" />
     <Compile Include="Assets\Scripts\SpitterProjectileController.cs" />

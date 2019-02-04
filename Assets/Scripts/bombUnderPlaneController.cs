@@ -6,7 +6,10 @@ public class bombUnderPlaneController : MonoBehaviour
 {
     public GameObject airplane;
     public List<Sprite> bombSprites;
+    public GameObject signStage1;
 
+
+    GameObject screwdriver;
     SpriteRenderer bomb;
     bool screwdriverHitBomb = false;
     float timeExplode;
@@ -45,6 +48,7 @@ public class bombUnderPlaneController : MonoBehaviour
             }
         }
         if (Time.time > timeExplode && screwdriverHitBomb) {
+            screwdriver.GetComponent<ScrewdriverController>().goToSign = true;
             airplane.GetComponent<AirplaneController>().shoot = true;
             gameObject.SetActive(false);
         }
@@ -54,6 +58,8 @@ public class bombUnderPlaneController : MonoBehaviour
         if (collision.gameObject.name == "Screwdriver") {
             if (!screwdriverHitBomb)
             {
+                screwdriver = collision.gameObject;
+                screwdriver.GetComponent<ScrewdriverController>().signStage1 = signStage1;
                 screwdriverHitBomb = true;
                 timeExplode = Time.time + explodeDelay;
             }
