@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crawler\CrawlerController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Popper\PopperController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spinner\SpinnerController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterController.cs" />

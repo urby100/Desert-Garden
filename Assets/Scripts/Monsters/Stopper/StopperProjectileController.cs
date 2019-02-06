@@ -13,13 +13,13 @@ public class StopperProjectileController : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().AddForce(globalDirection * Vector2.right * shootVelocityDirection, ForceMode2D.Impulse);
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * shootVelocityUp, ForceMode2D.Impulse);
-        GetComponent<Rigidbody2D>().MoveRotation(GetComponent<Rigidbody2D>().rotation + revSpeed * Time.fixedDeltaTime);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+
+        GetComponent<Rigidbody2D>().MoveRotation(GetComponent<Rigidbody2D>().rotation + revSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
