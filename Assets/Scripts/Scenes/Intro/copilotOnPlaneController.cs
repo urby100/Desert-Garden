@@ -57,7 +57,7 @@ public class copilotOnPlaneController : MonoBehaviour
     {
         if ((playerObject.transform.position.x - transform.position.x) >-6.5f  && !playerNear)
         {
-            playerNear = true;
+            //playerNear = true;
         }
         if (throwScrewdriver && !throwOnce) {
             GameObject screwdriverObject= Instantiate(screwdriver, screwdriverSpawnPoint.transform.position, screwdriverSpawnPoint.transform.rotation);
