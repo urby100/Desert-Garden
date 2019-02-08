@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steveBody: {fileID: 0}
   playerObject: {fileID: 0}
+  steve: {fileID: 0}
 --- !u!50 &6094283689984107391
 Rigidbody2D:
   serializedVersion: 4
@@ -131,8 +132,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03417969, y: -0.22143942}
-  m_Size: {x: 0.4322815, y: 0.55712116}
+  m_Offset: {x: -0.0077023506, y: 0.006398797}
+  m_Size: {x: 0.5629535, y: 0.6341841}
   m_Direction: 0
 --- !u!95 &6094283689984107362
 Animator:

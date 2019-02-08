@@ -22,7 +22,7 @@ public class Move : MonoBehaviour
     float xPosition;
 
 
-    float jumpVelocity = 9f;
+    float jumpVelocity = 6.5f;
     float jumpCounter = 0f;
     float fallMultiplier = 5f;
     float lowJumpMultiplier = 5f;
@@ -41,6 +41,13 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.T)) {
+            Time.timeScale = Time.timeScale+0.1f;
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Time.timeScale = Time.timeScale-0.1f;
+        }
         if (Input.GetKey(KeyCode.S))
         {
             hurtRequest= true;
