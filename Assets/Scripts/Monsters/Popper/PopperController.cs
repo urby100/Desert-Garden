@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PopperController : MonoBehaviour
 {
-    public GameObject playerObject;
-    public float globalDelay = 0f;//za drugačni delay ko je več enakih 
     public float popDelayUp = 0.7f;
     public float popDelayDown = 0.7f;
+    public float moveSpeed = 0.04f;
+    public GameObject playerObject;
     public GameObject popperBody;
     float popTime;
-    float moveSpeed = 0.04f;
     bool moveIt = true;
     bool direction = true;// gor ali dol
     Vector3 targetUp ;
@@ -21,7 +20,7 @@ public class PopperController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        popTime = Time.time + popDelayUp+globalDelay;
+        popTime = Time.time + popDelayUp;
         targetUp = popperBody.transform.position+ new Vector3(0f,1f,0f);
         targetDown = popperBody.transform.position;
     }
@@ -41,11 +40,11 @@ public class PopperController : MonoBehaviour
         if (Time.time > popTime) {
             if (direction)//more iti gor
             {
-                popTime = Time.time + popDelayDown + globalDelay;
+                popTime = Time.time + popDelayDown ;
             }
             else//more iti dol
             {
-                popTime = Time.time + popDelayUp + globalDelay;
+                popTime = Time.time + popDelayUp ;
             }
             direction = !direction;
             moveIt = true;

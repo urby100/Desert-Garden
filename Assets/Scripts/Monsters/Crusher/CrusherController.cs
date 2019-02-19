@@ -9,12 +9,13 @@ public class CrusherController : MonoBehaviour
     public GameObject playerObject;
     public GameObject points;
     public bool destroyProjectiles=false;
-    
-    float attackDelay = 2f;
+    public float attackDelay = 2f;
+    public float attackLast = 8f;
+    public float projectileSpawnDelay = 0.2f;
+    public float projectileSpeed = 2f;
+
     float attackTime;
-    float attackLast = 8f;
     float attackLastTime;
-    float projectileSpawnDelay = 0.2f;
     float projectileSpawnTime;
     bool attack = false;
     int counter = 0;
@@ -65,6 +66,7 @@ public class CrusherController : MonoBehaviour
                     GameObject tempProjectile = Instantiate(projectile);
                     tempProjectile.GetComponent<CrusherProjectileController>().crusher = gameObject;
                     tempProjectile.GetComponent<CrusherProjectileController>().points = points;
+                    tempProjectile.GetComponent<CrusherProjectileController>().speed = projectileSpeed;
                     projectileSpawnTime = Time.time + projectileSpawnDelay;
                     
                 }

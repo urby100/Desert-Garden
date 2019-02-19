@@ -8,16 +8,16 @@ public class SteveProjectileController : MonoBehaviour
     public GameObject playerObject;
     public GameObject steve;
 
+    public float movementSpeed = 3f;
+    public float shootVelocityUp = 2.5f;
+    public float runningLasts = 3f;
 
     Animator animator;
     Rigidbody2D rb;
     float direction = 1;
-    float movementSpeed = 3f;
-    float shootVelocityUp = 2.5f;
     float revSpeed = 70f;
     bool inTheAir = true;
     float fallMultiplier = 5f;
-    float runningLasts = 3f;
     float runningTime;
     bool running = false;
     bool jumpedBack = false;

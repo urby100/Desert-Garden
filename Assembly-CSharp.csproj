@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\Monsters\Steve\SteveProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerProjectileController.cs" />
     <Compile Include="Assets\Scripts\Player\Animations.cs" />
     <Compile Include="Assets\Scripts\Player\ColliderController.cs" />
     <Compile Include="Assets\Scripts\Player\Move.cs" />

@@ -5,8 +5,8 @@ using UnityEngine;
 public class StopperProjectileController : MonoBehaviour
 {
     public float globalDirection = -1;
-     float shootVelocityDirection = 2.5f;
-     float shootVelocityUp = 2.5f;
+    public float shootVelocityDirection = 2.5f;
+    public float shootVelocityUp = 2.5f;
     float revSpeed = 360f;
     // Start is called before the first frame update
     void Start()

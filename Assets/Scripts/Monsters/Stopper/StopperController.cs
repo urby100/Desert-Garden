@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class StopperController : MonoBehaviour
 {
-    float globalDelay = 0f;//za drugačni delay pri streljanju ko je več enakih 
     public GameObject stopperBody;
     public GameObject stopperProjectile;
     public GameObject projectileSpawn;
     public GameObject playerObject;
     public List<Sprite> sprites;
-    float fireRate = 0.7f;
+
+    public float projectileSideForce=2.5f;
+    public float projectileUpForce = 2.5f;
+    public float fireRate = 0.7f;
+    public float popDelay = 0f;
 
     float fireTime;
     float popTime;
-    float popDelay = 0f;
     Vector3 targetUp;
     Vector3 targetDown;
     Vector3 velocity = Vector3.zero;
@@ -56,7 +58,7 @@ public class StopperController : MonoBehaviour
         }
         if (stopperBody.transform.position==targetUp && !outside) {
             outside = true;
-            fireTime = Time.time + fireRate + globalDelay;
+            fireTime = Time.time + fireRate;
         }
         if (Time.time > fireTime && outside) {
             spriteChanged = true;
@@ -65,10 +67,12 @@ public class StopperController : MonoBehaviour
             float dir = 1;
             for (int i = 0; i < 2; i++) {
                 GameObject projectile = Instantiate(stopperProjectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
-                projectile.GetComponent<StopperProjectileController>().globalDirection = 1f*dir;
+                projectile.GetComponent<StopperProjectileController>().globalDirection = dir;
+                projectile.GetComponent<StopperProjectileController>().shootVelocityDirection = projectileSideForce;
+                projectile.GetComponent<StopperProjectileController>().shootVelocityUp = projectileUpForce;
                 dir = dir * (-1);
             }
-            fireTime = Time.time + fireRate + globalDelay;
+            fireTime = Time.time + fireRate;
 
         }
         if (Time.time > spriteTime && spriteChanged)

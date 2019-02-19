@@ -9,11 +9,15 @@ public class SteveController : MonoBehaviour
     public GameObject playerObject;
     public GameObject steveProjectile;
     public GameObject spawnProjectile;
+    public float littleSteveMovementSpeed = 3f;
+    public float littleSteveShootVelocityUp = 2.5f;
+    public float littleSteveRunningLasts = 3f;
+    public float attackDelay = 4f;
 
+    PolygonCollider2D collider;
     public bool arrived = false;
     Animator animator;
     public bool attack = false;
-    float attackDelay = 4f;
     float attackTime;
     GameObject projectile;
     // Start is called before the first frame update
@@ -21,6 +25,7 @@ public class SteveController : MonoBehaviour
     {
         animator = steveBody.GetComponent<Animator>();
         attackTime = Time.time + attackDelay;
+        collider = steveBody.GetComponent<PolygonCollider2D>();
         
     }
 
@@ -42,6 +47,9 @@ public class SteveController : MonoBehaviour
             projectile.GetComponent<SteveProjectileController>().steveBody = steveBody;
             projectile.GetComponent<SteveProjectileController>().playerObject = playerObject;
             projectile.GetComponent<SteveProjectileController>().steve = gameObject;
+            projectile.GetComponent<SteveProjectileController>().movementSpeed = littleSteveMovementSpeed;
+            projectile.GetComponent<SteveProjectileController>().shootVelocityUp = littleSteveShootVelocityUp;
+            projectile.GetComponent<SteveProjectileController>().runningLasts = littleSteveRunningLasts;
             attack = true;
         }
         if (arrived) {
@@ -63,6 +71,13 @@ public class SteveController : MonoBehaviour
         animator.SetBool("normal", false);
         animator.SetBool("attack", true);
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.layer+" "+ LayerMask.NameToLayer("Player"));
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Physics.IgnoreCollision(playerObject.GetComponent<Collider>(), steveBody.GetComponent<Collider>());
+        }
+    }
 
 }

@@ -7,10 +7,9 @@ public class CrusherProjectileController : MonoBehaviour
     public GameObject crusher;
     public GameObject points;
     public List<Transform> pointsList;
+    public float speed = 2f;
 
     int counter = 0;
-    int direction = 1;//naprej 1, nazaj -1
-    float speed = 2f;
     float revSpeed = -270f;
     // Start is called before the first frame update
     void Start()
@@ -25,12 +24,12 @@ public class CrusherProjectileController : MonoBehaviour
     {
         transform.localRotation = Quaternion.Euler(new Vector3(0, 0, transform.localRotation.eulerAngles.z + revSpeed * Time.deltaTime));
         if (pointsList[counter].position == transform.position) {
-            if (counter + direction > pointsList.Count-1 && direction == 1)
+            if (counter + 1 > pointsList.Count-1)
             {
                 counter = 0;
             }
             else {
-                counter = counter + direction;
+                counter = counter + 1;
             }
 
         }

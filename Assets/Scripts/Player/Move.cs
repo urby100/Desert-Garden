@@ -7,7 +7,6 @@ public class Move : MonoBehaviour
     Rigidbody2D rb;
     float moveInput;
 
-    float movementSpeed = 6f;
 
     bool jumpRequest;
     public bool crouchRequest;
@@ -22,10 +21,12 @@ public class Move : MonoBehaviour
     float xPosition;
 
 
-    float jumpVelocity = 6.5f;
+    public float movementSpeed = 6f;
+    public float jumpVelocity = 7f;
+    public float fallMultiplier = 10f;
+    public float lowJumpMultiplier = 10f;
+    public float gravity = 1f;
     float jumpCounter = 0f;
-    float fallMultiplier = 5f;
-    float lowJumpMultiplier = 5f;
     int maxJumps = 1;
     
 
@@ -80,17 +81,17 @@ public class Move : MonoBehaviour
     void FixedUpdate()
     {
         //better jump
-        if (rb.velocity.y < 0 || hurtRequest)
+        if (rb.velocity.y < 0 || hurtRequest)//falling 
         {
             rb.gravityScale = fallMultiplier;
         }
-        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))//normal jump
         {
             rb.gravityScale = lowJumpMultiplier;
         }
         else
         {
-            rb.gravityScale = 1f;
+            rb.gravityScale = gravity;
         }
 
         //move
