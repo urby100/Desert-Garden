@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterPuddleController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Steve\steveBodyColliderController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Steve\SteveController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Steve\SteveProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperController.cs" />

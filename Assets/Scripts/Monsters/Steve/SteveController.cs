@@ -13,8 +13,7 @@ public class SteveController : MonoBehaviour
     public float littleSteveShootVelocityUp = 2.5f;
     public float littleSteveRunningLasts = 3f;
     public float attackDelay = 4f;
-
-    PolygonCollider2D collider;
+    
     public bool arrived = false;
     Animator animator;
     public bool attack = false;
@@ -25,7 +24,6 @@ public class SteveController : MonoBehaviour
     {
         animator = steveBody.GetComponent<Animator>();
         attackTime = Time.time + attackDelay;
-        collider = steveBody.GetComponent<PolygonCollider2D>();
         
     }
 
@@ -70,14 +68,6 @@ public class SteveController : MonoBehaviour
     {
         animator.SetBool("normal", false);
         animator.SetBool("attack", true);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log(collision.gameObject.layer+" "+ LayerMask.NameToLayer("Player"));
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            Physics.IgnoreCollision(playerObject.GetComponent<Collider>(), steveBody.GetComponent<Collider>());
-        }
     }
 
 }

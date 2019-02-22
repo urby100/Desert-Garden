@@ -64,6 +64,7 @@ public class StopperController : MonoBehaviour
             spriteChanged = true;
             spriteTime = Time.time + spriteDelay;
             stopperBody.GetComponent<SpriteRenderer>().sprite = sprites[1];
+            stopperBody.GetComponent<PolygonCollider2D>().offset = new Vector2(0, -0.06f);
             float dir = 1;
             for (int i = 0; i < 2; i++) {
                 GameObject projectile = Instantiate(stopperProjectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
@@ -79,6 +80,7 @@ public class StopperController : MonoBehaviour
         {
             spriteChanged = false;
             stopperBody.GetComponent<SpriteRenderer>().sprite = sprites[0];
+            stopperBody.GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0);
         }
     }
 }
