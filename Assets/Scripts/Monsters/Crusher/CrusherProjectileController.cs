@@ -7,6 +7,7 @@ public class CrusherProjectileController : MonoBehaviour
     public GameObject crusher;
     public GameObject points;
     public List<Transform> pointsList;
+    public float attackLastTime;
     public float speed = 2f;
 
     int counter = 0;
@@ -34,7 +35,7 @@ public class CrusherProjectileController : MonoBehaviour
 
         }
         transform.position = Vector2.MoveTowards(transform.position, pointsList[counter].position, speed * Time.deltaTime);
-        if (crusher.GetComponent<CrusherController>().destroyProjectiles) {
+        if (Time.time > attackLastTime) {
             Destroy(gameObject);
         }
     }

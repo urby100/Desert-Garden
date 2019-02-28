@@ -8,7 +8,6 @@ public class StopperController : MonoBehaviour
     public GameObject stopperProjectile;
     public GameObject projectileSpawn;
     public GameObject playerObject;
-    public List<Sprite> sprites;
 
     public float projectileSideForce=2.5f;
     public float projectileUpForce = 2.5f;
@@ -23,13 +22,16 @@ public class StopperController : MonoBehaviour
     float moveSpeedUp = 0.04f;
     bool outside = false;
     //sprite change delay
-    float spriteDelay;
-    float spriteTime;
+    float animationDelay;
+    float animationTime;
     bool spriteChanged = false;
     // Start is called before the first frame update
     void Start()
     {
-        spriteDelay = fireRate / 2;
+        animationDelay = fireRate / 2;
+        if (animationDelay > 0.4f) {
+            animationDelay = 0.4f;
+        }
         popTime = Time.time + popDelay;
         targetUp = stopperBody.transform.position + new Vector3(0f, 0.7f, 0f);
         targetDown = stopperBody.transform.position;
@@ -62,12 +64,13 @@ public class StopperController : MonoBehaviour
         }
         if (Time.time > fireTime && outside) {
             spriteChanged = true;
-            spriteTime = Time.time + spriteDelay;
-            stopperBody.GetComponent<SpriteRenderer>().sprite = sprites[1];
+            animationTime = Time.time + animationDelay;
+            attack();
             stopperBody.GetComponent<PolygonCollider2D>().offset = new Vector2(0, -0.06f);
             float dir = 1;
             for (int i = 0; i < 2; i++) {
                 GameObject projectile = Instantiate(stopperProjectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+                projectile.name = "StopperProjectile";
                 projectile.GetComponent<StopperProjectileController>().globalDirection = dir;
                 projectile.GetComponent<StopperProjectileController>().shootVelocityDirection = projectileSideForce;
                 projectile.GetComponent<StopperProjectileController>().shootVelocityUp = projectileUpForce;
@@ -76,11 +79,21 @@ public class StopperController : MonoBehaviour
             fireTime = Time.time + fireRate;
 
         }
-        if (Time.time > spriteTime && spriteChanged)
+        if (Time.time > animationTime && spriteChanged)
         {
             spriteChanged = false;
-            stopperBody.GetComponent<SpriteRenderer>().sprite = sprites[0];
+            idle();
             stopperBody.GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0);
         }
+    }
+    void idle() {
+        stopperBody.GetComponent<Animator>().SetBool("Idle",true);
+        stopperBody.GetComponent<Animator>().SetBool("Attack", false);
+
+    }
+    void attack()
+    {
+        stopperBody.GetComponent<Animator>().SetBool("Idle", false);
+        stopperBody.GetComponent<Animator>().SetBool("Attack", true);
     }
 }

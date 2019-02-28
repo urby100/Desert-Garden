@@ -53,6 +53,7 @@ public class ThrowerController : MonoBehaviour
         if (attack && Time.time<attackLastsTime) {
             if (Time.time > attackSpeedTime) {
                 GameObject projectile = Instantiate(throwerProjectile, projectileSpawn.transform.position, new Quaternion());
+                projectile.name = "ThrowerProjectile";
                 projectile.GetComponent<ThrowerProjectileController>().speed = projectileSpeed;
                 projectile.GetComponent<ThrowerProjectileController>().aliveDelay = projectileAliveDelay;
                 if (playerObject.transform.position.x > throwerBody.transform.position.x)

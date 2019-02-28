@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class Animations : MonoBehaviour
 {
+    Move moveScript;
+    UseAbility useAbilityScript;
     Animator animator;
     Rigidbody2D rb;
     SpriteRenderer sr;
-    ScriptableObject so;
     float moving;
 
     private bool hurting = false;
     private float hurtLenght = 0.3f;
     private float hurtStart;
 
+    bool useAbilityBool = false;
+    float useAbilityLenght = 0.2f;
+    float useAbilityStart;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        useAbilityScript = GetComponent<UseAbility>();
+        moveScript = GetComponent<Move>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -26,33 +34,24 @@ public class Animations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //obračanje
+        //Debug.Log(getAnimationState("Running"));
         moving = Input.GetAxisRaw("Horizontal");
-        if (gameObject.GetComponent<Move>().hurtRequest)
+        if (moveScript.hurtRequest)
         {
             moving = 0;
         }
-        else if (gameObject.GetComponent<Move>().tiredRequest) {
+        else if (moveScript.tiredRequest) {
 
             moving = 0;
         }
-        /*if (moving == -1)
-        {
-            sr.flipX = true;
-        }
-        else if (moving == 1)
-        {
-            sr.flipX = false;
-
-        }*/
 
         //hurt
         if (hurting && Time.time >= hurtStart)
         {
-            gameObject.GetComponent<Move>().hurtRequest = false;
+            moveScript.hurtRequest = false;
             hurting = false;
         }
-        if (gameObject.GetComponent<Move>().hurtRequest)
+        if (moveScript.hurtRequest)
         {
             hurt();
             if (!hurting)
@@ -63,41 +62,99 @@ public class Animations : MonoBehaviour
             return;
         }
 
+        //use ability
+        if (useAbilityBool && Time.time >= useAbilityStart)
+        {
+            useAbilityScript.useWater = false;
+            useAbilityBool = false;
+        }
+        if (useAbilityScript.useWater)
+        {
+            if (!useAbilityBool)
+            {
+                useAbilityStart = Time.time + useAbilityLenght;
+                useAbilityBool = true;
+            }
+        }
+
+
         if (rb.velocity.y < 0)// falling
         {
-            falling();
+            if (useAbilityScript.useWater)
+            {
+                useWaterWhileInAir();
+            }
+            else
+            {
+                falling();
+            }
         }
         else if (rb.velocity.y > 0)//jump
         {
             if (!Input.GetKey(KeyCode.UpArrow))
             {
-                jumping();
+                if (useAbilityScript.useWater)
+                {
+                    useWaterWhileInAir();
+                }
+                else
+                {
+                    jumping();
+                }
             }
             else
             {
-                movingMidAir();
+                if (useAbilityScript.useWater)
+                {
+                    useWaterWhileInAir();
+                }
+                else
+                {
+                    movingMidAir();
+                }
             }
         }
         else//landed
         {
-            if (gameObject.GetComponent<Move>().tiredRequest)
+            if (moveScript.tiredRequest)
             {
                 tired();
                 return;
             }
             if (rb.velocity.x != 0)
             {
-                running();
-            }
-            else
-            {
-                if (gameObject.GetComponent<Move>().crouchRequest)
+                if (useAbilityScript.useWater)
                 {
-                    crouching();
+                    useWaterWhileRunning();
                 }
                 else
                 {
-                    standing();
+                    running();
+                }
+            }
+            else
+            {
+                if (moveScript.crouchRequest)
+                {
+                    if (useAbilityScript.useWater)
+                    {
+                        useWaterWhileCrouching();
+                    }
+                    else
+                    {
+                        crouching();
+                    }
+                }
+                else
+                {
+                    if (useAbilityScript.useWater)
+                    {
+                        useWaterWhileStanding();
+                    }
+                    else
+                    {
+                        standing();
+                    }
                 }
             }
         }
@@ -114,6 +171,10 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
 
     }
     void crouching()
@@ -126,9 +187,14 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
     }
     void running()
     {
+        
         animator.SetBool("Standing", false);
         animator.SetBool("Crouching", false);
         animator.SetBool("Running", true);
@@ -137,6 +203,10 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
 
     }
     void jumping()
@@ -149,6 +219,10 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
 
     }
     void falling()
@@ -161,6 +235,10 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
 
     }
     void movingMidAir()
@@ -173,6 +251,10 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", true);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
 
     }
     void hurt()
@@ -185,6 +267,10 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", true);
         animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
     }
     void tired()
     {
@@ -196,11 +282,77 @@ public class Animations : MonoBehaviour
         animator.SetBool("MovingMidAir", false);
         animator.SetBool("Hurt", false);
         animator.SetBool("Tired", true);
-
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
+    }
+    void useWaterWhileCrouching()
+    {
+        animator.SetBool("Standing", false);
+        animator.SetBool("Crouching", false);
+        animator.SetBool("Running", false);
+        animator.SetBool("Jumping", false);
+        animator.SetBool("Falling", false);
+        animator.SetBool("MovingMidAir", false);
+        animator.SetBool("Hurt", false);
+        animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", true);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
+    }
+    void useWaterWhileInAir()
+    {
+        animator.SetBool("Standing", false);
+        animator.SetBool("Crouching", false);
+        animator.SetBool("Running", false);
+        animator.SetBool("Jumping", false);
+        animator.SetBool("Falling", false);
+        animator.SetBool("MovingMidAir", false);
+        animator.SetBool("Hurt", false);
+        animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", true);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", false);
+    }
+    void useWaterWhileStanding()
+    {
+        animator.SetBool("Standing", false);
+        animator.SetBool("Crouching", false);
+        animator.SetBool("Running", false);
+        animator.SetBool("Jumping", false);
+        animator.SetBool("Falling", false);
+        animator.SetBool("MovingMidAir", false);
+        animator.SetBool("Hurt", false);
+        animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", true);
+        animator.SetBool("Use Water While Running", false);
+    }
+    void useWaterWhileRunning()
+    {
+        animator.SetBool("Standing", false);
+        animator.SetBool("Crouching", false);
+        animator.SetBool("Running", false);
+        animator.SetBool("Jumping", false);
+        animator.SetBool("Falling", false);
+        animator.SetBool("MovingMidAir", false);
+        animator.SetBool("Hurt", false);
+        animator.SetBool("Tired", false);
+        animator.SetBool("Use Water While Crouching", false);
+        animator.SetBool("Use Water While In Air", false);
+        animator.SetBool("Use Water While Standing", false);
+        animator.SetBool("Use Water While Running", true);
     }
     void animationControl(string animationName)
     {
 
 
+    }
+    bool getAnimationState(string name) {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName(name);
     }
 }

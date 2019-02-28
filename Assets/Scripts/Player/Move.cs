@@ -13,7 +13,6 @@ public class Move : MonoBehaviour
     public bool tiredRequest;
     public bool hurtRequest;
     public bool sceneDontMoveRequest;
-    bool moveAfterHurt;
 
 
     float minXPosition = -2.5f;
@@ -38,7 +37,6 @@ public class Move : MonoBehaviour
     void Start()
     {
         tiredRequest = false;
-        moveAfterHurt = false;
     }
     void Update()
     {
@@ -48,11 +46,6 @@ public class Move : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Time.timeScale = Time.timeScale-0.1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            hurtRequest= true;
-            moveAfterHurt = true;
         }
         if (Input.GetKey(KeyCode.Y))
         {
@@ -65,14 +58,14 @@ public class Move : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             jumpCounter++;
             jumpRequest = true;
         }
-        if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.DownArrow)) {
+        if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
             crouchRequest = true;
-        } else if (Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.DownArrow)) {
+        } else if (Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) {
             crouchRequest = false;
         }
     }
@@ -85,7 +78,7 @@ public class Move : MonoBehaviour
         {
             rb.gravityScale = fallMultiplier;
         }
-        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))//normal jump
+        else if (rb.velocity.y > 0 && !(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))//normal jump
         {
             rb.gravityScale = lowJumpMultiplier;
         }
@@ -96,20 +89,9 @@ public class Move : MonoBehaviour
 
         //move
         moveInput = Input.GetAxisRaw("Horizontal");
-        if (crouchRequest && rb.velocity.y == 0)//če je na tleh in se hoče skloniti se ne sme premikati...
-        {
-            moveInput = 0;
-        }
+
         if (tiredRequest || hurtRequest || sceneDontMoveRequest)//če je umrl ali bil zadet ali je v sceni
         {
-            moveInput = 0;
-        }
-        if (moveAfterHurt) {//počakam da je animacija ko je bil zadet končana
-            moveInput = 0;
-        }
-        if ((transform.position.x <=minXPosition && moveInput==-1) 
-            || (transform.position.x >= maxXPosition && moveInput==1))
-        {//limitiram premik levo in desno
             moveInput = 0;
         }
         if (moveInput == -1)
@@ -119,6 +101,15 @@ public class Move : MonoBehaviour
         else if (moveInput == 1)
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+        if (crouchRequest && rb.velocity.y == 0)//če je na tleh in se hoče skloniti se ne sme premikati...
+        {
+            moveInput = 0;
+        }
+        if ((transform.position.x <=minXPosition && moveInput==-1) 
+            || (transform.position.x >= maxXPosition && moveInput==1))
+        {//limitiram premik levo in desno
+            moveInput = 0;
         }
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
         //jump
@@ -135,7 +126,6 @@ public class Move : MonoBehaviour
         }
         if (rb.velocity.y == 0)
         {
-            moveAfterHurt = false;
             jumpCounter = 0;
             jumpRequest = false;
         }

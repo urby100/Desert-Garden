@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PopperController : MonoBehaviour
 {
+    public float spawnPopUpDelay = 0f;
     public float popDelayUp = 0.7f;
     public float popDelayDown = 0.7f;
     public float moveSpeed = 0.04f;
@@ -20,7 +21,7 @@ public class PopperController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        popTime = Time.time + popDelayUp;
+        popTime = Time.time+ spawnPopUpDelay + popDelayUp;
         targetUp = popperBody.transform.position+ new Vector3(0f,1f,0f);
         targetDown = popperBody.transform.position;
     }
@@ -40,11 +41,11 @@ public class PopperController : MonoBehaviour
         if (Time.time > popTime) {
             if (direction)//more iti gor
             {
-                popTime = Time.time + popDelayDown ;
+                popTime = Time.time  + popDelayUp;
             }
             else//more iti dol
             {
-                popTime = Time.time + popDelayUp ;
+                popTime = Time.time  + popDelayDown;
             }
             direction = !direction;
             moveIt = true;

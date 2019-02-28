@@ -42,6 +42,7 @@ public class SteveController : MonoBehaviour
         if (Time.time > attackTime && !attack) {
             attackAnimation();
             projectile = Instantiate(steveProjectile, spawnProjectile.transform.position, new Quaternion());
+            projectile.name = "LittleSteve";
             projectile.GetComponent<SteveProjectileController>().steveBody = steveBody;
             projectile.GetComponent<SteveProjectileController>().playerObject = playerObject;
             projectile.GetComponent<SteveProjectileController>().steve = gameObject;

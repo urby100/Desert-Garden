@@ -25,7 +25,6 @@ public class SteveProjectileController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.name = "LittleSteve";
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         if (playerObject.transform.position.x > steveBody.transform.position.x)
