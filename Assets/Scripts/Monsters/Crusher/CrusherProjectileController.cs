@@ -35,7 +35,19 @@ public class CrusherProjectileController : MonoBehaviour
 
         }
         transform.position = Vector2.MoveTowards(transform.position, pointsList[counter].position, speed * Time.deltaTime);
+        if (crusher.GetComponent<CrusherController>().neutral)
+        {
+            Destroy(gameObject);
+        }
         if (Time.time > attackLastTime) {
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.name == "WaterProjectile")
+        {
             Destroy(gameObject);
         }
     }

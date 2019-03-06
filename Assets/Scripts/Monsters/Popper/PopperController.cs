@@ -10,9 +10,10 @@ public class PopperController : MonoBehaviour
     public float moveSpeed = 0.04f;
     public GameObject playerObject;
     public GameObject popperBody;
+    public bool neutral = false;
     float popTime;
-    bool moveIt = true;
-    bool direction = true;// gor ali dol
+    public bool moveIt = true;
+    public bool direction = true;// gor ali dol
     Vector3 targetUp ;
     Vector3 targetDown;
     Vector3 velocity = Vector3.zero;
@@ -38,7 +39,7 @@ public class PopperController : MonoBehaviour
         {
             popperBody.transform.rotation = new Quaternion(0, 180, 0, 0);
         }
-        if (Time.time > popTime) {
+        if (Time.time > popTime && !neutral) {
             if (direction)//more iti gor
             {
                 popTime = Time.time  + popDelayUp;
@@ -54,7 +55,7 @@ public class PopperController : MonoBehaviour
             move();
         }
     }
-    void move() {
+    public void move() {
         if (direction)
         {
             popperBody.transform.position = Vector3.SmoothDamp(popperBody.transform.position,

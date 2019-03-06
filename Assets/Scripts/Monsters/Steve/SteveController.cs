@@ -13,17 +13,15 @@ public class SteveController : MonoBehaviour
     public float littleSteveShootVelocityUp = 2.5f;
     public float littleSteveRunningLasts = 3f;
     public float attackDelay = 4f;
+    public bool neutral = false;
     
-    public bool arrived = false;
-    Animator animator;
+    public bool arrived = true;
     public bool attack = false;
     float attackTime;
     GameObject projectile;
     // Start is called before the first frame update
     void Start()
     {
-        animator = steveBody.GetComponent<Animator>();
-        attackTime = Time.time + attackDelay;
         
     }
 
@@ -39,8 +37,19 @@ public class SteveController : MonoBehaviour
         {
             steveBody.transform.rotation = new Quaternion(0, 180, 0, 0);
         }
-        if (Time.time > attackTime && !attack) {
-            attackAnimation();
+        if (neutral) {
+            steveBody.GetComponent<BoxCollider2D>().enabled = false;
+            Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), steveBody.GetComponent<Collider2D>());
+            return;
+        }
+        if (arrived && attack)
+        {
+            attackTime = Time.time + attackDelay;
+            attack = false;
+        }
+        if (Time.time > attackTime && !attack)
+        {
+            arrived = false;
             projectile = Instantiate(steveProjectile, spawnProjectile.transform.position, new Quaternion());
             projectile.name = "LittleSteve";
             projectile.GetComponent<SteveProjectileController>().steveBody = steveBody;
@@ -51,24 +60,8 @@ public class SteveController : MonoBehaviour
             projectile.GetComponent<SteveProjectileController>().runningLasts = littleSteveRunningLasts;
             attack = true;
         }
-        if (arrived) {
-                normalAnimation();
-                attackTime = Time.time + attackDelay;
-                attack = false;
-            arrived = false;
-        }
 
     }
-
     
-    void normalAnimation() {
-        animator.SetBool("normal",true);
-        animator.SetBool("attack", false);
-    }
-    void attackAnimation()
-    {
-        animator.SetBool("normal", false);
-        animator.SetBool("attack", true);
-    }
 
 }

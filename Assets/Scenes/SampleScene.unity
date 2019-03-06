@@ -913,6 +913,8 @@ MonoBehaviour:
   attackLast: 8
   projectileSpawnDelay: 0.2
   projectileSpeed: 2
+  attack: 0
+  neutral: 0
 --- !u!1 &337176950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.78, y: 3.5, z: -5}
+  m_LocalPosition: {x: 40.14, y: 3.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1421,6 +1423,7 @@ GameObject:
   - component: {fileID: 530047310}
   - component: {fileID: 530047312}
   - component: {fileID: 530047313}
+  - component: {fileID: 530047314}
   m_Layer: 0
   m_Name: PopperBody
   m_TagString: Untagged
@@ -1577,6 +1580,20 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &530047314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530047308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a15052dd4fc0fd4b8b8541f18746233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxThirst: 2
+  satisfiedLasts: 2
 --- !u!1 &580382839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2639,7 @@ MonoBehaviour:
   littleSteveShootVelocityUp: 2.5
   littleSteveRunningLasts: 3
   attackDelay: 4
+  neutral: 0
   arrived: 0
   attack: 0
 --- !u!1 &925274740
@@ -2861,7 +2879,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986637597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.540003, y: 0.5, z: 0}
+  m_LocalPosition: {x: 39.9, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1339142672}
@@ -3194,6 +3212,9 @@ MonoBehaviour:
   moveSpeed: 0.04
   playerObject: {fileID: 986637597}
   popperBody: {fileID: 530047308}
+  neutral: 0
+  moveIt: 1
+  direction: 1
 --- !u!1 &1055102738
 GameObject:
   m_ObjectHideFlags: 0
@@ -3712,6 +3733,7 @@ GameObject:
   - component: {fileID: 1258336303}
   - component: {fileID: 1258336302}
   - component: {fileID: 1258336304}
+  - component: {fileID: 1258336305}
   m_Layer: 0
   m_Name: CrusherBody
   m_TagString: Untagged
@@ -3789,7 +3811,7 @@ SpriteRenderer:
   m_SortingLayerID: 1111557567
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 5acbe05016abe5a4b8b147343554fa49, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95f57219c81790249969a13bdbc6ed6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3857,6 +3879,20 @@ PolygonCollider2D:
       - {x: 0.5, y: 0.874722}
       - {x: 0.43891907, y: 0.8773167}
       - {x: 0.43542862, y: 0.9357307}
+--- !u!114 &1258336305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258336300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d608f4d9b467bf418da2f1da2ba10e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxThirst: 1
+  satisfiedLasts: 2
 --- !u!1 &1311876201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,10 +4911,13 @@ MonoBehaviour:
     type: 3}
   projectileSpawn: {fileID: 925274740}
   playerObject: {fileID: 986637597}
+  attackBool: 0
   projectileSideForce: 2.5
   projectileUpForce: 2.5
   fireRate: 0.7
   popDelay: 0
+  satisfiedBool: 0
+  fireTime: 0
 --- !u!1 &1738563429
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,6 +4931,7 @@ GameObject:
   - component: {fileID: 1738563432}
   - component: {fileID: 1738563431}
   - component: {fileID: 1738563434}
+  - component: {fileID: 1738563435}
   m_Layer: 0
   m_Name: StopperBody
   m_TagString: Untagged
@@ -5047,6 +5087,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1738563435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738563429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af10426d0bfd1494d8294866b7936ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxThirst: 1
+  satisfiedLasts: 2
 --- !u!1 &1792871279
 GameObject:
   m_ObjectHideFlags: 0
@@ -5564,6 +5618,7 @@ GameObject:
   - component: {fileID: 1982998094}
   - component: {fileID: 1982998095}
   - component: {fileID: 1982998096}
+  - component: {fileID: 1982998097}
   m_Layer: 0
   m_Name: SteveBody
   m_TagString: Untagged
@@ -5745,6 +5800,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16835785, y: 0.35236454}
   m_EdgeRadius: 0
+--- !u!114 &1982998097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982998091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3727153f4b3538c4290c6dd091c4494b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxThirst: 1
+  thirst: 0
+  satisfiedLasts: 2
 --- !u!1 &2036934468
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,11 +12,12 @@ public class CrusherController : MonoBehaviour
     public float attackLast = 8f;
     public float projectileSpawnDelay = 0.2f;
     public float projectileSpeed = 2f;
+    public bool attack = false;
+    public bool neutral = false;
 
     float attackTime;
     float attackLastTime;
     float projectileSpawnTime;
-    bool attack = false;
     int counter = 0;
 
     Animator crusherAnimator;
@@ -40,16 +41,17 @@ public class CrusherController : MonoBehaviour
         {
             crusherBody.transform.rotation = new Quaternion(0, 180, 0, 0);
         }
+        if (neutral) {
+            return;
+        }
         if (Time.time > attackTime && !attack) {
-            attackingAnimation();
-            crusherBody.GetComponent<PolygonCollider2D>().enabled = false;
+            crusherBody.GetComponent<PolygonCollider2D>().isTrigger = true;
             attack = true;
             projectileSpawnTime = Time.time + projectileSpawnDelay;
             attackLastTime = Time.time + attackLast;
         }
         if (attack && Time.time>attackLastTime) {
-            normalAnimation();
-            crusherBody.GetComponent<PolygonCollider2D>().enabled = true;
+            crusherBody.GetComponent<PolygonCollider2D>().isTrigger = false;
             attack = false;
             counter = 0;
             attackTime = Time.time + attackDelay;
@@ -71,15 +73,5 @@ public class CrusherController : MonoBehaviour
                 }
             }
         }
-    }
-    void normalAnimation() {
-        crusherAnimator.SetBool("normal", true);
-        crusherAnimator.SetBool("attacking", false);
-    }
-    void attackingAnimation()
-    {
-        crusherAnimator.SetBool("normal", false);
-        crusherAnimator.SetBool("attacking", true);
-
     }
 }

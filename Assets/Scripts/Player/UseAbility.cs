@@ -26,7 +26,7 @@ public class UseAbility : MonoBehaviour
     {
         if (useWater) {
             GameObject projectile = Instantiate(projectilePrefab,projectileSpawn.transform.position,new Quaternion());
-            
+            projectile.name = "WaterProjectile";
             if (transform.rotation == new Quaternion(0, 180, 0, 0))
             {
                 projectile.GetComponent<WaterProjectile>().direction = -1;

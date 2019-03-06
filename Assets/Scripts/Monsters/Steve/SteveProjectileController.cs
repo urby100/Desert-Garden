@@ -11,6 +11,7 @@ public class SteveProjectileController : MonoBehaviour
     public float movementSpeed = 3f;
     public float shootVelocityUp = 2.5f;
     public float runningLasts = 3f;
+    public bool neutral = false;
 
     Animator animator;
     Rigidbody2D rb;
@@ -44,7 +45,6 @@ public class SteveProjectileController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
         //better jump
         if (rb.velocity.y < 0 )
         {
@@ -56,11 +56,25 @@ public class SteveProjectileController : MonoBehaviour
         }
         if (inTheAir)
         {
-            inairAnimation();
+            if (neutral)
+            {
+                inairNeutralAnimation();
+            }
+            else
+            {
+                inairAnimation();
+            }
             rb.MoveRotation(rb.rotation + revSpeed * -direction * Time.deltaTime);
         }
         else {
+            if (neutral)
+            {
+                runningNeutralAnimation();
+            }
+            else {
+
             runningAnimation();
+            }
             if (!running)
             {
                 gameObject.transform.rotation = new Quaternion(0, gameObject.transform.rotation.y, 0, 0);
@@ -85,6 +99,11 @@ public class SteveProjectileController : MonoBehaviour
 
         }
         float dist = Vector2.Distance(steveBody.transform.position, transform.position);
+        if (dist < 0.4f) {//če Steva zaliješ ni collisiona...
+
+            steve.GetComponent<SteveController>().arrived = true;
+            Destroy(gameObject);
+        }
         if(directionChange && !jumpedBack && dist < 1.5f)
         {
             jumpedBack = true;
@@ -92,6 +111,7 @@ public class SteveProjectileController : MonoBehaviour
         }
         if (jumpedBack)
         {
+            inairNeutralAnimation();
             rb.freezeRotation = false;
             rb.MoveRotation(rb.rotation + revSpeed *15 * -direction * Time.deltaTime);
         }
@@ -105,17 +125,57 @@ public class SteveProjectileController : MonoBehaviour
         }
         else if (collision.gameObject == steveBody) {
             steve.GetComponent<SteveController>().arrived = true;
+            if (neutral) {
+
+                steveBody.GetComponent<SteveAnimations>().thirst = steveBody.GetComponent<SteveAnimations>().maxThirst;
+            }
             Destroy(gameObject);
+        } else if (collision.gameObject.name == "WaterProjectile")
+        {
+            Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            if (!directionChange)
+            {
+                directionChange = true;
+                direction = (-1) * direction;
+                if (direction == 1)
+                {
+                    transform.rotation = new Quaternion(0, 0, 0, 0);
+                }
+                else
+                {
+                    transform.rotation = new Quaternion(0, 180, 0, 0);
+                }
+            }
+            runningNeutralAnimation();
+            neutral = true;
         }
     }
     void inairAnimation() {
         animator.SetBool("running",false);
         animator.SetBool("inair", true);
+        animator.SetBool("neutral-running", false);
+        animator.SetBool("neutral-inair", false);
     }
     void runningAnimation()
     {
         animator.SetBool("running", true);
         animator.SetBool("inair", false);
+        animator.SetBool("neutral-running", false);
+        animator.SetBool("neutral-inair", false);
+    }
+    void runningNeutralAnimation()
+    {
+        animator.SetBool("running", false);
+        animator.SetBool("inair", false);
+        animator.SetBool("neutral-running", true);
+        animator.SetBool("neutral-inair", false);
+    }
+    void inairNeutralAnimation()
+    {
+        animator.SetBool("running", false);
+        animator.SetBool("inair", false);
+        animator.SetBool("neutral-running", false);
+        animator.SetBool("neutral-inair", true);
     }
 
 }

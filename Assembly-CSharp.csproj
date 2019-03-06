@@ -62,16 +62,20 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crawler\CrawlerController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Popper\PopperAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Popper\PopperController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spinner\SpinnerController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterPuddleController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Steve\SteveAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Steve\steveBodyColliderController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Steve\SteveController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Steve\SteveProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Stopper\StopperAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerController.cs" />

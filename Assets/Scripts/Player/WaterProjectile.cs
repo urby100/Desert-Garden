@@ -10,6 +10,7 @@ public class WaterProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         GetComponent<Rigidbody2D>().AddForce(direction * Vector2.right * horizontalVelocity, ForceMode2D.Impulse);
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * verticalVelocity, ForceMode2D.Impulse);
     }

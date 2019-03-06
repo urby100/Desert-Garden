@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6094283689984107388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5639992, y: 0.01699996, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,6 +98,10 @@ MonoBehaviour:
   steveBody: {fileID: 0}
   playerObject: {fileID: 0}
   steve: {fileID: 0}
+  movementSpeed: 3
+  shootVelocityUp: 2.5
+  runningLasts: 3
+  neutral: 0
 --- !u!50 &6094283689984107391
 Rigidbody2D:
   serializedVersion: 4
@@ -132,8 +136,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0077023506, y: 0.006398797}
-  m_Size: {x: 0.5629535, y: 0.6341841}
+  m_Offset: {x: 0.022967398, y: -0.14928794}
+  m_Size: {x: 0.4366328, y: 0.5652816}
   m_Direction: 0
 --- !u!95 &6094283689984107362
 Animator:

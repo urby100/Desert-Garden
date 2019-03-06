@@ -8,13 +8,15 @@ public class StopperController : MonoBehaviour
     public GameObject stopperProjectile;
     public GameObject projectileSpawn;
     public GameObject playerObject;
+    public bool attackBool = false;
 
     public float projectileSideForce=2.5f;
     public float projectileUpForce = 2.5f;
     public float fireRate = 0.7f;
     public float popDelay = 0f;
+    public bool satisfiedBool = false;
 
-    float fireTime;
+    public float fireTime;
     float popTime;
     Vector3 targetUp;
     Vector3 targetDown;
@@ -24,7 +26,6 @@ public class StopperController : MonoBehaviour
     //sprite change delay
     float animationDelay;
     float animationTime;
-    bool spriteChanged = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,10 +63,9 @@ public class StopperController : MonoBehaviour
             outside = true;
             fireTime = Time.time + fireRate;
         }
-        if (Time.time > fireTime && outside) {
-            spriteChanged = true;
+        if (Time.time > fireTime && outside && !satisfiedBool) {
+            attackBool = true;
             animationTime = Time.time + animationDelay;
-            attack();
             stopperBody.GetComponent<PolygonCollider2D>().offset = new Vector2(0, -0.06f);
             float dir = 1;
             for (int i = 0; i < 2; i++) {
@@ -79,21 +79,10 @@ public class StopperController : MonoBehaviour
             fireTime = Time.time + fireRate;
 
         }
-        if (Time.time > animationTime && spriteChanged)
+        if (Time.time > animationTime && attackBool)
         {
-            spriteChanged = false;
-            idle();
+            attackBool = false;
             stopperBody.GetComponent<PolygonCollider2D>().offset = new Vector2(0, 0);
         }
-    }
-    void idle() {
-        stopperBody.GetComponent<Animator>().SetBool("Idle",true);
-        stopperBody.GetComponent<Animator>().SetBool("Attack", false);
-
-    }
-    void attack()
-    {
-        stopperBody.GetComponent<Animator>().SetBool("Idle", false);
-        stopperBody.GetComponent<Animator>().SetBool("Attack", true);
     }
 }
