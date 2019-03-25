@@ -27,7 +27,6 @@ public class PopperAnimations : MonoBehaviour
             neutral();
         }
         if (thirst >= maxThirst && !neutralBool && !satisfiedBool) {
-            popperGameobject.GetComponent<PopperController>().moveIt = false;
             popperGameobject.GetComponent<PopperController>().neutral = true;
             if (!popperGameobject.GetComponent<PopperController>().direction) {
                 popperGameobject.GetComponent<PopperController>().move();

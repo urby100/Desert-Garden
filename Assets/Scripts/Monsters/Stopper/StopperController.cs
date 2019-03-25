@@ -9,12 +9,13 @@ public class StopperController : MonoBehaviour
     public GameObject projectileSpawn;
     public GameObject playerObject;
     public bool attackBool = false;
+    public bool satisfiedBool = false;
+    public bool giveAttack = true;
 
     public float projectileSideForce=2.5f;
     public float projectileUpForce = 2.5f;
     public float fireRate = 0.7f;
     public float popDelay = 0f;
-    public bool satisfiedBool = false;
 
     public float fireTime;
     float popTime;
@@ -41,6 +42,10 @@ public class StopperController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (satisfiedBool && giveAttack) {
+            playerObject.GetComponent<UseAbility>().projectileList.Add(stopperProjectile);
+            giveAttack = false;
+        }
         //obrni proti playerju
         if (playerObject.transform.position.x > stopperBody.transform.position.x)
         {

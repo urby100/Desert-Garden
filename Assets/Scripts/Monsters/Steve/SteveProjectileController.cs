@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SteveProjectileController : MonoBehaviour
 {
+    public bool onPlayer=false;
+
     public GameObject steveBody;
     public GameObject playerObject;
     public GameObject steve;
@@ -28,15 +30,31 @@ public class SteveProjectileController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        if (playerObject.transform.position.x > steveBody.transform.position.x)
+        if (onPlayer)
         {
-            direction = 1;
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            if (playerObject.transform.rotation == new Quaternion(0, 180, 0, 0))
+            {
+                direction = -1;
+                transform.rotation = new Quaternion(0, 180, 0, 0);
+            }
+            else if (playerObject.transform.rotation == new Quaternion(0, 0, 0, 1))
+            {
+                direction = 1;
+                transform.rotation = new Quaternion(0, 0, 0, 1);
+            }
         }
         else
         {
-            direction = -1;
-            transform.rotation = new Quaternion(0, 180, 0, 0);
+            if (playerObject.transform.position.x > steveBody.transform.position.x)
+            {
+                direction = 1;
+                transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
+            else
+            {
+                direction = -1;
+                transform.rotation = new Quaternion(0, 180, 0, 0);
+            }
         }
         
         rb.AddForce(Vector2.up * shootVelocityUp, ForceMode2D.Impulse);
@@ -86,6 +104,9 @@ public class SteveProjectileController : MonoBehaviour
         //Debug.Log("RunningTime: "+runningTime + " , Time: "+Time.time+" , DirectionChange: "+ (runningTime - (runningLasts / 2)));
         //zamenjaj smer
         if (Time.time > (runningTime - (runningLasts / 2)) && running && !directionChange) {
+            if (onPlayer) {//če ga uporabi player gre samo do polovice smeri
+                Destroy(gameObject);
+            }
             directionChange = true;
             direction = (-1) * direction;
             if (direction == 1)
@@ -98,8 +119,11 @@ public class SteveProjectileController : MonoBehaviour
             }
 
         }
-        float dist = Vector2.Distance(steveBody.transform.position, transform.position);
-        if (dist < 0.4f) {//če Steva zaliješ ni collisiona...
+        float dist=2;
+        if (!onPlayer) {
+            dist = Vector2.Distance(steveBody.transform.position, transform.position);
+        } 
+        if (dist < 0.4f && directionChange) {//če Steva zaliješ ni collisiona...
 
             steve.GetComponent<SteveController>().arrived = true;
             Destroy(gameObject);
@@ -123,7 +147,10 @@ public class SteveProjectileController : MonoBehaviour
         {
             inTheAir = false;
         }
-        else if (collision.gameObject == steveBody) {
+        if (onPlayer) {
+            return;
+        }
+        if (collision.gameObject == steveBody) {
             steve.GetComponent<SteveController>().arrived = true;
             if (neutral) {
 

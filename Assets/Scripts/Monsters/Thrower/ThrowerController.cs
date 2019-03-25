@@ -8,34 +8,34 @@ public class ThrowerController : MonoBehaviour
     public GameObject projectileSpawn;
     public GameObject throwerProjectile;
     public GameObject playerObject;
-    public List<Sprite> sprites;
     public float projectileSpeed = 5f;
     public float projectileAliveDelay = 2f;
     public float attackSpeed = 0.7f;
     public float attackDelay = 4f;
     public float attackLastsDelay = 2f;
-    Animator animator;
-    
-    float attackTime;
-    float attackLastsTime;
-    float attackSpeedTime;
-    bool attack = false;
-    
+    public float attackTime;
+    public float attackLastsTime;
+    public float attackSpeedTime;
+    public bool attack = false;
+    public bool neutral = false;
+    public bool giveAttack = true;
     // Start is called before the first frame update
     void Start()
     {
-        animator = throwerBody.GetComponent<Animator>();
         attackTime = Time.time + attackDelay;
     }
      void Update()
     {
-        if (Time.time > attackSpeedTime-(attackSpeed/2)) {//animacija
-            normal();
-        }
     }
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (neutral && giveAttack)
+        {
+            playerObject.GetComponent<UseAbility>().projectileList.Add(throwerProjectile);
+            giveAttack = false;
+        }
         //obrni proti playerju
         if (playerObject.transform.position.x > throwerBody.transform.position.x)
         {
@@ -44,6 +44,9 @@ public class ThrowerController : MonoBehaviour
         else
         {
             throwerBody.transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+        if (neutral) {
+            return;
         }
         if (Time.time > attackTime && !attack) {
             attack = true;
@@ -65,25 +68,12 @@ public class ThrowerController : MonoBehaviour
                     projectile.GetComponent<ThrowerProjectileController>().direction = -1;
                 }
                 attackSpeedTime = Time.time + attackSpeed;
-                attacking();
             }
             
         }
         if (Time.time > attackLastsTime && attack) {
             attack = false;
             attackTime = Time.time + attackDelay;
-            normal();
         }
-    }
-    void normal() {
-        animator.SetBool("normal",true);
-        animator.SetBool("attacking", false);
-    }
-
-    void attacking()
-    {
-        animator.SetBool("normal", false);
-        animator.SetBool("attacking", true);
-
     }
 }

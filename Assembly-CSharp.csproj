@@ -61,6 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Camel\CamelController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Camel\CamelProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Crawler\CrawlerAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crawler\CrawlerController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crusher\CrusherController.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Assets\Scripts\Monsters\Popper\PopperAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Popper\PopperController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spinner\SpinnerController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Spitter\SpitterPuddleController.cs" />
@@ -78,6 +82,7 @@
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Stopper\StopperProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerProjectileController.cs" />
     <Compile Include="Assets\Scripts\Player\Animations.cs" />

@@ -14,6 +14,7 @@ public class CrusherController : MonoBehaviour
     public float projectileSpeed = 2f;
     public bool attack = false;
     public bool neutral = false;
+    public bool giveAttack = true;
 
     float attackTime;
     float attackLastTime;
@@ -32,6 +33,11 @@ public class CrusherController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (neutral && giveAttack)
+        {
+            playerObject.GetComponent<UseAbility>().projectileList.Add(projectile);
+            giveAttack = false;
+        }
         //obrni proti playerju
         if (playerObject.transform.position.x > crusherBody.transform.position.x)
         {

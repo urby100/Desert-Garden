@@ -14,7 +14,7 @@ public class SteveController : MonoBehaviour
     public float littleSteveRunningLasts = 3f;
     public float attackDelay = 4f;
     public bool neutral = false;
-    
+    public bool giveAttack = true;
     public bool arrived = true;
     public bool attack = false;
     float attackTime;
@@ -28,6 +28,12 @@ public class SteveController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (neutral && giveAttack)
+        {
+            playerObject.GetComponent<UseAbility>().projectileList.Add(steveProjectile);
+            giveAttack = false;
+        }
         //obrni proti playerju
         if (playerObject.transform.position.x > steveBody.transform.position.x)
         {

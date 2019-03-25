@@ -15,11 +15,20 @@ public class ColliderController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!gameObject.GetComponent<Move>().tiredRequest) {
+
+            GetComponent<CapsuleCollider2D>().enabled = true;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezeRotation;
+        }
         if (gameObject.GetComponent<Move>().hurtRequest) {//odstrani collider
-
-        }else if (gameObject.GetComponent<Move>().tiredRequest) {//odstrani collider
-
-        }else if (gameObject.GetComponent<Move>().crouchRequest) {//zmanjša collider
+            //iščem idejo
+        }
+        else if (gameObject.GetComponent<Move>().tiredRequest) {//odstrani collider
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
+        }
+        else if (gameObject.GetComponent<Move>().crouchRequest) {//zmanjša collider
             upright.enabled = false;
             crouching.enabled = true;
         }else {

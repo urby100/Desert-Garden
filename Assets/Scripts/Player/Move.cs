@@ -100,7 +100,7 @@ public class Move : MonoBehaviour
         }
         else if (moveInput == 1)
         {
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            transform.rotation = new Quaternion(0, 0, 0, 1);
         }
         if (crouchRequest && rb.velocity.y == 0)//če je na tleh in se hoče skloniti se ne sme premikati...
         {

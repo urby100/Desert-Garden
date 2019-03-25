@@ -18,7 +18,7 @@ public class CrawlerController : MonoBehaviour
         pointsIterator = 0;
         numberOfPoints = walkingCheckPoints.Count-1;
     }
-    private void Update()
+     void Update()
     {
 
         if (direction == 1)
@@ -33,7 +33,6 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
         Vector2 move= Vector2.zero;
         if (Vector2.Distance(crawlerBody.transform.position, walkingCheckPoints[pointsIterator].transform.position) > 0.5f)
         {

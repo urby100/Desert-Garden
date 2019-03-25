@@ -55,5 +55,22 @@ public class playerCollisionController : MonoBehaviour
             GetComponent<Move>().hurtRequest = true;
 
         }
+        //Real monsters
+        if (collision.gameObject.name == "SpitterProjectile")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
+        if (collision.gameObject.name == "Puddle")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
+        if (collision.gameObject.name == "SpitterBody")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
+        if (collision.gameObject.name == "CrawlerBody")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
     }
 }

@@ -23,6 +23,7 @@ public class SpitterProjectileController : MonoBehaviour
         if (collision.gameObject.name == "Ground")
         {
             GameObject puddle = Instantiate(spitterPuddle,collision.contacts[0].point, spitterPuddle.transform.rotation);
+            puddle.name = "Puddle";
         }
         else if (collision.gameObject.name == "Puddle")
         {
