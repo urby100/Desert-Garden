@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ParallaxScrolling.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Monsters\Camel\CamelController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Camel\CamelProjectileController.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Assets\Scripts\Scenes\Intro\bombUnderPlaneController.cs" />
     <Compile Include="Assets\Scripts\Scenes\Intro\copilotOnPlaneController.cs" />
     <Compile Include="Assets\Scripts\Scenes\Intro\ScrewdriverController.cs" />
+    <Compile Include="Assets\ScrollingObject.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Unity Projects/Tester/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
