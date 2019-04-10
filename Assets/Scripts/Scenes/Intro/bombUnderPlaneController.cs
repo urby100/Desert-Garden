@@ -7,6 +7,7 @@ public class bombUnderPlaneController : MonoBehaviour
     public GameObject airplane;
     public List<Sprite> bombSprites;
     public GameObject signStage1;
+    public GameObject playerObject;
 
 
     GameObject screwdriver;

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class CrawlerAnimations : MonoBehaviour
 {
-    public GameObject crawlerGameObject;
-    CrawlerController sc;
+    public GameObject playerObject;
     Animator animator;
     public bool NeutralBool = false;
     // Start is called before the first frame update
     void Start()
     {
-        sc = crawlerGameObject.GetComponent<CrawlerController>();
         animator = GetComponent<Animator>();
     }
 
@@ -20,7 +18,7 @@ public class CrawlerAnimations : MonoBehaviour
     {
         if (NeutralBool)
         {
-            GetComponent<PolygonCollider2D>().enabled = false;
+            Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             Neutral();
         }
         else {

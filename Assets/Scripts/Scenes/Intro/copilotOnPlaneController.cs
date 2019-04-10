@@ -57,10 +57,11 @@ public class copilotOnPlaneController : MonoBehaviour
     {
         if ((playerObject.transform.position.x - transform.position.x) >-6.5f  && !playerNear)
         {
-            //playerNear = true;
+            playerNear = true;
         }
         if (throwScrewdriver && !throwOnce) {
             GameObject screwdriverObject= Instantiate(screwdriver, screwdriverSpawnPoint.transform.position, screwdriverSpawnPoint.transform.rotation);
+            screwdriver.GetComponent<ScrewdriverController>().playerObject = playerObject;
             screwdriverObject.GetComponent<Rigidbody2D>().AddForce((bombObject.transform.position-screwdriver.transform.position)*2f);//proti bombi
             screwdriverObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 150f);//malo gor
             screwdriverObject.GetComponent<Rigidbody2D>().AddTorque(5f*Time.deltaTime, ForceMode2D.Impulse);//zavrti

@@ -60,8 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ParallaxScrolling.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyAnimations.cs" />
+    <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Camel\CamelController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Camel\CamelProjectileController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Crawler\CrawlerAnimations.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerAnimations.cs" />
     <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerController.cs" />
     <Compile Include="Assets\Scripts\Monsters\Thrower\ThrowerProjectileController.cs" />
+    <Compile Include="Assets\Scripts\ParallaxScrolling.cs" />
     <Compile Include="Assets\Scripts\Player\Animations.cs" />
     <Compile Include="Assets\Scripts\Player\ColliderController.cs" />
     <Compile Include="Assets\Scripts\Player\Move.cs" />
@@ -96,7 +98,7 @@
     <Compile Include="Assets\Scripts\Scenes\Intro\bombUnderPlaneController.cs" />
     <Compile Include="Assets\Scripts\Scenes\Intro\copilotOnPlaneController.cs" />
     <Compile Include="Assets\Scripts\Scenes\Intro\ScrewdriverController.cs" />
-    <Compile Include="Assets\ScrollingObject.cs" />
+    <Compile Include="Assets\Scripts\ScrollingObject.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Unity Projects/Tester/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

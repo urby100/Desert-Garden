@@ -5,8 +5,10 @@ using UnityEngine;
 public class ScrewdriverController : MonoBehaviour
 {
     public GameObject signStage1;
+    public GameObject playerObject;
     public bool goToSign=false;
     bool done = false;
+    bool destroyed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,11 @@ public class ScrewdriverController : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             done = true;
         }
+        if (!destroyed && done && (playerObject.transform.position.x - transform.position.x) > -0.1f) {
+            Destroy(gameObject);
+            destroyed = true;
+        }
+
     }
+
 }

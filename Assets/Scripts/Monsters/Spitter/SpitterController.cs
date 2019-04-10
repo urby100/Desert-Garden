@@ -10,8 +10,8 @@ public class SpitterController : MonoBehaviour
     public GameObject playerObject;
     public bool Attack = false;
     public bool Neutral = false;
-    float fireRate = 0.7f;
-    float shotDirection = -1f;
+    public float fireRate = 0.7f;
+    public float shotDirection = -1f;
     float fireTime;
     // Start is called before the first frame update
     void Start()

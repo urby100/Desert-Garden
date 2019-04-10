@@ -24,7 +24,7 @@ public class FollowPlayer : MonoBehaviour
     {
         xPosition = Mathf.Clamp(playerObject.transform.position.x, dynamicPosXmin, dynamicPosXmax);
         transform.position = Vector3.Lerp(transform.position, 
-                                    new Vector3(xPosition, 2.5f, -1), 
+                                    new Vector3(xPosition, 2.5f, transform.position.z), 
                                     smooth * Time.deltaTime);
     }
 }

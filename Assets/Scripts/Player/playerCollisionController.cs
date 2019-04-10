@@ -55,6 +55,11 @@ public class playerCollisionController : MonoBehaviour
             GetComponent<Move>().hurtRequest = true;
 
         }
+        //planeWing
+        if (collision.gameObject.name == "planeWing")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
         //Real monsters
         if (collision.gameObject.name == "SpitterProjectile")
         {
@@ -69,6 +74,10 @@ public class playerCollisionController : MonoBehaviour
             GetComponent<Move>().tiredRequest = true;
         }
         if (collision.gameObject.name == "CrawlerBody")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
+        if (collision.gameObject.name == "BirdyBody")
         {
             GetComponent<Move>().tiredRequest = true;
         }

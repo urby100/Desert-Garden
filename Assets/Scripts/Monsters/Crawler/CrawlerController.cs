@@ -9,7 +9,7 @@ public class CrawlerController : MonoBehaviour
     public List<GameObject> walkingCheckPoints;
     int pointsIterator;
     int numberOfPoints;
-    float movementSpeed=5f;
+    public float movementSpeed =5f;
     int direction = 1;
     // Start is called before the first frame update
     void Start()
