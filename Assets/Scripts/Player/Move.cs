@@ -56,6 +56,7 @@ public class Move : MonoBehaviour
         }
         if (tiredRequest)
         {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,0.5f), 6*Time.deltaTime);
             return;
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))

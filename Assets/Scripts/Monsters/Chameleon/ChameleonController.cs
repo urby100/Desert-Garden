@@ -40,6 +40,9 @@ public class ChameleonController : MonoBehaviour
         if (Time.time > attackTime && !attack)
         {
             //nastavi pozicijo - med dvema točkama 
+            float x= Random.Range(CheckPoints[0].transform.position.x, CheckPoints[1].transform.position.x);
+            ChameleonBody.transform.position = new Vector2(x,ChameleonBody.transform.position.y);
+
             attack = true;
             attackTime = Time.time + attackSpeed;
         }

@@ -81,5 +81,9 @@ public class playerCollisionController : MonoBehaviour
         {
             GetComponent<Move>().tiredRequest = true;
         }
+        if (collision.gameObject.name == "ChameleonBody")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
     }
 }

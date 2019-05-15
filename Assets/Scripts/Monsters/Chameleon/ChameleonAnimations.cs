@@ -42,7 +42,6 @@ public class ChameleonAnimations : MonoBehaviour
             
             Neutral();
             ChameleonGameObject.GetComponent<ChameleonController>().neutral = true;
-            Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
         else
         {
