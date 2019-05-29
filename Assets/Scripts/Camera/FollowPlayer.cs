@@ -5,6 +5,8 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public GameObject playerObject;
+    public float ypos=2.5f;
+
     float smooth = 7f;
     float minXPosition = 2.5f;
     float maxXPosition = 1000f;
@@ -24,7 +26,7 @@ public class FollowPlayer : MonoBehaviour
     {
         xPosition = Mathf.Clamp(playerObject.transform.position.x, dynamicPosXmin, dynamicPosXmax);
         transform.position = Vector3.Lerp(transform.position, 
-                                    new Vector3(xPosition, 2.5f, transform.position.z), 
+                                    new Vector3(xPosition, ypos, transform.position.z), 
                                     smooth * Time.deltaTime);
     }
 }

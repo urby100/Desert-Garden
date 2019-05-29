@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class copilotOnPlaneController : MonoBehaviour
@@ -10,6 +11,14 @@ public class copilotOnPlaneController : MonoBehaviour
     public GameObject bombObject;
     public GameObject screwdriverSpawnPoint;
     public GameObject screwdriver;
+    public TextMeshPro DialogText;
+
+    string helloText = "Hey, boss! Oh oh.";
+    int part = 6;
+    string alpha = "<alpha=#00>";
+    float typingSpeed = 0.05f;
+    float typingTime;
+    int iterator = 0;
 
     float waveTime;
     float waveLasts=2f;
@@ -20,18 +29,41 @@ public class copilotOnPlaneController : MonoBehaviour
     float turnTime;
     float turnDelay;
     bool playerNear = false;
+    public bool type = false;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
         turnDelay = bombObject.GetComponent<bombUnderPlaneController>().explodeDelay-0.5f;
+        DialogText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (type) {
+
+            if (Time.time > typingTime)
+            {
+                if (iterator > helloText.Length-part)
+                {
+                    type = false;
+                    part = 0;
+                }
+                else
+                {
+                    DialogText.text = DialogText.text.Replace(alpha, "");
+                    DialogText.text = DialogText.text.Insert(iterator, alpha);
+                    iterator++;
+                    typingTime = Time.time + typingSpeed;
+                }
+
+            }
+        }
         if (scene) {
-            if (Time.time > waveTime) {
+            if (Time.time > waveTime)
+            {
+                
                 //vrži izvijač
                 throwScrewdriver = true;
                 animator.SetBool("wave",false);
@@ -46,6 +78,10 @@ public class copilotOnPlaneController : MonoBehaviour
             scene = true;
             animator.SetBool("wave",true);
             waveTime = Time.time + waveLasts;
+            typingTime = Time.time + typingSpeed;
+            DialogText.gameObject.SetActive(true);
+            DialogText.text = alpha + helloText;
+            type = true;
         }
         if (Time.time > turnTime && turnAround) {
 
@@ -61,7 +97,7 @@ public class copilotOnPlaneController : MonoBehaviour
         }
         if (throwScrewdriver && !throwOnce) {
             GameObject screwdriverObject= Instantiate(screwdriver, screwdriverSpawnPoint.transform.position, screwdriverSpawnPoint.transform.rotation);
-            screwdriver.GetComponent<ScrewdriverController>().playerObject = playerObject;
+            screwdriverObject.GetComponent<ScrewdriverController>().playerObject = playerObject;
             screwdriverObject.GetComponent<Rigidbody2D>().AddForce((bombObject.transform.position-screwdriver.transform.position)*2f);//proti bombi
             screwdriverObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 150f);//malo gor
             screwdriverObject.GetComponent<Rigidbody2D>().AddTorque(5f*Time.deltaTime, ForceMode2D.Impulse);//zavrti

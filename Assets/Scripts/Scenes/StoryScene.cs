@@ -197,7 +197,6 @@ public class StoryScene : MonoBehaviour
                 {
                     if (newLine && Time.time > newLineTime)
                     {
-                        iterator = 0;
                         DialogText.text = alpha + scientistsTalk[iterator2];
                         newLine = false;
                     }
@@ -210,6 +209,7 @@ public class StoryScene : MonoBehaviour
                     }
                     if (iterator > scientistsTalk[iterator2].Length)
                     {
+                        iterator = 0;
                         iterator2++;
                         if (iterator2 == scientistsTalk.Count)
                         {
