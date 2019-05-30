@@ -12,7 +12,7 @@ public class Intro2SceneController : MonoBehaviour
     public TextMeshPro DialogText;
     public GameObject planeObject;
     public List<GameObject> planepoints;
-    float planeSpeed = 2f;
+    float planeSpeed = 4f;
     float sceneNumber = 1;
 
 
@@ -44,7 +44,7 @@ public class Intro2SceneController : MonoBehaviour
     int iterator = 0;
     int iterator2 = 0;
     bool move = true;
-    float slowing = 0.5f;
+    float slowing = 1f;
     // Start is called before the first frame update
     void Start()
     {
