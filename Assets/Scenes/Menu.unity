@@ -1576,11 +1576,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125278563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.47, y: 1.55, z: 0}
+  m_LocalPosition: {x: -15.47, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1659630391}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1132546895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132546896}
+  m_Layer: 0
+  m_Name: CactusSpawnPointEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1132546896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132546895}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.01, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1659630391}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1136402129
 GameObject:
@@ -1738,6 +1768,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208599709}
   m_CullTransparentMesh: 0
+--- !u!1 &1215045568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215045569}
+  m_Layer: 0
+  m_Name: CactusSpawnPointStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215045569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215045568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.51, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1659630391}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230861555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2268,6 +2328,8 @@ Transform:
   - {fileID: 1899460753614762681}
   - {fileID: 1125278564}
   - {fileID: 2106554149}
+  - {fileID: 1215045569}
+  - {fileID: 1132546896}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2284,8 +2346,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeObject: {fileID: 1899460753614762680}
-  planeStartPoint: {fileID: 1125278563}
-  planeEndPoint: {fileID: 2106554148}
+  planepoints:
+  - {fileID: 1125278563}
+  - {fileID: 2106554148}
+  cactusSpawnPoints:
+  - {fileID: 1215045568}
+  - {fileID: 1132546895}
+  cactusList:
+  - {fileID: 3402594848796312991, guid: 5e0f1af0b94fe2a46a60e1b9bbc66021, type: 3}
+  - {fileID: 365685024467032617, guid: 8a62b5c4a78c4f94197965fb0f623f0a, type: 3}
+  - {fileID: 6729286073349372716, guid: b85885d8eb4e13347a1868f9c9936345, type: 3}
+  - {fileID: 4557299587237248311, guid: 6c12a03d863b4a04991f2b1e118aa50c, type: 3}
+  - {fileID: 685560034500878550, guid: f9b2ba6a3bbd17841a63c38ad1a0689e, type: 3}
 --- !u!1 &1731744013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2508,7 +2580,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106554148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.11, y: 1.55, z: 0}
+  m_LocalPosition: {x: 14.11, y: 1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1659630391}
