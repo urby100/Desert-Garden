@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 public class StoryScene : MonoBehaviour
 {
     public GameObject scientist1;
@@ -41,6 +43,8 @@ public class StoryScene : MonoBehaviour
     int iterator = 0;
     int iterator2 = 0;
     Vector2 move = Vector2.zero;
+    float newsceneTime;
+    float newsceneDelay=5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -213,6 +217,7 @@ public class StoryScene : MonoBehaviour
                         iterator2++;
                         if (iterator2 == scientistsTalk.Count)
                         {
+                            newsceneTime = Time.time + newsceneDelay;
                             sceneNumber = 6;
                         }
                         else
@@ -228,7 +233,10 @@ public class StoryScene : MonoBehaviour
                 }
                 break;
             case 6:
-
+                if (Time.time > newsceneTime)
+                {
+                    SceneManager.LoadScene("Intro2");
+                }
                 break;
             default:
                 break;

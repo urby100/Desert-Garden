@@ -53,6 +53,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\MainMenu.cs" />
+     <Compile Include="Assets\MenuSceneController.cs" />
      <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyAnimations.cs" />
      <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyController.cs" />

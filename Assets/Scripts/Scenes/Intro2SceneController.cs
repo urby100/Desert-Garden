@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Intro2SceneController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Intro2SceneController : MonoBehaviour
     float planeSpeed = 4f;
     float sceneNumber = 1;
 
+    float newsceneTime;
+    float newsceneDelay = 5f;
 
 
     List<string> pilotsTalk = new List<string>() {
@@ -24,7 +27,7 @@ public class Intro2SceneController : MonoBehaviour
         "The bomb got stuck.",
         "Alrighty, just use the screwdriver and drop it manually.",
         "Oki, be right back.",
-        "How's it looking down there ?",
+        "How's it looking down there?",
         "Everything is labeled 'Super Secret'.",
         "Yeah, that scientist is taking this joke way too far.",
         "Ok, I think this is the right one."
@@ -199,6 +202,7 @@ public class Intro2SceneController : MonoBehaviour
                         iterator++;
                         if (iterator > ohNo.Length)
                         {
+                            newsceneTime = Time.time + newsceneDelay;
                             sceneNumber = 5;
                         }
                         typingTime = Time.time + typingSpeed;
@@ -207,6 +211,10 @@ public class Intro2SceneController : MonoBehaviour
                 break;
             case 5:
 
+                if (Time.time > newsceneTime)
+                {
+                    SceneManager.LoadScene("SampleScene");
+                }
                 break;
             default:
                 break;
