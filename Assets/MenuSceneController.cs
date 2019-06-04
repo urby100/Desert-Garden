@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuSceneController : MonoBehaviour
 {
     public GameObject planeObject;
+    public GameObject scientistsObject;
     public List<GameObject> planepoints = new List<GameObject>();
     float planeChangeDirectionTime;
     float planeChangeDirectionDelay = 5f;
@@ -22,10 +23,11 @@ public class MenuSceneController : MonoBehaviour
     float cactusDontShowTime;
     float cactusShowAliveTime;
     float cactusDontShow=1f;
-    float cactusShowAlive = 1f;
+    float cactusShowAlive = 5f;
     bool cactusShow=false;
     int cactusIndex;
     GameObject cactus;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,8 @@ public class MenuSceneController : MonoBehaviour
                                                                                 cactusSpawnPoints[1].transform.position.x),
                                                                                 cactusSpawnPoints[0].transform.position.y, 1), 
                                                                                 Quaternion.identity);
+            cactus.GetComponent<CactusPopUpScript>().scientists = scientistsObject;
+            scientistsObject.GetComponent<MenuScientists>().cactus = cactus;
             cactusShowAliveTime = Time.time + cactusShowAlive;
         }
         if (cactusShow && Time.time > cactusShowAliveTime )

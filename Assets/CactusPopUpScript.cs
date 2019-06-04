@@ -11,6 +11,7 @@ public class CactusPopUpScript : MonoBehaviour
     public float moveSpeed = 0.08f;
     public bool direction = true;
     RectTransform rt;
+    public GameObject scientists;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,14 @@ public class CactusPopUpScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.transform.position.x > scientists.transform.position.x)
+        {
+            gameObject.transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+        else
+        {
+            gameObject.transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
         if (direction)
         {
             child.transform.position = Vector3.SmoothDamp(child.transform.position,

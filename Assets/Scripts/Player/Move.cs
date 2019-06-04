@@ -40,7 +40,7 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) {
+       /* if (Input.GetKeyDown(KeyCode.T)) {
             Time.timeScale = Time.timeScale+0.1f;
         }
         if (Input.GetKeyDown(KeyCode.Z))
@@ -53,7 +53,7 @@ public class Move : MonoBehaviour
         }else if (Input.GetKey(KeyCode.X))
         {
             tiredRequest = false;
-        }
+        }*/
         if (tiredRequest)
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,0.5f), 6*Time.deltaTime);

@@ -54,8 +54,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CactusPopUpScript.cs" />
+     <Compile Include="Assets\InputButtonSCript.cs" />
      <Compile Include="Assets\MainMenu.cs" />
+     <Compile Include="Assets\MenuFlowerScript.cs" />
      <Compile Include="Assets\MenuSceneController.cs" />
+     <Compile Include="Assets\MenuScientists.cs" />
+     <Compile Include="Assets\OnMouseOver.cs" />
      <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyAnimations.cs" />
      <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyController.cs" />
