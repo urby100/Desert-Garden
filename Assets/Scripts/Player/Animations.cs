@@ -10,6 +10,8 @@ public class Animations : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     float moving;
+    public GameObject gm;
+    Keybindings kb;
 
     private bool hurting = false;
     private float hurtLenght = 0.3f;
@@ -24,6 +26,7 @@ public class Animations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        kb = gm.GetComponent<Keybindings>();
         useAbilityScript = GetComponent<UseAbility>();
         moveScript = GetComponent<Move>();
         animator = GetComponent<Animator>();
@@ -35,16 +38,16 @@ public class Animations : MonoBehaviour
     void Update()
     {
         //Debug.Log(getAnimationState("Running"));
-        moving = Input.GetAxisRaw("Horizontal");
-        if (moveScript.hurtRequest)
+        moving = 0;
+        if (Input.GetKey(kb.forward))
         {
-            moving = 0;
+            moving += 1;
         }
-        else if (moveScript.tiredRequest) {
-
-            moving = 0;
+        if (Input.GetKey(kb.backward))
+        {
+            moving -= 1;
         }
-
+        
         //hurt
         if (hurting && Time.time >= hurtStart)
         {

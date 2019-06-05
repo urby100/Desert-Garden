@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject OptionsMenu;
+    public GameObject DeadMenu;
     public GameObject menutiptext;
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown("escape") && !player.GetComponent<Move>().tiredRequest)
         {
             if (!MainMenu.activeInHierarchy)
             {
@@ -30,6 +33,13 @@ public class GameManager : MonoBehaviour
         if (!MainMenu.activeInHierarchy)
         {
             menutiptext.SetActive(true);
+        }
+        if (player.GetComponent<Move>().tiredRequest)
+        {
+            DeadMenu.SetActive(true);
+        }
+        else {
+            DeadMenu.SetActive(false);
         }
     }
     
