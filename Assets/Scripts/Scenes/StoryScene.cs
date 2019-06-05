@@ -18,6 +18,7 @@ public class StoryScene : MonoBehaviour
     float sceneNumber = 1;
     public float movementSpeed = 4f;
     public TextMeshPro DialogText;
+    public TextMeshPro skipBox;
     public GameObject playerSitting;
     public GameObject copilotSitting;
     public GameObject planeObject;
@@ -48,6 +49,7 @@ public class StoryScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        skipBox.text = "Press "+ GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         scientist1.transform.position = scientist1points[0].transform.position;
         scientist2.transform.position = scientist2points[0].transform.position;
         player.transform.position = playerpoints[0].transform.position;
@@ -60,8 +62,8 @@ public class StoryScene : MonoBehaviour
         Scientist2standing();
         //
         DialogText.text = "";
-
         DialogText.gameObject.SetActive(false);
+        skipBox.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -112,8 +114,12 @@ public class StoryScene : MonoBehaviour
                 }
                 break;
             case 2://dialog 
-
+                if (Input.GetKeyDown(GetComponent<Keybindings>().attack1))
+                {
+                    iterator = dialog.Length;
+                }
                 DialogText.gameObject.SetActive(true);
+                skipBox.gameObject.SetActive(true);
                 if (Time.time > typingTime)
                 {
                     DialogText.text = DialogText.text.Replace(alpha, "");
@@ -171,6 +177,7 @@ public class StoryScene : MonoBehaviour
                 break;
             case 4://se odpeljeta z letalom
                 DialogText.gameObject.SetActive(false);
+                skipBox.gameObject.SetActive(false);
                 planeObject.transform.position =
                     Vector3.MoveTowards(planeObject.transform.position, planepoints[1].transform.position, planeSpeed * Time.deltaTime);
 
@@ -191,6 +198,11 @@ public class StoryScene : MonoBehaviour
                 Scientist2walking();
                 //
                 DialogText.gameObject.SetActive(true);
+                skipBox.gameObject.SetActive(true);
+                if (Input.GetKeyDown(GetComponent<Keybindings>().attack1))
+                {
+                    iterator = scientistsTalk[iterator2].Length;
+                }
 
                 scientist1.transform.position =
                     Vector3.MoveTowards(scientist1.transform.position, scientist1points[1].transform.position, scientistSpeed * Time.deltaTime);
@@ -233,6 +245,11 @@ public class StoryScene : MonoBehaviour
                 }
                 break;
             case 6:
+                scientist1.transform.position =
+                    Vector3.MoveTowards(scientist1.transform.position, scientist1points[1].transform.position, scientistSpeed * Time.deltaTime);
+                scientist2.transform.position =
+                    Vector3.MoveTowards(scientist2.transform.position, scientist2points[1].transform.position, scientistSpeed * Time.deltaTime);
+
                 if (Time.time > newsceneTime)
                 {
                     SceneManager.LoadScene("Intro2");

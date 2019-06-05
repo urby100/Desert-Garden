@@ -6,7 +6,8 @@ public class Move : MonoBehaviour
 {
     Rigidbody2D rb;
     float moveInput;
-
+    public GameObject gm;
+    Keybindings kb;
 
     bool jumpRequest;
     public bool crouchRequest;
@@ -31,6 +32,7 @@ public class Move : MonoBehaviour
 
     void Awake()
     {
+        kb = gm.GetComponent<Keybindings>();
         rb = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
@@ -40,7 +42,18 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.T)) {
+       
+        if (tiredRequest)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,0.5f), 6*Time.deltaTime);
+            return;
+        }
+    }
+
+   
+    void FixedUpdate()
+    {
+        /* if (Input.GetKeyDown(KeyCode.T)) {
             Time.timeScale = Time.timeScale+0.1f;
         }
         if (Input.GetKeyDown(KeyCode.Z))
@@ -54,26 +67,30 @@ public class Move : MonoBehaviour
         {
             tiredRequest = false;
         }*/
-        if (tiredRequest)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,0.5f), 6*Time.deltaTime);
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(kb.jump))
         {
             jumpCounter++;
             jumpRequest = true;
         }
-        if (Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(kb.crouch))
+        {
             crouchRequest = true;
-        } else if (Input.GetKeyUp(KeyCode.C) || Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) {
+        }
+        if (Input.GetKeyUp(kb.crouch))
+        {
             crouchRequest = false;
         }
-    }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
+        //move
+        moveInput = 0;
+        if (Input.GetKey(kb.forward))
+        {
+            moveInput += 1;
+        }
+        if (Input.GetKey(kb.backward))
+        {
+            moveInput -= 1;
+        }
         //better jump
         if (rb.velocity.y < 0 || hurtRequest)//falling 
         {
@@ -87,10 +104,6 @@ public class Move : MonoBehaviour
         {
             rb.gravityScale = gravity;
         }
-
-        //move
-        moveInput = Input.GetAxisRaw("Horizontal");
-
         if (tiredRequest || hurtRequest || sceneDontMoveRequest)//če je umrl ali bil zadet ali je v sceni
         {
             moveInput = 0;

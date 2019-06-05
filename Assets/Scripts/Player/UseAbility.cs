@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UseAbility : MonoBehaviour
 {
+    public GameObject gm;
+    Keybindings kb;
     public GameObject projectileSpawn;
     public GameObject projectileSpawn2;
     public GameObject pointsSpawn;
@@ -59,18 +61,19 @@ public class UseAbility : MonoBehaviour
     public float steveAttackDelay = 4f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        kb = gm.GetComponent<Keybindings>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(kb.attack1))
         {
             useWater=true;
         }
-        if (Input.GetKeyDown(KeyCode.V)) {
+        if (Input.GetKeyDown(kb.attack2)) {
             useAbility = true;
         }
     }

@@ -11,6 +11,7 @@ public class Intro2SceneController : MonoBehaviour
     public GameObject playerFalling;
     public GameObject copilot;
     public TextMeshPro DialogText;
+    public TextMeshPro SkipBox;
     public GameObject planeObject;
     public List<GameObject> planepoints;
     float planeSpeed = 4f;
@@ -25,8 +26,8 @@ public class Intro2SceneController : MonoBehaviour
         "Uhhh, boss?",
         "What's up?",
         "The bomb got stuck.",
-        "Alrighty, just use the screwdriver and drop it manually.",
-        "Oki, be right back.",
+        "Alright, just use the screwdriver and drop it manually.",
+        "Ok, be right back.",
         "How's it looking down there?",
         "Everything is labeled 'Super Secret'.",
         "Yeah, that scientist is taking this joke way too far.",
@@ -51,6 +52,7 @@ public class Intro2SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SkipBox.text = "Press " + GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         playerOnPlane();
         DialogText.text = "";
         typingTime = Time.time;
@@ -73,7 +75,7 @@ public class Intro2SceneController : MonoBehaviour
         switch (sceneNumber)
         {
             case 1:
-                if (Input.GetKeyDown("space"))
+                if (Input.GetKeyDown(GetComponent<Keybindings>().attack1))
                 {
                     iterator = pilotsTalk[iterator2].Length;
                 }
@@ -121,6 +123,7 @@ public class Intro2SceneController : MonoBehaviour
                 }
                 break;
             case 2:
+                SkipBox.gameObject.SetActive(false);
                 if (Time.time > typingTime && Time.time > newLineTime)
                 {
                     if (newLine)
@@ -173,7 +176,7 @@ public class Intro2SceneController : MonoBehaviour
                         typingTime = Time.time + typingSpeed;
                     }
                 }
-                if (Time.time > mistakeAwareTime && iterator > bailOut.Length)
+                if (iterator > bailOut.Length)
                 {
                     copilot.SetActive(true);
                     copilot.GetComponent<Animator>().enabled = false;

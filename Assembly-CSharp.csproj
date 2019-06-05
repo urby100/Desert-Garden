@@ -53,14 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CactusPopUpScript.cs" />
-     <Compile Include="Assets\InputButtonSCript.cs" />
-     <Compile Include="Assets\MainMenu.cs" />
-     <Compile Include="Assets\MenuFlowerScript.cs" />
-     <Compile Include="Assets\MenuSceneController.cs" />
-     <Compile Include="Assets\MenuScientists.cs" />
-     <Compile Include="Assets\OnMouseOver.cs" />
      <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
+     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Keybindings\InputManager.cs" />
+     <Compile Include="Assets\Scripts\Keybindings\Keybindings.cs" />
      <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyAnimations.cs" />
      <Compile Include="Assets\Scripts\Monsters\Birdy\BirdyController.cs" />
      <Compile Include="Assets\Scripts\Monsters\Camel\CamelController.cs" />
@@ -96,11 +92,18 @@
      <Compile Include="Assets\Scripts\Player\playerCollisionController.cs" />
      <Compile Include="Assets\Scripts\Player\UseAbility.cs" />
      <Compile Include="Assets\Scripts\Player\WaterProjectile.cs" />
+     <Compile Include="Assets\Scripts\Scenes\CactusPopUpScript.cs" />
+     <Compile Include="Assets\Scripts\Scenes\InputButtonSCript.cs" />
      <Compile Include="Assets\Scripts\Scenes\Intro\AirplaneController.cs" />
      <Compile Include="Assets\Scripts\Scenes\Intro\bombUnderPlaneController.cs" />
      <Compile Include="Assets\Scripts\Scenes\Intro\copilotOnPlaneController.cs" />
      <Compile Include="Assets\Scripts\Scenes\Intro\ScrewdriverController.cs" />
      <Compile Include="Assets\Scripts\Scenes\Intro2SceneController.cs" />
+     <Compile Include="Assets\Scripts\Scenes\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Scenes\MenuFlowerScript.cs" />
+     <Compile Include="Assets\Scripts\Scenes\MenuSceneController.cs" />
+     <Compile Include="Assets\Scripts\Scenes\MenuScientists.cs" />
+     <Compile Include="Assets\Scripts\Scenes\OnMouseOver.cs" />
      <Compile Include="Assets\Scripts\Scenes\StoryScene.cs" />
      <Compile Include="Assets\Scripts\ScrollingObject.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
