@@ -76,11 +76,10 @@ public class Move : MonoBehaviour
         {
             crouchRequest = true;
         }
-        if (Input.GetKeyUp(kb.crouch))
+        else
         {
             crouchRequest = false;
         }
-
         //move
         moveInput = 0;
         if (Input.GetKey(kb.forward))

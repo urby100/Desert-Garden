@@ -30,9 +30,13 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        if (!MainMenu.activeInHierarchy)
+        if (!MainMenu.activeInHierarchy )
         {
             menutiptext.SetActive(true);
+        }
+        if (OptionsMenu.activeInHierarchy)
+        {
+            menutiptext.SetActive(false);
         }
         if (player.GetComponent<Move>().tiredRequest)
         {
