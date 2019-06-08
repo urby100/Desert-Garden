@@ -11,14 +11,13 @@ public class ShadowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, 
-            maxY-jumpShadowMultiplier*(player.transform.position.y-0.515f)
-            ,0);
+        transform.position = new Vector3(transform.position.x,
+            maxY - jumpShadowMultiplier * (player.transform.position.y - 0.515f)
+            , 0);
     }
 }

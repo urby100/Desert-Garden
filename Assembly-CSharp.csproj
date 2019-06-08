@@ -53,6 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\draw.cs" />
+     <Compile Include="Assets\MoveShadowAngle.cs" />
+     <Compile Include="Assets\restrictGlobalRotation.cs" />
      <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
      <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
      <Compile Include="Assets\Scripts\Keybindings\InputManager.cs" />
