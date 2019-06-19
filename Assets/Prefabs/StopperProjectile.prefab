@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7387764419614766389}
   - component: {fileID: 6901463466157551202}
   - component: {fileID: 2889076699731924504}
+  - component: {fileID: 4623164684003321741}
   m_Layer: 8
   m_Name: StopperProjectile
   m_TagString: Untagged
@@ -155,3 +156,15 @@ MonoBehaviour:
   globalDirection: -1
   shootVelocityDirection: 2.5
   shootVelocityUp: 2.5
+--- !u!114 &4623164684003321741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486696251959087257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33d41850afa91e48b3eaf74a3d34884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

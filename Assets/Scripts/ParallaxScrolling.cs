@@ -6,7 +6,7 @@ public class ParallaxScrolling : MonoBehaviour
 {
     public Transform[] backgrounds;         //list of all the backgrounds and foregrounds
     float[] parallaxScales;                 //the proportion of the camera's movement to move the backgrounds by
-    public float parallaxingAmount = 1;         //how smooth the parallax is going to be. Make sure to set this above 0
+    public float parallaxingAmount = 0.5f;         //how smooth the parallax is going to be. Make sure to set this above 0
 
     private Transform cam;
     private Vector3 previousCamPos;         //cam position in previous frame

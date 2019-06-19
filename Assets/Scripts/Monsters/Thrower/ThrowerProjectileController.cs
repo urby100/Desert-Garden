@@ -9,7 +9,7 @@ public class ThrowerProjectileController : MonoBehaviour
     Rigidbody2D rb;
     public float speed = 5f;
     public float aliveDelay=2f;
-    float aliveTime;
+    public float aliveTime;
     float revSpeed = 720f;
     // Start is called before the first frame update
     void Start()

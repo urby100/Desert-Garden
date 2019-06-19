@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8079885906092365692}
   - component: {fileID: 5287777368345300011}
   - component: {fileID: 3908298178387524832}
+  - component: {fileID: 1446496517893608924}
+  - component: {fileID: 1692033240951214971}
   m_Layer: 8
   m_Name: ThrowerProjectile
   m_TagString: Untagged
@@ -155,3 +157,28 @@ MonoBehaviour:
   direction: 0
   speed: 5
   aliveDelay: 2
+  aliveTime: 0
+--- !u!114 &1446496517893608924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7161238743592170192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c391493cb65543e42b61299042de2629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1692033240951214971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7161238743592170192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33d41850afa91e48b3eaf74a3d34884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3861830825425696967}
   - component: {fileID: 3861830825425696966}
   - component: {fileID: 2173071187012808193}
+  - component: {fileID: 3470822322045291934}
   m_Layer: 9
   m_Name: WaterProjectile
   m_TagString: Untagged
@@ -144,3 +145,15 @@ MonoBehaviour:
   direction: 1
   horizontalVelocity: 2.5
   verticalVelocity: 2.5
+--- !u!114 &3470822322045291934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3861830825425696971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33d41850afa91e48b3eaf74a3d34884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -15,7 +15,7 @@ public class ChameleonAnimations : MonoBehaviour
     float hidedelay = 7f;
     public bool whentohidetimesaved = false;
     float attackanimdelay=0.583f;
-    float showhidedelay = 0.5f;
+    float showhidedelay = 0.75f;
     float attackanimtime;
     float showanimtime;
     float hideanimtime;
