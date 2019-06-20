@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.04
   direction: 1
+  scientists: {fileID: 0}
 --- !u!1 &685560034732781971
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,6 +60,7 @@ GameObject:
   - component: {fileID: 685560034732781968}
   - component: {fileID: 685560034732781974}
   - component: {fileID: 685560034732781975}
+  - component: {fileID: 7232068082894154860}
   m_Layer: 0
   m_Name: ThrowerBody
   m_TagString: Untagged
@@ -205,6 +207,18 @@ PolygonCollider2D:
       - {x: 0.3828125, y: -0.4375}
       - {x: 0.3771553, y: -0.18066573}
       - {x: 0.4366455, y: -0.18966639}
+--- !u!114 &7232068082894154860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685560034732781971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33d41850afa91e48b3eaf74a3d34884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685560035911415718
 GameObject:
   m_ObjectHideFlags: 0

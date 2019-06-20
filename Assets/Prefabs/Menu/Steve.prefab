@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6729286072274814368}
   - component: {fileID: 6729286072274814369}
   - component: {fileID: 6729286072274814398}
+  - component: {fileID: 5896386473628914870}
   m_Layer: 0
   m_Name: SteveBody
   m_TagString: Untagged
@@ -194,6 +195,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16835785, y: 0.35236454}
   m_EdgeRadius: 0
+--- !u!114 &5896386473628914870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729286072274814373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33d41850afa91e48b3eaf74a3d34884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6729286073349372716
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.04
   direction: 1
+  scientists: {fileID: 0}
 --- !u!1 &6729286074034368193
 GameObject:
   m_ObjectHideFlags: 0
