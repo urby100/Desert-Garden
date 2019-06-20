@@ -75,11 +75,17 @@ public class playerCollisionController : MonoBehaviour
         }
         if (collision.gameObject.name == "CrawlerBody")
         {
-            GetComponent<Move>().tiredRequest = true;
+            if (!collision.gameObject.GetComponent<CrawlerAnimations>().NeutralBool)
+            {
+                GetComponent<Move>().tiredRequest = true;
+            }
         }
         if (collision.gameObject.name == "BirdyBody")
         {
-            GetComponent<Move>().tiredRequest = true;
+            if (!collision.gameObject.GetComponent<BirdyAnimations>().NeutralBool)
+            {
+                GetComponent<Move>().tiredRequest = true;
+            }
         }
         if (collision.gameObject.name == "ChameleonBody")
         {

@@ -13,17 +13,18 @@ public class ShadowScript : MonoBehaviour
     void Start()
     {
         shadow = new GameObject();
+        shadow.layer = LayerMask.NameToLayer("Shadows");
         shadow.name = "ShadowSprite";
         shadow.transform.parent = transform;
         sprRndShadow = shadow.AddComponent<SpriteRenderer>();
-        /*
+        //sprRndShadow.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+        
         Material m = (Material)AssetDatabase.LoadAssetAtPath("Assets/Shaders/ShadowMaterial.mat", typeof(Material));
         sprRndShadow.material = m;
-        */
-        sprRndShadow.color = new Color(0, 0, 0, 0.5f);
+        
+        sprRndShadow.color = new Color(0, 0, 0, 0.4f);
         sprRndShadow.flipY = true;
         sprRndShadow.sortingLayerName = "Foreground";
-        sprRndShadow.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
         sprRndShadow.sortingOrder = 99;
         sprRndShadow.transform.localScale = new Vector3(1, 1, 1);
     }
@@ -39,8 +40,8 @@ public class ShadowScript : MonoBehaviour
             0);
         shadow.transform.rotation = gameObject.transform.rotation;
     }
-    void FixedUpdate() {
-
+    void FixedUpdate()
+    {
         sprRndShadow.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
     }
 }
