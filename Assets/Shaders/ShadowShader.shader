@@ -1,10 +1,4 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Custom/ShadowShader"
+﻿Shader "Custom/ShadowShader"
 {
 	Properties{
 
@@ -56,7 +50,8 @@ Shader "Custom/ShadowShader"
 						discard;
 					else
 						if (i.worldpos.y > 0)//če je pixel nad linijo, kjer se senca začne jo skrijemo 
-							color.a = 0.0;
+							
+							color.a = 0;
 						else
 							color = _DesiredColor;//nastavimo barvo pixla, ki smo jo nastavili v unity nastavitvah
 							//nastavimo intenzivnost sence glede na y

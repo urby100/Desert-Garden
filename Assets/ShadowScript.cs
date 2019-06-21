@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ShadowScript : MonoBehaviour
 {
+    
     GameObject shadow;
     SpriteRenderer sprRndShadow;
     float height;
@@ -17,9 +18,21 @@ public class ShadowScript : MonoBehaviour
         shadow.name = "ShadowSprite";
         shadow.transform.parent = transform;
         sprRndShadow = shadow.AddComponent<SpriteRenderer>();
-        //sprRndShadow.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
-        
         Material m = (Material)AssetDatabase.LoadAssetAtPath("Assets/Shaders/ShadowMaterial.mat", typeof(Material));
+        if (gameObject.name == "Trail")
+        {
+            TrailRenderer tr= shadow.AddComponent<TrailRenderer>();
+            TrailRenderer parentTr = gameObject.GetComponent<TrailRenderer>();
+
+            tr.material = m;
+            tr.sortingLayerName = "Foreground";
+            tr.sortingOrder = 99;
+            tr.time = parentTr.time;
+            tr.minVertexDistance = parentTr.minVertexDistance;
+            tr.autodestruct = true;
+            tr.widthCurve = parentTr.widthCurve;
+            tr.widthMultiplier = parentTr.widthMultiplier;
+        }
         sprRndShadow.material = m;
         
         sprRndShadow.color = new Color(0, 0, 0, 0.4f);
@@ -42,6 +55,11 @@ public class ShadowScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        sprRndShadow.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        if (gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            sprRndShadow.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        }
+        else {
+        }
     }
 }
