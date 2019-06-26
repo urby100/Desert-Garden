@@ -9,6 +9,7 @@ public class BirdyAnimations : MonoBehaviour
     Rigidbody2D birdyBodyRb;
     Animator animator;
     public bool NeutralBool = false;
+    bool CollidersSet = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,12 @@ public class BirdyAnimations : MonoBehaviour
         {
             Neutral();
             birdyGameObject.GetComponent<BirdyController>().neutral = true;
-            Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            if (!CollidersSet)
+            {
+                birdyBodyRb.velocity=new Vector2(0,0);
+                birdyBodyRb.bodyType = RigidbodyType2D.Kinematic;
+                GetComponent<PolygonCollider2D>().enabled = false;
+            }
         }
         else
         {

@@ -94,7 +94,7 @@ public class Animations : MonoBehaviour
         }
         else if (rb.velocity.y > 0)//jump
         {
-            if (!Input.GetKey(KeyCode.UpArrow))
+            if (!Input.GetKey(kb.jump))
             {
                 if (useAbilityScript.useWater)
                 {

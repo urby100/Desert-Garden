@@ -8,7 +8,7 @@ public class Move : MonoBehaviour
     float moveInput;
     public GameObject gm;
     Keybindings kb;
-
+    public bool jump;
     bool jumpRequest;
     public bool crouchRequest;
     public bool tiredRequest;
@@ -135,10 +135,12 @@ public class Move : MonoBehaviour
         if (jumpRequest && jumpCounter <= maxJumps)
         {
             rb.AddForce(Vector2.up * jumpVelocity, ForceMode2D.Impulse);
+            jump = true;
             jumpRequest = false;
         }
         if (rb.velocity.y == 0)
         {
+
             jumpCounter = 0;
             jumpRequest = false;
         }

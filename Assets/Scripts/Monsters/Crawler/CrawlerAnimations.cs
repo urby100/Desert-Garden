@@ -7,6 +7,7 @@ public class CrawlerAnimations : MonoBehaviour
     public GameObject playerObject;
     Animator animator;
     public bool NeutralBool = false;
+    bool CollidersSet = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,19 @@ public class CrawlerAnimations : MonoBehaviour
     {
         if (NeutralBool)
         {
-            Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            if (!CollidersSet)
+            {
+
+                GetComponent < Rigidbody2D>().velocity = new Vector2(0, 0);
+                GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                GetComponent<PolygonCollider2D>().enabled = false;
+                foreach (Collider2D c2d in playerObject.GetComponents<Collider2D>())
+                {
+                    Physics2D.IgnoreCollision(c2d, GetComponent<Collider2D>());
+                }
+                CollidersSet = true;
+            }
+            
             Neutral();
         }
         else {
