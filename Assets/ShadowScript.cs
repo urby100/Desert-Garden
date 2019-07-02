@@ -20,7 +20,7 @@ public class ShadowScript : MonoBehaviour
         shadow.transform.parent = transform;
         sprRndShadow = shadow.AddComponent<SpriteRenderer>();
         Material m = (Material)AssetDatabase.LoadAssetAtPath("Assets/Shaders/ShadowMaterial.mat", typeof(Material));
-        if (gameObject.name == "Trail")
+        if (gameObject.name == "Trail" || gameObject.name == "SpitterProjectileTrail")
         {
             TrailRenderer tr= shadow.AddComponent<TrailRenderer>();
             TrailRenderer parentTr = gameObject.GetComponent<TrailRenderer>();

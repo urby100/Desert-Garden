@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BirdyAnimations : MonoBehaviour
 {
+    public GameObject landEffect;
+    float prev_vel;
     public GameObject birdyGameObject;
     public GameObject playerObject;
     Rigidbody2D birdyBodyRb;
@@ -45,7 +47,23 @@ public class BirdyAnimations : MonoBehaviour
             }
         }
     }
-
+    void FixedUpdate()
+    {
+        //jump effect
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 0 && prev_vel == 0)
+        {
+            var em = landEffect.GetComponent<ParticleSystem>().emission;
+            em.rateOverTime = 100;
+            var gm = landEffect.GetComponent<ParticleSystem>().main.gravityModifier;
+            gm.constant = 1f;
+            var sh = landEffect.GetComponent<ParticleSystem>().shape;
+            sh.shapeType = ParticleSystemShapeType.Cone;
+            GameObject particle = Instantiate(landEffect, gameObject.transform.position + new Vector3(0, -0.5f, 0), gameObject.transform.rotation);
+            particle.name = "JumpEffectBirdy";
+            Destroy(particle, 0.4f);
+        }
+        prev_vel = gameObject.GetComponent<Rigidbody2D>().velocity.y;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -56,6 +74,20 @@ public class BirdyAnimations : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        //land effect
+        if (collision.gameObject.name == "Ground")
+        {
+            var em = landEffect.GetComponent<ParticleSystem>().emission;
+            em.rateOverTime = 100 + Mathf.Clamp(collision.relativeVelocity.magnitude - 10, 1, 6) * 20;
+            var gm = landEffect.GetComponent<ParticleSystem>().main.gravityModifier;
+            gm.constant = Random.Range(1.5f, 2);
+            var sh = landEffect.GetComponent<ParticleSystem>().shape;
+            sh.shapeType = ParticleSystemShapeType.Sphere;
+            GameObject particle = Instantiate(landEffect, collision.contacts[0].point, gameObject.transform.rotation);
+            particle.name = "LandEffectBirdy";
+            Destroy(particle, 0.4f);
+        }
         if (collision.gameObject.name == "ThrowerProjectile")
         {
             NeutralBool = true;

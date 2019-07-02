@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PopperController : MonoBehaviour
 {
+    public GameObject popEffect;
+    bool effect;
     public float spawnPopUpDelay = 0f;
     public float popDelayUp = 0.7f;
     public float popDelayDown = 0.7f;
@@ -58,6 +60,20 @@ public class PopperController : MonoBehaviour
     public void move() {
         if (direction)
         {
+            if (!effect)
+            {
+                var em = popEffect.GetComponent<ParticleSystem>().emission;
+                em.rateOverTime = 250;
+                var gm = popEffect.GetComponent<ParticleSystem>().main.gravityModifier;
+                gm.constant = Random.Range(1.5f, 2);
+                var sh = popEffect.GetComponent<ParticleSystem>().shape;
+                sh.shapeType = ParticleSystemShapeType.Sphere;
+                GameObject particle = Instantiate(popEffect, gameObject.transform.position+new Vector3(0,-0.5f,0), gameObject.transform.rotation);
+                particle.name = "PopEffectPopper";
+                particle.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                Destroy(particle, 0.4f);
+                effect = true;
+            }
             popperBody.transform.position = Vector3.SmoothDamp(popperBody.transform.position,
                                                                 targetUp,
                                                                 ref velocity,
@@ -65,6 +81,7 @@ public class PopperController : MonoBehaviour
         }
         else
         {
+            effect = false;
             popperBody.transform.position = Vector3.SmoothDamp(popperBody.transform.position,
                                                                 targetDown,
                                                                 ref velocity,

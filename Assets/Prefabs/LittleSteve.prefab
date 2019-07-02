@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034e4d764bfe4d4428b7897d07668dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sandEffect: {fileID: 6278638808430738844, guid: e71616cde35391545b8ed7c6ce486815,
+    type: 3}
   onPlayer: 0
   steveBody: {fileID: 0}
   playerObject: {fileID: 0}

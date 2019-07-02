@@ -21,16 +21,16 @@ public class EffectShadowScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
         numParticlesAlive = m_System.GetParticles(m_Particles);
-        if (numParticlesAlive > 0)
+        if (numParticlesAlive !=null)
         {
             for (int i = 0; i < numParticlesAlive; i++)
             {
                 
                
             }
-        }
+        }*/
     }
     void FixedUpdate()
     {
