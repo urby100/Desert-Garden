@@ -5,7 +5,7 @@ using UnityEngine;
 public class PopperController : MonoBehaviour
 {
     public GameObject popEffect;
-    bool effect;
+    bool effect=false;
     public float spawnPopUpDelay = 0f;
     public float popDelayUp = 0.7f;
     public float popDelayDown = 0.7f;

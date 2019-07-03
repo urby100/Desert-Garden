@@ -533,6 +533,11 @@ PrefabInstance:
       propertyPath: playerObject
       value: 
       objectReference: {fileID: 1367112815}
+    - target: {fileID: 1703134286220838843, guid: 23179c3e0215f4a4b89491fa22a3e3e0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.657
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23179c3e0215f4a4b89491fa22a3e3e0, type: 3}
 --- !u!1 &1310146511 stripped
@@ -1093,6 +1098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 333331584341169263, guid: 02b3f81b12623e14e8aa8aa52cce146e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02b3f81b12623e14e8aa8aa52cce146e, type: 3}

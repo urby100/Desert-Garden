@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1654208122686787968}
   - component: {fileID: 1654208122686787969}
   - component: {fileID: 5893706893154128519}
+  - component: {fileID: 560818699894609446}
   m_Layer: 0
   m_Name: Screwdriver
   m_TagString: Untagged
@@ -155,3 +156,15 @@ MonoBehaviour:
   signStage1: {fileID: 0}
   playerObject: {fileID: 0}
   goToSign: 0
+--- !u!114 &560818699894609446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654208122686787971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33d41850afa91e48b3eaf74a3d34884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

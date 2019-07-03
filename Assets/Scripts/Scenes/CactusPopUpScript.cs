@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CactusPopUpScript : MonoBehaviour
 {
+    GameObject popEffect;
+    bool effect = false;
     GameObject child;
     Vector3 targetUp;
     Vector3 targetDown;
@@ -15,6 +18,7 @@ public class CactusPopUpScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        popEffect = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LandEffect.prefab", typeof(GameObject));
         child =this.gameObject.transform.GetChild(0).gameObject;
         
         targetUp = child.transform.position + new Vector3(0f, child.GetComponent<SpriteRenderer>().bounds.extents.y * 2, 0f);
@@ -34,6 +38,20 @@ public class CactusPopUpScript : MonoBehaviour
         }
         if (direction)
         {
+            if (!effect)
+            {
+                var em = popEffect.GetComponent<ParticleSystem>().emission;
+                em.rateOverTime = 250;
+                var gm = popEffect.GetComponent<ParticleSystem>().main.gravityModifier;
+                gm.constant = Random.Range(1.5f, 2);
+                var sh = popEffect.GetComponent<ParticleSystem>().shape;
+                sh.shapeType = ParticleSystemShapeType.Sphere;
+                GameObject particle = Instantiate(popEffect,   new Vector3(gameObject.transform.position.x, 0, 0), gameObject.transform.rotation);
+                particle.name = "PopEffectPopper";
+                particle.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                Destroy(particle, 0.4f);
+                effect = true;
+            }
             child.transform.position = Vector3.SmoothDamp(child.transform.position,
                                                                 targetUp,
                                                                 ref velocity,
@@ -41,6 +59,7 @@ public class CactusPopUpScript : MonoBehaviour
         }
         else
         {
+            effect = false;
             child.transform.position = Vector3.SmoothDamp(child.transform.position,
                                                                 targetDown,
                                                                 ref velocity,

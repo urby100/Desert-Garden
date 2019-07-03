@@ -52,7 +52,7 @@ public class ShadowScript : MonoBehaviour
         shadow.transform.position += new Vector3(0,
             (height- gameObject.transform.position.y),
             0);
-        shadow.transform.rotation = gameObject.transform.rotation;
+        shadow.transform.localEulerAngles =new Vector3( gameObject.transform.localEulerAngles.x,0, -2*gameObject.transform.localEulerAngles.z);
     }
     void FixedUpdate()
     {
