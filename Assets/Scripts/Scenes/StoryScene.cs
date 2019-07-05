@@ -9,8 +9,8 @@ public class StoryScene : MonoBehaviour
     public GameObject scientist1;
     public List<GameObject> scientist1points;
     public GameObject scientist2;
-    float scientistSpeed = 1.5f;
     public List<GameObject> scientist2points;
+    float scientistSpeed = 1.5f;
     public GameObject player;
     public List<GameObject> playerpoints;
     public GameObject copilot;

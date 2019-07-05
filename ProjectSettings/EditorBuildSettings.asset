@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d37685f65e9a23745af077d393cde714
+  - enabled: 1
+    path: Assets/Scenes/SampleSceneEnd.unity
+    guid: e1c7bad0b16d10540abc45751f41def8
+  - enabled: 1
+    path: Assets/Scenes/PreBossScene1.unity
+    guid: 44a43b36aa047994fb61bf1923f88151
   m_configObjects: {}
