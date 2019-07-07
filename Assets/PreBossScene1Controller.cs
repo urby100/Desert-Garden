@@ -329,7 +329,7 @@ public class PreBossScene1Controller : MonoBehaviour
                 }
                 break;
             case 6:
-
+                Debug.Log("player: " + player.transform.position.x + " point: " + playerpoints[2].transform.position.x);
                 if (player.transform.position.x < playerpoints[2].transform.position.x)
                 {
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
@@ -339,6 +339,8 @@ public class PreBossScene1Controller : MonoBehaviour
                 }
                 else
                 {
+                    player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    playerstanding();
                     //Load new scene here. 
                 }
                 break;
