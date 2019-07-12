@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PreBossScene1Controller : MonoBehaviour
 {
+    public GameObject Base;
+    Animator BaseAnim;
+    int BaseState = 1;
     public GameObject scientist1;
     public List<GameObject> scientist1points;
     float scientistSpeed = 2f;
@@ -52,6 +55,7 @@ public class PreBossScene1Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BaseAnim = Base.GetComponent<Animator>();
         skipBox.text = "Press " + GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         scientist1.transform.position = scientist1points[0].transform.position;
         player.transform.position = playerpoints[0].transform.position;
@@ -71,6 +75,7 @@ public class PreBossScene1Controller : MonoBehaviour
         switch (sceneNumber)
         {
             case 1:
+                SetBaseAnim();
                 Scientist1waving();
                 move = Vector2.zero;
                 bool arrived1 = false;
@@ -114,6 +119,7 @@ public class PreBossScene1Controller : MonoBehaviour
                 }
                 break;
             case 2:
+                SetBaseAnim();
                 if (Input.GetKeyDown(GetComponent<Keybindings>().attack1) && !explosion)
                 {
                     iterator = scientistTalk[iterator2].Length;
@@ -123,6 +129,7 @@ public class PreBossScene1Controller : MonoBehaviour
 
                     if (Time.time > waitForExplosion)
                     {
+                        BaseState = 2;
                         if (!turnOnce)
                         {
                             turnObject(scientist1);
@@ -202,6 +209,8 @@ public class PreBossScene1Controller : MonoBehaviour
                 }
                 break;
             case 3:
+
+                SetBaseAnim();
                 scientist1.transform.position =
                     Vector3.MoveTowards(scientist1.transform.position,
                                 scientist1points[1].transform.position, scientistSpeed * Time.deltaTime);
@@ -217,6 +226,8 @@ public class PreBossScene1Controller : MonoBehaviour
                 }
                 break;
             case 4:
+
+                SetBaseAnim();
                 if (Input.GetKeyDown(GetComponent<Keybindings>().attack1))
                 {
                     iterator = pilotsTalk[iterator2].Length;
@@ -225,6 +236,7 @@ public class PreBossScene1Controller : MonoBehaviour
                 {
                     if (Time.time > waitForExplosion)
                     {
+                        BaseState = 2+explosionCounter;
                         if (!turnOnce)
                         {
                             DialogText.gameObject.SetActive(false);
@@ -329,7 +341,6 @@ public class PreBossScene1Controller : MonoBehaviour
                 }
                 break;
             case 6:
-                Debug.Log("player: " + player.transform.position.x + " point: " + playerpoints[2].transform.position.x);
                 if (player.transform.position.x < playerpoints[2].transform.position.x)
                 {
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
@@ -393,4 +404,52 @@ public class PreBossScene1Controller : MonoBehaviour
     {
         go.transform.Rotate(0, 180, 0, Space.World);
     }
+    void BaseNormal() {
+        BaseAnim.SetBool("Normal",true);
+        BaseAnim.SetBool("Explosion 1", false);
+        BaseAnim.SetBool("Explosion 2", false);
+        BaseAnim.SetBool("Explosion 3", false);
+
+    }
+    void BaseExplosion1()
+    {
+        BaseAnim.SetBool("Normal", false);
+        BaseAnim.SetBool("Explosion 1", true);
+        BaseAnim.SetBool("Explosion 2", false);
+        BaseAnim.SetBool("Explosion 3", false);
+    }
+    void BaseExplosion2()
+    {
+        BaseAnim.SetBool("Normal", false);
+        BaseAnim.SetBool("Explosion 1", false);
+        BaseAnim.SetBool("Explosion 2", true);
+        BaseAnim.SetBool("Explosion 3", false);
+    }
+    void BaseExplosion3()
+    {
+        BaseAnim.SetBool("Normal", false);
+        BaseAnim.SetBool("Explosion 1", false);
+        BaseAnim.SetBool("Explosion 2", false);
+        BaseAnim.SetBool("Explosion 3", true);
+    }
+    void SetBaseAnim() {
+        switch (BaseState)
+        {
+            case 1:
+                BaseNormal();
+                break;
+            case 2:
+                BaseExplosion1();
+                break;
+            case 3:
+                BaseExplosion2();
+                break;
+            case 4:
+                BaseExplosion3();
+                break;
+            default:
+                break;
+        }
+    }
+
 }
