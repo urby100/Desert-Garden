@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class PreBossScene1Controller : MonoBehaviour
 {
+    public GameObject explosionGameObject;
+    List<ParticleSystem>[] particles=new List<ParticleSystem>[3];
+    public Transform camTransform;
+    bool effectOnce = false;
+    bool shake = false;
+    
+    float shakeDuration = 1f;
+    float shakeAmount = 0.1f;
+    float decreaseFactor = 1.0f;
+
+    Vector3 originalPos;
     public GameObject Base;
     Animator BaseAnim;
     int BaseState = 1;
@@ -52,9 +63,28 @@ public class PreBossScene1Controller : MonoBehaviour
     int iterator2 = 0;
     float waitForExplosion;
     Vector2 move = Vector2.zero;
+    int c = 0;
     // Start is called before the first frame update
     void Start()
     {
+        
+        particles[0] = new List<ParticleSystem>();
+        particles[1] = new List<ParticleSystem>();
+        particles[2] = new List<ParticleSystem>();
+        foreach (Transform t in explosionGameObject.transform)
+        {
+            if (c >= particles.Length) {
+                break;
+            }
+            GetExplosionParticles(t);
+            c++;
+        }
+        Debug.Log(particles[0].Count);
+        Debug.Log(particles[1].Count);
+        Debug.Log(particles[2].Count);
+
+        camTransform = Camera.main.transform;
+        originalPos = camTransform.position;
         BaseAnim = Base.GetComponent<Animator>();
         skipBox.text = "Press " + GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         scientist1.transform.position = scientist1points[0].transform.position;
@@ -68,7 +98,6 @@ public class PreBossScene1Controller : MonoBehaviour
         DialogText.gameObject.SetActive(false);
         skipBox.gameObject.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -145,6 +174,9 @@ public class PreBossScene1Controller : MonoBehaviour
                         {
                             explosion = false;
                             exploded = true;
+                            effectOnce = false;
+                            shakeDuration = 1f;
+                            shakeAmount =0.12f;
                             turnObject(scientist1);
                         }
                     }
@@ -252,6 +284,9 @@ public class PreBossScene1Controller : MonoBehaviour
                             explosion = false;
                             exploded = true;
                             turnOnce = false;
+                            effectOnce = false;
+                            shakeDuration = 1f;
+                            shakeAmount =0.14f;
                         }
                     }
                 }
@@ -358,9 +393,30 @@ public class PreBossScene1Controller : MonoBehaviour
 
         }
     }
+    void ShakeEffect() {
+
+        if (shakeDuration > 0)
+        {
+            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+
+            shakeDuration -= Time.deltaTime * decreaseFactor;
+        }
+        else
+        {
+            shakeDuration = 0f;
+            camTransform.localPosition = originalPos;
+        }
+    }
     void Explosion()
     {
-        Debug.Log(explosionCounter);
+        ShakeEffect();
+        if (!effectOnce) {
+            foreach (ParticleSystem myParticleSystem in particles[explosionCounter]) {
+                myParticleSystem.time = 0;
+                myParticleSystem.Play();
+            }
+            effectOnce = true;
+        }
     }
     void Scientist1walking()
     {
@@ -449,6 +505,20 @@ public class PreBossScene1Controller : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+    void GetExplosionParticles(Transform t) {
+        foreach (Transform child in t)
+        {
+            if (child.gameObject.GetComponent<ParticleSystem>())
+            {
+                particles[c].Add(child.gameObject.GetComponent<ParticleSystem>());
+            }
+            if (child.childCount > 0)
+            {
+                GetExplosionParticles(child);
+
+            }
         }
     }
 
