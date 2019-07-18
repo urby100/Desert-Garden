@@ -28,6 +28,13 @@ public class OnHitEffectGreen : MonoBehaviour
         }
         else if (effect.name == "FlowerHitEffect" )
         {
+            if (collision.gameObject.name == "Basket Hoop" || collision.gameObject.name == "Hoop") {
+                return;
+            }
+            if (collision.gameObject.name == "Ground Collider Top")
+            {
+                //return;
+            }
             particle = Instantiate(effect, collision.contacts[0].point, gameObject.transform.rotation);
             particle.name = "FlowerHitEffect";
             Destroy(particle, 0.4f);

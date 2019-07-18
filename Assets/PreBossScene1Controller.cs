@@ -79,9 +79,6 @@ public class PreBossScene1Controller : MonoBehaviour
             GetExplosionParticles(t);
             c++;
         }
-        Debug.Log(particles[0].Count);
-        Debug.Log(particles[1].Count);
-        Debug.Log(particles[2].Count);
 
         camTransform = Camera.main.transform;
         originalPos = camTransform.position;
@@ -393,7 +390,12 @@ public class PreBossScene1Controller : MonoBehaviour
 
         }
     }
-    void ShakeEffect() {
+    void ShakeEffect()
+    {
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.2f, player.GetComponent<Rigidbody2D>().velocity.y);
+        copilot.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.2f, player.GetComponent<Rigidbody2D>().velocity.y);
+        scientist1.transform.position =Vector3.MoveTowards(scientist1.transform.position,
+                                 scientist1points[1].transform.position, 0.2f * Time.deltaTime);
 
         if (shakeDuration > 0)
         {

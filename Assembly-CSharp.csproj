@@ -60,7 +60,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BasketHoop.cs" />
+    <Compile Include="Assets\CrushersCatcher.cs" />
+    <Compile Include="Assets\CrusherTraining.cs" />
+    <Compile Include="Assets\CrusherTrainingProjectile.cs" />
     <Compile Include="Assets\EffectShadowScript.cs" />
+    <Compile Include="Assets\GroupTraining.cs" />
+    <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
     <Compile Include="Assets\PreBossScene1Controller.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
@@ -119,6 +125,10 @@
     <Compile Include="Assets\Scripts\Scenes\StoryScene.cs" />
     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
     <Compile Include="Assets\ShadowScript.cs" />
+    <Compile Include="Assets\SteveTraining.cs" />
+    <Compile Include="Assets\StopperTraining.cs" />
+    <Compile Include="Assets\StopperTrainingProjectileController.cs" />
+    <Compile Include="Assets\Treadmill.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
