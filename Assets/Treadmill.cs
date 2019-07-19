@@ -41,7 +41,7 @@ public class Treadmill : MonoBehaviour
         if (Time.time > updateTime)
         {
 
-            int speed = ((int)(100 - (dist * 100)));
+            int speed = (int)Mathf.Ceil(((100 - (dist * 100))));
             speedText.text = speed.ToString();
             updateTime = Time.time + updateDelay;
             int i = (int)Mathf.Floor(speed/25);

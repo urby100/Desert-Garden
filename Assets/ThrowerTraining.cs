@@ -15,7 +15,8 @@ public class ThrowerTraining : MonoBehaviour
     float catchTime;
     public bool wait = false;
 
-    float attackSpeed = 1.3f;
+    float attackSpeedMin = 0.75f;
+    float attackSpeedMax = 1.75f;
     float attackTime;
 
 
@@ -77,7 +78,7 @@ public class ThrowerTraining : MonoBehaviour
             return;
         }
         wait = false;
-        attackTime = Time.time + attackSpeed;
+        attackTime = Time.time + Random.Range(attackSpeedMin,attackSpeedMax);
         Destroy(collision.gameObject);
     }
     void Normal()

@@ -33,11 +33,25 @@ public class OnHitEffectGreen : MonoBehaviour
             }
             if (collision.gameObject.name == "Ground Collider Top")
             {
-                //return;
+                particle = Instantiate(effect, collision.contacts[0].point, new Quaternion());
+                ParticleSystem ps = particle.GetComponent<ParticleSystem>();
+                var vel = ps.velocityOverLifetime;
+                vel.y = 0.5f;
+                var shape = ps.shape;
+                shape.shapeType = ParticleSystemShapeType.Sphere;
+                shape.radius = 0.2f;
+                shape.rotation = new Vector3(0,90,90);
+                var em=ps.emission;
+                em.rateOverTime = 80;
+                particle.name = "FlowerHitEffect";
+                Destroy(particle, 0.4f);
             }
-            particle = Instantiate(effect, collision.contacts[0].point, gameObject.transform.rotation);
-            particle.name = "FlowerHitEffect";
-            Destroy(particle, 0.4f);
+            else
+            {
+                particle = Instantiate(effect, collision.contacts[0].point, gameObject.transform.rotation);
+                particle.name = "FlowerHitEffect";
+                Destroy(particle, 0.4f);
+            }
 
         }
     }
