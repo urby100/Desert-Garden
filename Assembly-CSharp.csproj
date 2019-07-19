@@ -68,6 +68,7 @@
     <Compile Include="Assets\GroupTraining.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
+    <Compile Include="Assets\PopperTraining.cs" />
     <Compile Include="Assets\PreBossScene1Controller.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
@@ -128,6 +129,8 @@
     <Compile Include="Assets\SteveTraining.cs" />
     <Compile Include="Assets\StopperTraining.cs" />
     <Compile Include="Assets\StopperTrainingProjectileController.cs" />
+    <Compile Include="Assets\ThrowerTraining.cs" />
+    <Compile Include="Assets\ThrowerTrainingProjectile.cs" />
     <Compile Include="Assets\Treadmill.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

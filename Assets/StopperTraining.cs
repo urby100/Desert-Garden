@@ -46,7 +46,6 @@ public class StopperTraining : MonoBehaviour
             GameObject p = Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
             p.name = "StopperTrainingProjectile";
             p.GetComponent<StopperTrainingProjectileController>().globalDirection = dir;
-            dir = dir * (-1);
             fireTime = Time.time + fireRate;
             animationTime = Time.time + animationDelay;
 
