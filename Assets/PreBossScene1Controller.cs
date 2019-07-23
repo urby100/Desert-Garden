@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PreBossScene1Controller : MonoBehaviour
 {
@@ -384,7 +385,9 @@ public class PreBossScene1Controller : MonoBehaviour
                 {
                     player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                     playerstanding();
-                    //Load new scene here. 
+                    //Load new scene here.
+
+                    SceneManager.LoadScene("PreBossScene2");
                 }
                 break;
 

@@ -66,10 +66,12 @@
     <Compile Include="Assets\CrusherTrainingProjectile.cs" />
     <Compile Include="Assets\EffectShadowScript.cs" />
     <Compile Include="Assets\GroupTraining.cs" />
+    <Compile Include="Assets\LittleStevePreBossScene2.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
     <Compile Include="Assets\PopperTraining.cs" />
     <Compile Include="Assets\PreBossScene1Controller.cs" />
+    <Compile Include="Assets\PreBossScene2Controller.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
