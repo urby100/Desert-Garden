@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.ParticleSystem;
 
 public class ShadowScript : MonoBehaviour
@@ -14,6 +15,9 @@ public class ShadowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Boss") {
+            return;
+        }
         shadow = new GameObject();
         shadow.layer = LayerMask.NameToLayer("Shadows");
         shadow.name = "ShadowSprite";
@@ -45,6 +49,10 @@ public class ShadowScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        if (SceneManager.GetActiveScene().name == "Boss")
+        {
+            return;
+        }
 
         height = GetComponent<Renderer>().bounds.size.y / 2;
         shadow.transform.position = new Vector3(gameObject.transform.position.x,
@@ -56,6 +64,10 @@ public class ShadowScript : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (SceneManager.GetActiveScene().name == "Boss")
+        {
+            return;
+        }
         if (gameObject.GetComponent<SpriteRenderer>() != null)
         {
             sprRndShadow.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;

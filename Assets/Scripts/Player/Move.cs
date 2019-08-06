@@ -14,10 +14,7 @@ public class Move : MonoBehaviour
     public bool tiredRequest;
     public bool hurtRequest;
     public bool sceneDontMoveRequest;
-
-
-    float minXPosition = -2.5f;
-    float maxXPosition = 1000f;
+    public bool invincible = false;
     float xPosition;
 
 
@@ -117,11 +114,6 @@ public class Move : MonoBehaviour
         }
         if (crouchRequest && rb.velocity.y == 0)//če je na tleh in se hoče skloniti se ne sme premikati...
         {
-            moveInput = 0;
-        }
-        if ((transform.position.x <=minXPosition && moveInput==-1) 
-            || (transform.position.x >= maxXPosition && moveInput==1))
-        {//limitiram premik levo in desno
             moveInput = 0;
         }
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);

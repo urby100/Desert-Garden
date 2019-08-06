@@ -33,6 +33,9 @@ public class FollowPlayer : MonoBehaviour
 
             return;
         }
+        else if (sceneName == "Boss") {
+            return;
+        }
         xPosition = Mathf.Clamp(playerObject.transform.position.x, dynamicPosXmin, dynamicPosXmax);
         transform.position = Vector3.Lerp(transform.position,
                                     new Vector3(xPosition, ypos, transform.position.z),

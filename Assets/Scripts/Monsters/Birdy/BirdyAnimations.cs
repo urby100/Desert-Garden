@@ -30,9 +30,14 @@ public class BirdyAnimations : MonoBehaviour
             birdyGameObject.GetComponent<BirdyController>().neutral = true;
             if (!CollidersSet)
             {
+                if (birdyBodyRb.velocity.y != 0)
+                {
+                    transform.position = new Vector3(transform.position.x, 0.5f, 0);
+                }
                 birdyBodyRb.velocity=new Vector2(0,0);
                 birdyBodyRb.bodyType = RigidbodyType2D.Kinematic;
                 GetComponent<PolygonCollider2D>().enabled = false;
+                CollidersSet = true;
             }
         }
         else

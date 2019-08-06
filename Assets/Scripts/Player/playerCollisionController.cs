@@ -1,20 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerCollisionController : MonoBehaviour
 {
     public GameObject landEffect;
     float prev_vel;
+    string sceneName;
     // Start is called before the first frame update
     void Start()
     {
-        
+        sceneName = SceneManager.GetActiveScene().name;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (sceneName == "Boss")
+        {
+            return;
+        }
         //jump effect
         if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 0 && prev_vel == 0 && gameObject.GetComponent<Move>().jump)
         {
@@ -48,16 +55,20 @@ public class playerCollisionController : MonoBehaviour
         //land effect
         if (collision.gameObject.name == "Ground") {
             gameObject.GetComponent<Move>().jump = false;
-            var em=landEffect.GetComponent<ParticleSystem>().emission;
-            if (collision.relativeVelocity.magnitude < 10) { return; }
-            em.rateOverTime = 100+Mathf.Clamp(collision.relativeVelocity.magnitude-10,1,6)*20;
-            var gm = landEffect.GetComponent<ParticleSystem>().main.gravityModifier;
-            gm.constant = Random.Range(1.5f,2);
-            var sh = landEffect.GetComponent<ParticleSystem>().shape;
-            sh.shapeType = ParticleSystemShapeType.Sphere;
-            GameObject particle = Instantiate(landEffect, collision.contacts[0].point, gameObject.transform.rotation);
-            particle.name = "LandEffectGuy";
-            Destroy(particle, 0.4f);
+
+            if (sceneName != "Boss")
+            {
+                var em = landEffect.GetComponent<ParticleSystem>().emission;
+                if (collision.relativeVelocity.magnitude < 10) { return; }
+                em.rateOverTime = 100 + Mathf.Clamp(collision.relativeVelocity.magnitude - 10, 1, 6) * 20;
+                var gm = landEffect.GetComponent<ParticleSystem>().main.gravityModifier;
+                gm.constant = Random.Range(1.5f, 2);
+                var sh = landEffect.GetComponent<ParticleSystem>().shape;
+                sh.shapeType = ParticleSystemShapeType.Sphere;
+                GameObject particle = Instantiate(landEffect, collision.contacts[0].point, gameObject.transform.rotation);
+                particle.name = "LandEffectGuy";
+                Destroy(particle, 0.4f);
+            }
         }
         if (collision.gameObject.name == "PopperBody") {
             GetComponent<Move>().hurtRequest = true;
@@ -96,6 +107,9 @@ public class playerCollisionController : MonoBehaviour
         {
             GetComponent<Move>().hurtRequest = true;
 
+        }
+        if (GetComponent<Move>().invincible) {
+            return;
         }
         //planeWing
         if (collision.gameObject.name == "planeWing")

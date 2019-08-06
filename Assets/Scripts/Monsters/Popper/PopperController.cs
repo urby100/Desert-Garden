@@ -63,7 +63,7 @@ public class PopperController : MonoBehaviour
             if (!effect)
             {
                 var em = popEffect.GetComponent<ParticleSystem>().emission;
-                em.rateOverTime = 250;
+                em.rateOverTime = 150;
                 var gm = popEffect.GetComponent<ParticleSystem>().main.gravityModifier;
                 gm.constant = Random.Range(1.5f, 2);
                 var sh = popEffect.GetComponent<ParticleSystem>().shape;

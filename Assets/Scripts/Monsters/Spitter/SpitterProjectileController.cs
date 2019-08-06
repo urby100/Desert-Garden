@@ -7,7 +7,7 @@ public class SpitterProjectileController : MonoBehaviour
     public GameObject effect;
     public GameObject spitterPuddle;
     public float globalDirection = -1;
-    float shootVelocity = 4f;
+    public float shootVelocity = 4f;
     float revSpeed = 720f;
     float fallMultiplier = 0.6f;
     // Start is called before the first frame update

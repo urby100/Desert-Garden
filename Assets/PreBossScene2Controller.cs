@@ -18,7 +18,7 @@ public class PreBossScene2Controller : MonoBehaviour
     public Transform PlayerEndPoint;
     public GameObject player;
     Rigidbody2D rbPlayer;
-    float movementSpeed = 4f;
+    float movementSpeed = 3f;
 
     float sizeMin = 0.3f;
     float sizeMax = 0.7f;
