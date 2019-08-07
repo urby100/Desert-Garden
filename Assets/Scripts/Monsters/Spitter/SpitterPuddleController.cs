@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpitterPuddleController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class SpitterPuddleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "Boss") {
+            maxSize = 1f;
+        }
         decreaseTime = Time.time + decreaseRate;
     }
 
