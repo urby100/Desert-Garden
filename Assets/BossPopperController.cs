@@ -11,7 +11,7 @@ public class BossPopperController : MonoBehaviour
 
     public GameObject popEffect;
     bool effect = false;
-    public float moveSpeed = 1f;
+    float moveSpeed = 1f;
     public GameObject playerObject;
     public GameObject popperBody;
     float popTime;
@@ -24,6 +24,12 @@ public class BossPopperController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+    public void setMoveSpeed(float ms) {
+        moveSpeed = ms;
+    }
+    public void setMoveDelay(float md) {
+        moveDelay = md;
     }
     public bool checkIfDown()
     {

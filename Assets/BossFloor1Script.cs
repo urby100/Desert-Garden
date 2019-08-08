@@ -5,12 +5,15 @@ using UnityEngine;
 public class BossFloor1Script : MonoBehaviour
 {
     public List<GameObject> cactusList;
-    float MoveDelay = 0.5f;
-    float MoveTime;
+    public float moveSpeed;
+    public float moveDelay;
     // Start is called before the first frame update
     void Start()
     {
-        
+        foreach (GameObject g in cactusList) {
+            g.GetComponent<BossPopperController>().setMoveSpeed(moveSpeed);
+            g.GetComponent<BossPopperController>().setMoveDelay(moveDelay);
+        }
         for (int i = 0; i < cactusList.Count; i++)
         {
             if ((i + 1) >= 6)
