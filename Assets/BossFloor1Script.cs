@@ -15,13 +15,21 @@ public class BossFloor1Script : MonoBehaviour
         {
             if ((i + 1) >= 6)
             {
-                cactusList[i].GetComponent<BossPopperController>().popperRef = cactusList[0];
-                cactusList[i].GetComponent<BossPopperController>().popperRefBody = cactusList[0].transform.Find("PopperBody").gameObject;
+                cactusList[i].GetComponent<BossPopperController>().setNextPopper(cactusList[0]);
             }
             else
             {
-                cactusList[i].GetComponent<BossPopperController>().popperRef = cactusList[i + 1];
-                cactusList[i].GetComponent<BossPopperController>().popperRefBody = cactusList[i+1].transform.Find("PopperBody").gameObject;
+                cactusList[i].GetComponent<BossPopperController>().setNextPopper(cactusList[i+1]);
+            }
+        }
+        for (int i = cactusList.Count - 1; i >= 0; i--) {
+            if ((i - 1) <= -1)
+            {
+                cactusList[i].GetComponent<BossPopperController>().setPrevPopper(cactusList[cactusList.Count-1]);
+            }
+            else
+            {
+                cactusList[i].GetComponent<BossPopperController>().setPrevPopper(cactusList[i - 1]);
             }
         }
     }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BossPopperController : MonoBehaviour
 {
-    public GameObject popperRef;
-    public GameObject popperRefBody;
+    GameObject prevPopper;
+    GameObject nextPopper;
+    GameObject prevPopperBody;
+    GameObject nextPopperBody;
+
     public GameObject popEffect;
     bool effect = false;
     public float moveSpeed = 1f;
@@ -22,14 +25,80 @@ public class BossPopperController : MonoBehaviour
     void Start()
     {
     }
+    public bool checkIfDown()
+    {
+        bool b = false ;
+        if (targetDown.position.y == popperBody.transform.position.y)
+        {
+            b = true;
+        }
+        return b;
+    }
+    public bool checkIfUp()
+    {
+        bool b = false;
+        if (targetUp.position.y == popperBody.transform.position.y)
+        {
+            b = true;
+        }
+        return b;
+    }
+    public void setPrevPopper(GameObject pp)
+    {
+        prevPopper = pp;
+        prevPopperBody = pp.transform.Find("PopperBody").gameObject;
+    }
+    public void setNextPopper(GameObject np)
+    {
+        nextPopper = np;
+        nextPopperBody = np.transform.Find("PopperBody").gameObject;
 
+    }
+    bool moveDownOnce = false;
+    bool moveUpOnce = false;
+    bool setTimeOnce = false;
+    float moveDelay = 0.15f;
+    float moveTime;
     // Update is called once per frame
     void Update()
     {
-        if (popperRef != null) {
-
+        if (prevPopper != null && nextPopper != null)
+        {
+            if (!prevPopper.GetComponent<BossPopperController>().direction && prevPopper.GetComponent<BossPopperController>().checkIfDown() && checkIfUp())
+            {
+                if (!moveDownOnce)
+                {
+                    if (!setTimeOnce) {
+                        moveTime = Time.time + moveDelay;
+                        setTimeOnce = true;
+                    }
+                    if (Time.time > moveTime && setTimeOnce)
+                    {
+                        direction = false;
+                        moveDownOnce = true;
+                        moveUpOnce = false;
+                        setTimeOnce = false;
+                    }
+                }
+            }
+            if (checkIfDown() && !nextPopper.GetComponent<BossPopperController>().direction && nextPopper.GetComponent<BossPopperController>().checkIfDown()) {
+                if (!moveUpOnce)
+                {
+                    if (!setTimeOnce)
+                    {
+                        moveTime = Time.time + moveDelay;
+                        setTimeOnce = true;
+                    }
+                    if (Time.time > moveTime && setTimeOnce)
+                    {
+                        direction = true;
+                        moveUpOnce = true;
+                        moveDownOnce = false;
+                        setTimeOnce = false;
+                    }
+                }
+            }
         }
-
 
         if (targetDown.position.y > targetUp.position.y)
         {
