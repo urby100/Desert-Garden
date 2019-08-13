@@ -108,6 +108,16 @@ public class playerCollisionController : MonoBehaviour
             GetComponent<Move>().hurtRequest = true;
 
         }
+        if (collision.gameObject.name == "BossStopperProjectile")
+        {
+            GetComponent<Move>().hurtRequest = true;
+
+        }
+        if (collision.gameObject.name == "BossThrowerProjectile")
+        {
+            GetComponent<Move>().hurtRequest = true;
+
+        }
         if (GetComponent<Move>().invincible) {
             return;
         }

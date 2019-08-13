@@ -43,7 +43,10 @@ public class CrawlerAnimations : MonoBehaviour
 
         if (collision.gameObject.name == "CrusherProjectile")
         {
-            NeutralBool = true;
+            if (!collision.gameObject.GetComponent<CrusherProjectileController>().onPlayer)
+            {
+                NeutralBool = true;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

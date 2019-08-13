@@ -20,9 +20,19 @@ public class MainMenu : MonoBehaviour
         {
             if (player != null)
             {
-                if (player.GetComponent<Move>().tiredRequest)
+                if (SceneManager.GetActiveScene().name == "SampleScene")
                 {
-                    SceneManager.LoadScene("SampleScene");
+                    if (player.GetComponent<Move>().tiredRequest)
+                    {
+                        SceneManager.LoadScene("SampleScene");
+                    }
+                }
+                if (SceneManager.GetActiveScene().name == "Boss")
+                {
+                    if (player.GetComponent<Move>().tiredRequest)
+                    {
+                        SceneManager.LoadScene("Boss");
+                    }
                 }
             }
             else
