@@ -50,6 +50,15 @@ public class playerCollisionController : MonoBehaviour
             Destroy(particle, 0.4f);*/
         }
     }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        /*
+        if (collision.gameObject.name == "BossLittleSteve")
+        {
+            GetComponent<Move>().hurtRequest = true;
+
+        }*/
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //land effect
@@ -114,6 +123,11 @@ public class playerCollisionController : MonoBehaviour
 
         }
         if (collision.gameObject.name == "BossThrowerProjectile")
+        {
+            GetComponent<Move>().hurtRequest = true;
+
+        }
+        if (collision.gameObject.name == "BossLittleSteve")
         {
             GetComponent<Move>().hurtRequest = true;
 

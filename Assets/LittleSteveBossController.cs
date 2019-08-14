@@ -1,0 +1,165 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LittleSteveBossController : MonoBehaviour
+{
+    public GameObject points;
+    Animator animator;
+    public GameObject floor;
+    public GameObject ceiling;
+    public List<Transform> pointsList;
+    float speed = 4f;
+    int counter = 0;
+    // Start is called before the first frame update
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+        foreach (Transform point in points.transform)
+        {
+            pointsList.Add(point);
+        }
+        float dist = Vector3.Distance(transform.position, pointsList[0].position);
+        string pointName = pointsList[counter].gameObject.name;
+        Transform closestPoint = pointsList[counter];
+        int closest = 0;
+        for (int i = 1; i < pointsList.Count; i++)
+        {
+            if (Vector3.Distance(transform.position, pointsList[i].position) < dist)
+            {
+                dist = Vector3.Distance(transform.position, pointsList[i].position);
+                pointName = pointsList[i].gameObject.name;
+                closestPoint = pointsList[i];
+                closest = i;
+            }
+        }
+        //nastaviti moramo cilj
+        if (transform.position.x == closestPoint.position.x)
+        {
+            //če je x isti pomeni, da je objekt na poti gor ali dol
+            //objekt je lahko ravno zapustil prejšnji cilj in je bližje njemu zato mu moramo nastaviti cilj
+            //na naslednjo tarčo
+            //ali pa je blizu cilju in ni treba nič spremeniti
+            if (closest + 1 >= pointsList.Count)
+            {
+                if (pointsList[0].position.x == transform.position.x)
+                {
+                    counter = 0;
+                }
+                else
+                {
+                    counter = closest;
+                }
+            }
+            else
+            {
+                if (pointsList[closest + 1].position.x == transform.position.x)
+                {
+                    counter = closest + 1;
+                }
+                else
+                {
+                    counter = closest;
+                }
+            }
+
+        }
+        else
+        {
+            if (closest + 1 >= pointsList.Count)
+            {
+                if (pointsList[0].position.y == transform.position.y)
+                {
+                    counter = 0;
+                }
+                else
+                {
+                    counter = closest;
+                }
+            }
+            else
+            {
+                if (pointsList[closest + 1].position.y == transform.position.y)
+                {
+                    counter = closest + 1;
+                }
+                else
+                {
+                    counter = closest;
+                }
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (pointsList[counter].position == transform.position)
+        {
+            if (counter + 1 > pointsList.Count - 1)
+            {
+                counter = 0;
+            }
+            else
+            {
+                counter = counter + 1;
+            }
+
+        }
+        transform.position = Vector2.MoveTowards(transform.position, pointsList[counter].position, speed * Time.deltaTime);
+
+        //nastavi rotacijo
+        if (Vector3.Distance(transform.position, ceiling.transform.position) <
+            Vector3.Distance(transform.position, floor.transform.position))
+        {//bližje stropu
+            transform.eulerAngles = new Vector3(
+                transform.eulerAngles.x, transform.eulerAngles.y, 180);
+
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(
+                transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        }
+
+        //animacije
+        if (transform.position.y == pointsList[counter].position.y)
+        {
+            runningAnimation();
+            animator.speed = 0.7f;
+        }
+        else {
+            inairAnimation();
+        }
+
+    }
+
+    void inairAnimation()
+    {
+        animator.SetBool("running", false);
+        animator.SetBool("inair", true);
+        animator.SetBool("neutral-running", false);
+        animator.SetBool("neutral-inair", false);
+    }
+    void runningAnimation()
+    {
+        animator.SetBool("running", true);
+        animator.SetBool("inair", false);
+        animator.SetBool("neutral-running", false);
+        animator.SetBool("neutral-inair", false);
+    }
+    void runningNeutralAnimation()
+    {
+        animator.SetBool("running", false);
+        animator.SetBool("inair", false);
+        animator.SetBool("neutral-running", true);
+        animator.SetBool("neutral-inair", false);
+    }
+    void inairNeutralAnimation()
+    {
+        animator.SetBool("running", false);
+        animator.SetBool("inair", false);
+        animator.SetBool("neutral-running", false);
+        animator.SetBool("neutral-inair", true);
+    }
+}

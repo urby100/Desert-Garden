@@ -73,7 +73,9 @@
     <Compile Include="Assets\CrusherTraining.cs" />
     <Compile Include="Assets\CrusherTrainingProjectile.cs" />
     <Compile Include="Assets\EffectShadowScript.cs" />
+    <Compile Include="Assets\Floor4Script.cs" />
     <Compile Include="Assets\GroupTraining.cs" />
+    <Compile Include="Assets\LittleSteveBossController.cs" />
     <Compile Include="Assets\LittleStevePreBossScene2.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
