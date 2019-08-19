@@ -113,7 +113,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 1
-  controlID: 3190
+  controlID: 7430
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 613, y: 498}
   m_MaxSize: {x: 18008, y: 14048}
   vertical: 0
-  controlID: 3191
+  controlID: 7431
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 102, y: 248}
   m_MaxSize: {x: 4002, y: 8048}
   vertical: 1
-  controlID: 3192
+  controlID: 7371
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 498}
   m_MaxSize: {x: 10004, y: 14048}
   vertical: 1
-  controlID: 3133
+  controlID: 7432
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -434,9 +434,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.2573099, y: 13.026328, z: -0.06759507}
+    m_Target: {x: 2.2034454, y: 19.75577, z: 7.1835938}
     speed: 2
-    m_Value: {x: -0.2573099, y: 13.026328, z: -0.06759507}
+    m_Value: {x: 2.2034454, y: 19.75577, z: 7.1835938}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -468,9 +468,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: -1}
   m_Size:
-    m_Target: 10.809452
+    m_Target: 14.585963
     speed: 2
-    m_Value: 10.809452
+    m_Value: 14.585963
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -536,7 +536,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -1496
+  m_LastSelectedObjectID: -89436
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1077,10 +1077,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 41158ddd2a799184c849c2a7c7ecdc0d,
+  m_AnimatorController: {fileID: 9100000, guid: 3152ae08919b69343afa28dd1d8849fa,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107249412916873290, guid: 41158ddd2a799184c849c2a7c7ecdc0d,
+  - m_Target: {fileID: 1107302463251344350, guid: 3152ae08919b69343afa28dd1d8849fa,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -1123,9 +1123,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 28faffff
-      m_LastClickedID: -1496
-      m_ExpandedIDs: 04fbffffd4fbffffb8320000d6330000
+      m_SelectedIDs: a4a2feff9ebdfeff2cbdfeffb2bcfeff
+      m_LastClickedID: -82766
+      m_ExpandedIDs: f2f9ffffd4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1187,20 +1187,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/Monsters/Chameleon
+    - Assets/Scripts/Player
   m_ViewMode: 1
   m_StartGridSize: 55
   m_LastFolders:
-  - Assets/Sprites/Monsters/Chameleon
+  - Assets/Scripts/Player
   m_LastFoldersGridSize: 55
   m_LastProjectPath: E:\Unity Projects\Tester
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 619}
-    m_SelectedIDs: 4e270000
-    m_LastClickedID: 10062
-    m_ExpandedIDs: 000000003c2700004627000092270000f827000082280000a6280000f02900003c2d0000762d0000822d0000c22d0000d42d0000722e0000d22e0000d62e0000ee2e0000b82f0000ee2f0000363000004e300000b0300000e230000000ca9a3b
+    scrollPos: {x: 0, y: 166}
+    m_SelectedIDs: 70300000
+    m_LastClickedID: 12400
+    m_ExpandedIDs: 00000000402700004a27000096270000fc27000086280000aa280000f4290000402d00007a2d0000862d0000c62d0000d82d0000762e0000d62e0000da2e0000f22e0000bc2f0000f22f00003a30000052300000b4300000e630000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1228,7 +1228,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003c2700004627000092270000f827000082280000a6280000f02900003c2d0000762d0000822d0000c22d0000d42d0000722e0000d22e0000d62e0000ee2e0000b82f0000ee2f0000363000004e300000b0300000e230000000ca9a3b
+    m_ExpandedIDs: 00000000402700004a27000096270000fc27000086280000aa280000f4290000402d00007a2d0000862d0000c62d0000d82d0000762e0000d62e0000da2e0000f22e0000bc2f0000f22f00003a30000052300000b4300000e630000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
