@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BasketHoop.cs" />
+    <Compile Include="Assets\BossChameleonController.cs" />
     <Compile Include="Assets\BossFloor1Script.cs" />
     <Compile Include="Assets\BossFloor3Script.cs" />
     <Compile Include="Assets\BossPopperController.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Assets\BossStopperProjectileController.cs" />
     <Compile Include="Assets\BossThrowerController.cs" />
     <Compile Include="Assets\BossThrowerProjectileController.cs" />
+    <Compile Include="Assets\ChameleonBossAnimations.cs" />
     <Compile Include="Assets\CrushersCatcher.cs" />
     <Compile Include="Assets\CrusherTraining.cs" />
     <Compile Include="Assets\CrusherTrainingProjectile.cs" />

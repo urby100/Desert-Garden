@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LittleSteveBossController : MonoBehaviour
 {
+    public Floor4Script floor4script;
     public GameObject points;
     Animator animator;
     public GameObject floor;
@@ -11,6 +12,7 @@ public class LittleSteveBossController : MonoBehaviour
     public List<Transform> pointsList;
     float speed = 4f;
     int counter = 0;
+    float rotateSpeed = 12f;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,6 +96,9 @@ public class LittleSteveBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!floor4script.littleStevesStartRunning) {
+            return;
+        }
         if (pointsList[counter].position == transform.position)
         {
             if (counter + 1 > pointsList.Count - 1)
@@ -112,14 +117,16 @@ public class LittleSteveBossController : MonoBehaviour
         if (Vector3.Distance(transform.position, ceiling.transform.position) <
             Vector3.Distance(transform.position, floor.transform.position))
         {//bližje stropu
+
             transform.eulerAngles = new Vector3(
-                transform.eulerAngles.x, transform.eulerAngles.y, 180);
+                transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Clamp(transform.eulerAngles.z + rotateSpeed, 0, 180));
 
         }
         else
         {
+
             transform.eulerAngles = new Vector3(
-                transform.eulerAngles.x, transform.eulerAngles.y, 0);
+                transform.eulerAngles.x, transform.eulerAngles.y, Mathf.Clamp(transform.eulerAngles.z - rotateSpeed, 0, 180));
         }
 
         //animacije
@@ -128,7 +135,8 @@ public class LittleSteveBossController : MonoBehaviour
             runningAnimation();
             animator.speed = 0.7f;
         }
-        else {
+        else
+        {
             inairAnimation();
         }
 
