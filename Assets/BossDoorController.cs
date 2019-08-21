@@ -21,6 +21,7 @@ public class BossDoorController : MonoBehaviour
     {
         if (collision.gameObject.name == "Guy") {
             collision.gameObject.transform.position = TeleportTo.transform.position;
+            GameObject.Find("Main Camera").GetComponent<BossCameraController>().ypos = TeleportTo.transform.position.y+2;
         }
     }
 }
