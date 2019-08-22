@@ -116,7 +116,14 @@ public class Move : MonoBehaviour
         {
             moveInput = 0;
         }
-        rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
+        if (sceneDontMoveRequest)
+        {
+
+        }
+        else
+        {
+            rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
+        }
         //jump
 
         if (tiredRequest || hurtRequest)
