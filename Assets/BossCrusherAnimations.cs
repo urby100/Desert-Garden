@@ -22,10 +22,12 @@ public class BossCrusherAnimations : MonoBehaviour
         if (crusherGameobject.GetComponent<BossCrusherController>().attack)
         {
             attacking();
+            GetComponent<PolygonCollider2D>().isTrigger = true;
         }
         if (!crusherGameobject.GetComponent<BossCrusherController>().attack)
         {
             normal();
+            GetComponent<PolygonCollider2D>().isTrigger = false;
         }
     }
     void normal()

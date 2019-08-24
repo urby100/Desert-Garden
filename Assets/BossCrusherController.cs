@@ -16,9 +16,10 @@ public class BossCrusherController : MonoBehaviour
     public bool giveAttack = true;
 
     float attackTime;
-    float attackLastTime;
+    public float attackLastTime;
     float projectileSpawnTime;
-    int counter = 0;
+    public int counter = 0;
+    public int maxProjectiles = 12;
 
     Animator crusherAnimator;
 
@@ -32,6 +33,7 @@ public class BossCrusherController : MonoBehaviour
         attackTime = Time.time  + delay;
         attackSet = true;
     }
+    public bool destroyProjectiles = false;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -46,14 +48,12 @@ public class BossCrusherController : MonoBehaviour
         }
         if (Time.time > attackTime && attackSet && !attack) {
             attack = true;
-            crusherBody.GetComponent<PolygonCollider2D>().isTrigger = true;
             projectileSpawnTime = Time.time + projectileSpawnDelay;
             attackLastTime = Time.time + attackLast;
         }
 
         if (attack && Time.time > attackLastTime)
         {
-            crusherBody.GetComponent<PolygonCollider2D>().isTrigger = false;
             attack = false;
             attackSet = false;
             counter = 0;
@@ -63,17 +63,16 @@ public class BossCrusherController : MonoBehaviour
             if (Time.time > projectileSpawnTime)
             {
                 counter++;
-                if (counter <= 12)
+                if (counter <= maxProjectiles)
                 {
-                    Debug.Log(counter);
-                    /*GameObject tempProjectile = Instantiate(projectile);
-                    tempProjectile.name = "CrusherProjectile";
-                    tempProjectile.GetComponent<CrusherProjectileController>().attackLastTime = attackLastTime;
-                    tempProjectile.GetComponent<CrusherProjectileController>().crusher = gameObject;
-                    tempProjectile.GetComponent<CrusherProjectileController>().points = points;
-                    tempProjectile.GetComponent<CrusherProjectileController>().speed = projectileSpeed;
+                    GameObject tempProjectile = Instantiate(projectile);
+                    tempProjectile.name = "BossCrusherProjectile";
+                    tempProjectile.GetComponent<BossCrusherProjectileController>().attackLastTime = attackLastTime;
+                    tempProjectile.GetComponent<BossCrusherProjectileController>().crusher = gameObject;
+                    tempProjectile.GetComponent<BossCrusherProjectileController>().points = points;
+                    tempProjectile.GetComponent<BossCrusherProjectileController>().speed = projectileSpeed;
                     projectileSpawnTime = Time.time + projectileSpawnDelay;
-                    */
+                    
                 }
             }
         }
