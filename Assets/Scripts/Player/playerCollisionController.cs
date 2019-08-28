@@ -29,7 +29,7 @@ public class playerCollisionController : MonoBehaviour
             em.rateOverTime = 200;
             var gm = landEffect.GetComponent<ParticleSystem>().main.gravityModifier;
             gm.constant = 1f;
-            var sh= landEffect.GetComponent<ParticleSystem>().shape;
+            var sh = landEffect.GetComponent<ParticleSystem>().shape;
             sh.shapeType = ParticleSystemShapeType.Cone;
             GameObject particle = Instantiate(landEffect, gameObject.transform.position + new Vector3(0, -0.5f, 0), gameObject.transform.rotation);
             particle.name = "JumpEffectGuy";
@@ -37,7 +37,7 @@ public class playerCollisionController : MonoBehaviour
         }
         prev_vel = gameObject.GetComponent<Rigidbody2D>().velocity.y;
         //walking effect
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 && gameObject.GetComponent<Rigidbody2D>().velocity.y==0)
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 && gameObject.GetComponent<Rigidbody2D>().velocity.y == 0)
         {/*
             var em = landEffect.GetComponent<ParticleSystem>().emission;
             em.rateOverTime = 25;
@@ -62,7 +62,8 @@ public class playerCollisionController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //land effect
-        if (collision.gameObject.name == "Ground") {
+        if (collision.gameObject.name == "Ground")
+        {
             gameObject.GetComponent<Move>().jump = false;
 
             if (sceneName != "Boss")
@@ -79,7 +80,8 @@ public class playerCollisionController : MonoBehaviour
                 Destroy(particle, 0.4f);
             }
         }
-        if (collision.gameObject.name == "PopperBody") {
+        if (collision.gameObject.name == "PopperBody")
+        {
             GetComponent<Move>().hurtRequest = true;
         }
         if (collision.gameObject.name == "StopperBody")
@@ -137,7 +139,8 @@ public class playerCollisionController : MonoBehaviour
             GetComponent<Move>().hurtRequest = true;
 
         }
-        if (GetComponent<Move>().invincible) {
+        if (GetComponent<Move>().invincible)
+        {
             return;
         }
         //planeWing
@@ -160,16 +163,32 @@ public class playerCollisionController : MonoBehaviour
         }
         if (collision.gameObject.name == "CrawlerBody")
         {
-            if (!collision.gameObject.GetComponent<CrawlerAnimations>().NeutralBool)
+            if (SceneManager.GetActiveScene().name == "Boss")
             {
                 GetComponent<Move>().tiredRequest = true;
             }
+            else
+            {
+                if (!collision.gameObject.GetComponent<CrawlerAnimations>().NeutralBool)
+                {
+                    GetComponent<Move>().tiredRequest = true;
+                }
+            }
+
+
         }
         if (collision.gameObject.name == "BirdyBody")
         {
-            if (!collision.gameObject.GetComponent<BirdyAnimations>().NeutralBool)
+            if (SceneManager.GetActiveScene().name == "Boss")
             {
                 GetComponent<Move>().tiredRequest = true;
+            }
+            else
+            {
+                if (!collision.gameObject.GetComponent<BirdyAnimations>().NeutralBool)
+                {
+                    GetComponent<Move>().tiredRequest = true;
+                }
             }
         }
         if (collision.gameObject.name == "ChameleonBody")

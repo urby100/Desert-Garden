@@ -61,6 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BasketHoop.cs" />
+    <Compile Include="Assets\BossBirdFlowerCollider.cs" />
+    <Compile Include="Assets\BossBirdyAnimations.cs" />
+    <Compile Include="Assets\BossBirdyController.cs" />
     <Compile Include="Assets\BossCameraController.cs" />
     <Compile Include="Assets\BossChameleonController.cs" />
     <Compile Include="Assets\BossCrusherAnimations.cs" />
