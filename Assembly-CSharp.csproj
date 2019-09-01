@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BasketHoop.cs" />
+    <Compile Include="Assets\BlueProjectileScript.cs" />
     <Compile Include="Assets\BossBirdFlowerCollider.cs" />
     <Compile Include="Assets\BossBirdyAnimations.cs" />
     <Compile Include="Assets\BossBirdyController.cs" />
@@ -86,14 +87,18 @@
     <Compile Include="Assets\CrusherTrainingProjectile.cs" />
     <Compile Include="Assets\EffectShadowScript.cs" />
     <Compile Include="Assets\Floor4Script.cs" />
+    <Compile Include="Assets\GreenProjectileScript.cs" />
     <Compile Include="Assets\GroupTraining.cs" />
     <Compile Include="Assets\LittleSteveBossController.cs" />
     <Compile Include="Assets\LittleStevePreBossScene2.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
     <Compile Include="Assets\PopperTraining.cs" />
+    <Compile Include="Assets\PotionBombProjectile.cs" />
+    <Compile Include="Assets\PotionSpawner.cs" />
     <Compile Include="Assets\PreBossScene1Controller.cs" />
     <Compile Include="Assets\PreBossScene2Controller.cs" />
+    <Compile Include="Assets\RedProjectileScript.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
@@ -156,6 +161,8 @@
     <Compile Include="Assets\ThrowerTraining.cs" />
     <Compile Include="Assets\ThrowerTrainingProjectile.cs" />
     <Compile Include="Assets\Treadmill.cs" />
+    <Compile Include="Assets\VioletProjectileScript.cs" />
+    <Compile Include="Assets\YellowProjectileScript.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

@@ -10,12 +10,37 @@ public class LittleSteveBossController : MonoBehaviour
     public GameObject floor;
     public GameObject ceiling;
     public List<Transform> pointsList;
-    float speed = 4f;
+    float speed = 3f;
+    float defaultSpeed;
     int counter = 0;
     float rotateSpeed = 12f;
+    float SpeedChangeTime;
+    bool changedSpeed = false;
+    float changeDirTime;
+    bool changeDir = false;
+    public void SetSpeed(float s, float speedLasts)
+    {
+        speed = s;
+        SpeedChangeTime = Time.time + speedLasts;
+        changedSpeed = true;
+    }
+    public void ChangeDirection(float changeDirLasts)
+    {
+        changeDirTime = Time.time + changeDirLasts;
+        changeDir = true;
+        if (counter - 1 <= -1)
+        {
+            counter = pointsList.Count - 1;
+        }
+        else
+        {
+            counter = counter - 1;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        defaultSpeed = speed;
         animator = GetComponent<Animator>();
         foreach (Transform point in points.transform)
         {
@@ -96,20 +121,59 @@ public class LittleSteveBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!floor4script.littleStevesStartRunning) {
+        if (!floor4script.littleStevesStartRunning)
+        {
             return;
         }
-        if (pointsList[counter].position == transform.position)
+        if (changedSpeed)
         {
-            if (counter + 1 > pointsList.Count - 1)
+            if (Time.time > SpeedChangeTime)
             {
-                counter = 0;
+                changedSpeed = false;
+                speed = defaultSpeed;
             }
-            else
+        }
+        if (changeDir)
+        {
+            if (pointsList[counter].position == transform.position)
             {
-                counter = counter + 1;
-            }
+                if (counter - 1 <= -1)
+                {
+                    counter = pointsList.Count - 1;
+                }
+                else
+                {
+                    counter = counter - 1;
+                }
 
+            }
+            if (Time.time > changeDirTime)
+            {
+                changeDir = false;
+                if (counter + 1 > pointsList.Count - 1)
+                {
+                    counter = 0;
+                }
+                else
+                {
+                    counter = counter + 1;
+                }
+            }
+        }
+        else
+        {
+            if (pointsList[counter].position == transform.position)
+            {
+                if (counter + 1 > pointsList.Count - 1)
+                {
+                    counter = 0;
+                }
+                else
+                {
+                    counter = counter + 1;
+                }
+
+            }
         }
         transform.position = Vector2.MoveTowards(transform.position, pointsList[counter].position, speed * Time.deltaTime);
 
