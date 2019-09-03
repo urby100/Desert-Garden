@@ -196,4 +196,16 @@ public class playerCollisionController : MonoBehaviour
             GetComponent<Move>().tiredRequest = true;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (GetComponent<Move>().invincible)
+        {
+            return;
+        }
+
+        if (collision.gameObject.name == "RedPotionProjectile")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
+    }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BlueProjectileScript : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject bluePointStopPushBackPoint;
+    public GameObject cam;
     float upForce = 100f;
     float sideForce = 250f;
     float rotation = 10f;
@@ -14,6 +17,14 @@ public class BlueProjectileScript : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(transform.up * upForce);
         GetComponent<Rigidbody2D>().AddForce(-transform.right * sideForce);
         GetComponent<Rigidbody2D>().AddTorque(-rotation);
-        Destroy(gameObject, 1.5f);
+        
+    }
+    void TurnWindOn() {
+        bluePointStopPushBackPoint.GetComponent<BluePotionPushScript>().setPush();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        TurnWindOn();
+        Destroy(gameObject);
     }
 }

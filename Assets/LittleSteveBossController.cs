@@ -20,12 +20,14 @@ public class LittleSteveBossController : MonoBehaviour
     bool changeDir = false;
     public void SetSpeed(float s, float speedLasts)
     {
+        GetComponent<TrailRenderer>().enabled = true;
         speed = s;
         SpeedChangeTime = Time.time + speedLasts;
         changedSpeed = true;
     }
     public void ChangeDirection(float changeDirLasts)
     {
+        GetComponent<ParticleSystem>().Play();
         changeDirTime = Time.time + changeDirLasts;
         changeDir = true;
         if (counter - 1 <= -1)
@@ -130,6 +132,7 @@ public class LittleSteveBossController : MonoBehaviour
             if (Time.time > SpeedChangeTime)
             {
                 changedSpeed = false;
+                GetComponent<TrailRenderer>().enabled = false;
                 speed = defaultSpeed;
             }
         }
@@ -150,6 +153,8 @@ public class LittleSteveBossController : MonoBehaviour
             if (Time.time > changeDirTime)
             {
                 changeDir = false;
+
+                GetComponent<ParticleSystem>().Stop();
                 if (counter + 1 > pointsList.Count - 1)
                 {
                     counter = 0;

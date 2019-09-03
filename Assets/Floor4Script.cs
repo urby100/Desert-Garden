@@ -14,6 +14,8 @@ public class Floor4Script : MonoBehaviour
     {
         foreach (Transform littleSteve in LittleSteves.transform )
         {
+            littleSteve.gameObject.GetComponent<ParticleSystem>().Stop();
+            littleSteve.gameObject.GetComponent<TrailRenderer>().enabled = false;
             littleSteve.gameObject.GetComponent<LittleSteveBossController>().points = points;
             littleSteve.gameObject.GetComponent<LittleSteveBossController>().floor = floor;
             littleSteve.gameObject.GetComponent<LittleSteveBossController>().ceiling = ceiling;

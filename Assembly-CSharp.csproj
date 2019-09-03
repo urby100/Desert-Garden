@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\BasketHoop.cs" />
+    <Compile Include="Assets\BluePotionPushScript.cs" />
     <Compile Include="Assets\BlueProjectileScript.cs" />
     <Compile Include="Assets\BossBirdFlowerCollider.cs" />
     <Compile Include="Assets\BossBirdyAnimations.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\PotionSpawner.cs" />
     <Compile Include="Assets\PreBossScene1Controller.cs" />
     <Compile Include="Assets\PreBossScene2Controller.cs" />
+    <Compile Include="Assets\RedPotionProjectileScript.cs" />
     <Compile Include="Assets\RedProjectileScript.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
