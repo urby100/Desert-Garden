@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6020527452305850165}
   - component: {fileID: 6020527452305850166}
   - component: {fileID: 6020527452305850167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedPotionProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6020527452861022952}
   - component: {fileID: 6020527452861022959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

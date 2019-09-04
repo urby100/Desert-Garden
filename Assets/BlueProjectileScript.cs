@@ -7,8 +7,9 @@ public class BlueProjectileScript : MonoBehaviour
     public GameObject player;
     public GameObject bluePointStopPushBackPoint;
     public GameObject cam;
+    public GameObject effect;
     float upForce = 100f;
-    float sideForce = 250f;
+    float sideForce = 100f;
     float rotation = 10f;
 
     // Start is called before the first frame update
@@ -25,6 +26,11 @@ public class BlueProjectileScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         TurnWindOn();
+
+        GameObject particle;
+        particle = Instantiate(effect, collision.contacts[0].point, effect.transform.rotation);
+        particle.name = "BluePotionPopEffect";
+        Destroy(particle, 0.6f);
         Destroy(gameObject);
     }
 }

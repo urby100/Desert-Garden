@@ -40,7 +40,7 @@ public class BluePotionPushScript : MonoBehaviour
         if (pushBack && Time.time<pushTime)
         {
             
-            if (cam.GetComponent<BossCameraController>().positionName == "4" )
+            if (cam.GetComponent<BossCameraController>().positionName == 4 )
             {
                 //če je med točkama 
                 if (player.transform.position.x >= transform.position.x && player.transform.position.x <= startPushPoint.transform.position.x)
@@ -61,7 +61,7 @@ public class BluePotionPushScript : MonoBehaviour
         }
         if (pushBack && Time.time > pushTime)
         {
-            if (cam.GetComponent<BossCameraController>().positionName == "4")
+            if (cam.GetComponent<BossCameraController>().positionName == 4)
             {
                 cam.transform.localPosition = originalPos;
             }

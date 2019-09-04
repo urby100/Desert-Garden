@@ -7,6 +7,7 @@ public class YellowProjectileScript : MonoBehaviour
     float upForce = 100f;
     float sideForce = 250f;
     float rotation = 10f;
+    public GameObject effect;
     public GameObject stevies;
     float speed = 6f;
     float time = 2f;
@@ -28,6 +29,10 @@ public class YellowProjectileScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ChangeSteviesSpeed();
+        GameObject particle;
+        particle = Instantiate(effect, collision.contacts[0].point, effect.transform.rotation);
+        particle.name = "YellowPotionPopEffect";
+        Destroy(particle, 0.6f);
         Destroy(gameObject);
     }
 }

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class RedProjectileScript : MonoBehaviour
 {
-    float upForce = 100f;
+    float upForce = 250f;
     float sideForce = 250f;
     float rotation = 10f;
     public GameObject RedPotionProjectileStartPoint;
     public GameObject RedPotionProjectileEndPoint;
     public GameObject RedPotionProjectile;
+    public GameObject effect;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,10 @@ public class RedProjectileScript : MonoBehaviour
                 projectile.GetComponent<RedPotionProjectileScript>().maxDistance = RedPotionProjectileEndPoint;
                 projectile.GetComponent<RedPotionProjectileScript>().speed = 7;
             }
+            GameObject particle;
+            particle = Instantiate(effect, gameObject.transform.position, effect.transform.rotation);
+            particle.name = "RedPotionPopEffect";
+            Destroy(particle, 0.6f);
             Destroy(gameObject);
         }
     }

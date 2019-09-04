@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PotionSpawner : MonoBehaviour
 {
-
+    public GameObject scientistBoss;
     public List<GameObject> bombPrefab;
     public GameObject bluePointStopPushBackPoint;
     public GameObject cam;
@@ -30,6 +30,10 @@ public class PotionSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time > attackTime- scientistBoss.GetComponent<ScientistBossScript>().getAnimLasts()) {
+
+            scientistBoss.GetComponent<ScientistBossScript>().throwAnimation = true;
+        }
         if (Time.time > attackTime)
         {
             GameObject projectile = Instantiate(bombPrefab[counter], transform.position, Quaternion.identity);

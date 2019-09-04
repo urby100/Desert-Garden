@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GreenProjectileScript : MonoBehaviour
 {
+    public GameObject effect;
+    public GameObject puddlePrefab;
     float upForce = 100f;
     float sideForce = 250f;
     float rotation = 10f;
@@ -14,6 +16,21 @@ public class GreenProjectileScript : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(transform.up * upForce);
         GetComponent<Rigidbody2D>().AddForce(-transform.right * sideForce);
         GetComponent<Rigidbody2D>().AddTorque(-rotation);
-        Destroy(gameObject, 1.5f);
+        /*GameObject p= Instantiate(greenProjectile, transform.position, new Quaternion());
+        p.name = "Green Potion Projectile";
+        Destroy(gameObject, 0.4f);*/
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Ground")
+        {
+            GameObject puddle = Instantiate(puddlePrefab, collision.contacts[0].point, puddlePrefab.transform.rotation);
+            puddle.name = "Puddle";
+            GameObject particle;
+            particle = Instantiate(effect, collision.contacts[0].point, effect.transform.rotation);
+            particle.name = "GreenPotionPopEffect";
+            Destroy(particle, 0.6f);
+            Destroy(gameObject);
+        }
     }
 }

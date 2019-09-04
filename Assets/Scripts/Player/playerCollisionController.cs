@@ -177,6 +177,11 @@ public class playerCollisionController : MonoBehaviour
 
 
         }
+        
+        if (collision.gameObject.name == "Green Potion Projectile")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
         if (collision.gameObject.name == "BirdyBody")
         {
             if (SceneManager.GetActiveScene().name == "Boss")

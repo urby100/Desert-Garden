@@ -88,6 +88,8 @@
     <Compile Include="Assets\CrusherTrainingProjectile.cs" />
     <Compile Include="Assets\EffectShadowScript.cs" />
     <Compile Include="Assets\Floor4Script.cs" />
+    <Compile Include="Assets\GreenPotionProjectileScript.cs" />
+    <Compile Include="Assets\GreenPotionPuddleScript.cs" />
     <Compile Include="Assets\GreenProjectileScript.cs" />
     <Compile Include="Assets\GroupTraining.cs" />
     <Compile Include="Assets\LittleSteveBossController.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Assets\RedPotionProjectileScript.cs" />
     <Compile Include="Assets\RedProjectileScript.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
+    <Compile Include="Assets\ScientistBossScript.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Keybindings\InputManager.cs" />

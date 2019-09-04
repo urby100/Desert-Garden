@@ -50,7 +50,7 @@ public class BossFloor2Script : MonoBehaviour
         }
 
 
-        if (!pushOnce && player.transform.position.x > pushBackPoint.transform.position.x && !pushBack && cam.GetComponent<BossCameraController>().positionName == "2")
+        if (!pushOnce && player.transform.position.x > pushBackPoint.transform.position.x && !pushBack && cam.GetComponent<BossCameraController>().positionName == 2)
         {
             pushBack = true;
             maxProjectiles = 0;

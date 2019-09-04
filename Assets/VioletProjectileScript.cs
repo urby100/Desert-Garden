@@ -9,6 +9,7 @@ public class VioletProjectileScript : MonoBehaviour
     float rotation = 10f;
 
     public GameObject stevies;
+    public GameObject effect;
     float time = 2f;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,10 @@ public class VioletProjectileScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         ChangeSteviesDirection();
+        GameObject particle;
+        particle = Instantiate(effect, collision.contacts[0].point, effect.transform.rotation);
+        particle.name = "VioletPotionPopEffect";
+        Destroy(particle, 0.6f);
         Destroy(gameObject);
     }
 }
