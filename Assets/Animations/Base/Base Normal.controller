@@ -9,11 +9,17 @@ AnimatorController:
   m_Name: Base Normal
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Normal
+  - m_Name: Explosion 3
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 1
+    m_Controller: {fileID: 0}
+  - m_Name: Normal
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Explosion 1
     m_Type: 4
@@ -22,12 +28,6 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Explosion 2
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: Explosion 3
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

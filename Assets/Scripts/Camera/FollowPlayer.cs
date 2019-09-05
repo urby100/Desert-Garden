@@ -28,7 +28,7 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (sceneName == "PreBossScene1")
+        if (sceneName == "PreBossScene1" || sceneName=="AfterBossScene")
         {
 
             return;
