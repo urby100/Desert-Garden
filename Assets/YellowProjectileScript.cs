@@ -9,7 +9,7 @@ public class YellowProjectileScript : MonoBehaviour
     float rotation = 10f;
     public GameObject effect;
     public GameObject stevies;
-    float speed = 6f;
+    float speed = 3f;
     float time = 2f;
     // Start is called before the first frame update
     void Start()

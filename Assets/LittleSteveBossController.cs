@@ -10,8 +10,8 @@ public class LittleSteveBossController : MonoBehaviour
     public GameObject floor;
     public GameObject ceiling;
     public List<Transform> pointsList;
-    float speed = 3f;
-    float defaultSpeed;
+    float speed;
+    float defaultSpeed = 1.5f;
     int counter = 0;
     float rotateSpeed = 12f;
     float SpeedChangeTime;
@@ -42,7 +42,7 @@ public class LittleSteveBossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        defaultSpeed = speed;
+        speed = defaultSpeed;
         animator = GetComponent<Animator>();
         foreach (Transform point in points.transform)
         {

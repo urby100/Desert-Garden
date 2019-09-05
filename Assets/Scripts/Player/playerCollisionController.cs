@@ -143,6 +143,17 @@ public class playerCollisionController : MonoBehaviour
         {
             return;
         }
+
+        if (collision.gameObject.name == "Yellow Projectile" || collision.gameObject.name == "Red Projectile" ||
+            collision.gameObject.name == "Green Projectile" || collision.gameObject.name == "Blue Projectile" ||
+            collision.gameObject.name == "Violet Projectile" )
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
+        if (collision.gameObject.name == "Scientist2Boss")
+        {
+            GetComponent<Move>().tiredRequest = true;
+        }
         //planeWing
         if (collision.gameObject.name == "planeWing")
         {

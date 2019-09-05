@@ -30,29 +30,38 @@ public class PotionSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > attackTime- scientistBoss.GetComponent<ScientistBossScript>().getAnimLasts()) {
+        if (Time.time > attackTime - scientistBoss.GetComponent<ScientistBossScript>().getAnimLasts())
+        {
 
             scientistBoss.GetComponent<ScientistBossScript>().throwAnimation = true;
         }
         if (Time.time > attackTime)
         {
             GameObject projectile = Instantiate(bombPrefab[counter], transform.position, Quaternion.identity);
+            if (bombPrefab[counter].name == "Green Projectile")
+            {
+                projectile.name = "Green Projectile";
+            }
             if (bombPrefab[counter].name == "Yellow Projectile")
             {
+                projectile.name = "Yellow Projectile";
                 projectile.GetComponent<YellowProjectileScript>().stevies = stevies;
             }
             if (bombPrefab[counter].name == "Violet Projectile")
             {
+                projectile.name = "Violet Projectile";
                 projectile.GetComponent<VioletProjectileScript>().stevies = stevies;
             }
             if (bombPrefab[counter].name == "Blue Projectile")
             {
+                projectile.name = "Blue Projectile";
                 projectile.GetComponent<BlueProjectileScript>().player = player;
                 projectile.GetComponent<BlueProjectileScript>().bluePointStopPushBackPoint = bluePointStopPushBackPoint;
                 projectile.GetComponent<BlueProjectileScript>().cam = cam;
             }
             if (bombPrefab[counter].name == "Red Projectile")
             {
+                projectile.name = "Red Projectile";
                 projectile.GetComponent<RedProjectileScript>().RedPotionProjectileStartPoint = RedPotionProjectileStartPoint;
                 projectile.GetComponent<RedProjectileScript>().RedPotionProjectileEndPoint = RedPotionProjectileEndPoint;
                 projectile.GetComponent<RedProjectileScript>().RedPotionProjectile = RedPotionProjectile;

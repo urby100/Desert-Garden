@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ScientistBossScript : MonoBehaviour
 {
+    public GameObject potionSpawner;
+    public GameObject effects;
     public bool throwAnimation = false;
     float animLasts = 0.125f;
     float animTime;
     bool setTime = false;
+    bool tired = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +22,10 @@ public class ScientistBossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (tired) {
+            Scientist2tired();
+            return;
+        }
         if (throwAnimation)
         {
             if (!setTime) {
@@ -64,5 +70,22 @@ public class ScientistBossScript : MonoBehaviour
         GetComponent<Animator>().SetBool("standing", false);
         GetComponent<Animator>().SetBool("waving", false);
         GetComponent<Animator>().SetBool("throwing", true);
+    }
+    void Scientist2tired()
+    {
+        GetComponent<Animator>().SetBool("walking", false);
+        GetComponent<Animator>().SetBool("standing", false);
+        GetComponent<Animator>().SetBool("waving", false);
+        GetComponent<Animator>().SetBool("throwing", false);
+        GetComponent<Animator>().SetBool("tired", true);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "WaterProjectile") {
+            potionSpawner.SetActive(false);
+            effects.SetActive(false);
+            tired = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }

@@ -14,6 +14,8 @@ public class UseAbility : MonoBehaviour
     
     public bool useWater = false;
     public bool useAbility = false;
+    public bool canUseWater = true;
+    public bool canUseAbility = true;
 
     //thrower
     public GameObject throwerProjectile;
@@ -69,11 +71,11 @@ public class UseAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(kb.attack1))
+        if (Input.GetKeyDown(kb.attack1) && canUseWater)
         {
             useWater=true;
         }
-        if (Input.GetKeyDown(kb.attack2)) {
+        if (Input.GetKeyDown(kb.attack2) && canUseAbility) {
             useAbility = true;
         }
     }

@@ -24,7 +24,8 @@ public class GreenProjectileScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Ground")
         {
-            GameObject puddle = Instantiate(puddlePrefab, collision.contacts[0].point, puddlePrefab.transform.rotation);
+            Vector3 a = new Vector3(collision.contacts[0].point.x, collision.contacts[0].point.y+0.05f,0);
+            GameObject puddle = Instantiate(puddlePrefab, a, puddlePrefab.transform.rotation);
             puddle.name = "Puddle";
             GameObject particle;
             particle = Instantiate(effect, collision.contacts[0].point, effect.transform.rotation);
