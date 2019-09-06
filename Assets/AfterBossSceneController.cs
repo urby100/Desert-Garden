@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class AfterBossSceneController : MonoBehaviour
 {
+    public GameObject explosionEffects;
     public GameObject abilitySpawnPoint;
     public GameObject nuke;
     public GameObject nukeGoal;
@@ -47,6 +48,7 @@ public class AfterBossSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TurnOffExplosionEffects();
         originalPos = camTransform.position;
         scientist2.transform.position = scientist2points[0].transform.position;
         player.transform.position = playerpoints[0].transform.position;
@@ -159,7 +161,7 @@ public class AfterBossSceneController : MonoBehaviour
 
                 if (nuke.transform.position.x == nukeGoal.transform.position.x)
                 {
-                    newsceneTime = Time.time + newsceneDelay;
+                    Destroy(nuke);
                     sceneNumber = 3;
                     turnOnce = false;
                     DialogText.text = alpha + secondConvo[0];
@@ -171,10 +173,6 @@ public class AfterBossSceneController : MonoBehaviour
                    //glavni ga vpraša kaj je blo to, on odgovori da je tk ko ona bomba na letalu sam da 100 000x močnejša
                    //pozabu jo je ugasnati ?
                    //scene number ++
-                if (Time.time < newsceneTime)
-                {
-                    return;
-                }
                 DialogText.gameObject.SetActive(true);
                 if (!turnOnce)
                 {
@@ -228,12 +226,14 @@ public class AfterBossSceneController : MonoBehaviour
                     turnObject(player);
                     turnOnce = true;
                     explosionTime = Time.time + explosionDelay;
+                    TurnOnExplosionEffects();
 
                 }
                 DialogText.gameObject.SetActive(false);
                 Explosion();
                 if (Time.time > explosionTime)
                 {
+                    TurnOffExplosionEffects();
                     newsceneTime = Time.time + newsceneDelay;
                     sceneNumber = 5;
                     turnOnce = false;
@@ -383,10 +383,23 @@ public class AfterBossSceneController : MonoBehaviour
     void Explosion()
     {
         ShakeEffect();
+        
     }
     void turnObject(GameObject go)
     {
         go.transform.Rotate(0, 180, 0, Space.World);
+    }
+    void TurnOnExplosionEffects() {
+        foreach (Transform t in explosionEffects.transform) {
+            t.gameObject.GetComponent<ParticleSystem>().Play();
+        }
+    }
+    void TurnOffExplosionEffects()
+    {
+        foreach (Transform t in explosionEffects.transform)
+        {
+            t.gameObject.GetComponent<ParticleSystem>().Stop();
+        }
     }
 
     void Scientist2walking()

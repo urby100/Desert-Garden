@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PreBossScene2.unity
     guid: b569c5e44d9faca4ab771a0b989d3e16
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 18a19d50b8213b64eac41988fafe129b
+  - enabled: 1
+    path: Assets/Scenes/AfterBossScene.unity
+    guid: 43231e20c2083c743bed6b9bca0c5b4f
   m_configObjects: {}

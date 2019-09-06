@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScientistBossScript : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class ScientistBossScript : MonoBehaviour
     float animTime;
     bool setTime = false;
     bool tired = false;
+
+    bool setEnd = false;
+    float endDelay = 3f;
+    float endTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +27,15 @@ public class ScientistBossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (setEnd && Time.time > endTime) {
+            SceneManager.LoadScene("AfterBossScene");
+        }
         if (tired) {
             Scientist2tired();
+            if (!setEnd) {
+                endTime = Time.time + endDelay;
+                setEnd = true;
+            }
             return;
         }
         if (throwAnimation)
