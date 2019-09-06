@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Move : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        groundObjects = GameObject.FindGameObjectsWithTag("Ground");
         tiredRequest = false;
     }
     void Update()
@@ -42,12 +44,28 @@ public class Move : MonoBehaviour
        
         if (tiredRequest)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x,0.5f), 6*Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector3(transform.position.x,FindClosesGround().position.y+1f,transform.position.z), 6*Time.deltaTime);
             return;
         }
     }
+    public GameObject[] groundObjects;
+    Transform FindClosesGround()
+    {
+        Transform tMin = null;
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach (GameObject t in groundObjects)
+        {
+            float dist = Vector3.Distance(t.transform.position, currentPos);
+            if (dist < minDist)
+            {
+                tMin = t.transform;
+                minDist = dist;
+            }
+        }
+        return tMin;
+    }
 
-   
     void FixedUpdate()
     {
         /* if (Input.GetKeyDown(KeyCode.T)) {
@@ -118,7 +136,14 @@ public class Move : MonoBehaviour
         }
         if (sceneDontMoveRequest)
         {
+            if (SceneManager.GetActiveScene().name == "Boss")
+            {
 
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
         else
         {

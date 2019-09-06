@@ -18,8 +18,7 @@ public class BossWaterBottle : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Guy") {
-
-            collision.gameObject.GetComponent<UseAbility>().enabled = true;
+            
             collision.gameObject.GetComponent<UseAbility>().canUseWater = true;
             collision.gameObject.GetComponent<UseAbility>().canUseAbility = false;
             Destroy(gameObject);

@@ -9,7 +9,7 @@ public class bombUnderPlaneController : MonoBehaviour
     public GameObject signStage1;
     public GameObject copilotOnPlane;
     public GameObject playerObject;
-
+    public GameObject explosionEffects;
 
     GameObject screwdriver;
     SpriteRenderer bomb;
@@ -19,7 +19,22 @@ public class bombUnderPlaneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TurnOffExplosionEffects();
         bomb = gameObject.GetComponent<SpriteRenderer>();
+    }
+    void TurnOnExplosionEffects()
+    {
+        foreach (Transform t in explosionEffects.transform)
+        {
+            t.gameObject.GetComponent<ParticleSystem>().Play();
+        }
+    }
+    void TurnOffExplosionEffects()
+    {
+        foreach (Transform t in explosionEffects.transform)
+        {
+            t.gameObject.GetComponent<ParticleSystem>().Stop();
+        }
     }
 
     // Update is called once per frame
@@ -53,7 +68,7 @@ public class bombUnderPlaneController : MonoBehaviour
             screwdriver.GetComponent<ScrewdriverController>().goToSign = true;
             copilotOnPlane.GetComponent<copilotOnPlaneController>().DialogText.gameObject.SetActive(false);
             airplane.GetComponent<AirplaneController>().shoot = true;
-
+            TurnOnExplosionEffects();
             gameObject.SetActive(false);
         }
     }

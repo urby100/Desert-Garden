@@ -94,6 +94,7 @@
     <Compile Include="Assets\GreenPotionPuddleScript.cs" />
     <Compile Include="Assets\GreenProjectileScript.cs" />
     <Compile Include="Assets\GroupTraining.cs" />
+    <Compile Include="Assets\LeftLimiterColliderScript.cs" />
     <Compile Include="Assets\LittleSteveBossController.cs" />
     <Compile Include="Assets\LittleStevePreBossScene2.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />

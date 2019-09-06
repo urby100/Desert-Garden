@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PreBossScene2Controller : MonoBehaviour
 {
@@ -128,7 +129,7 @@ public class PreBossScene2Controller : MonoBehaviour
                 {
                     break;
                 }
-                Debug.Log("Boss Fight");
+                SceneManager.LoadScene("Boss");
                 break;
             default:
                 break;
