@@ -22,11 +22,11 @@ public class SteveProjectileController : MonoBehaviour
     Rigidbody2D rb;
     float direction = 1;
     float revSpeed = 70f;
-    bool inTheAir = true;
+    public bool inTheAir = true;
     float fallMultiplier = 5f;
     float runningTime;
-    bool running = false;
-    bool jumpedBack = false;
+    public bool running = false;
+    public bool jumpedBack = false;
     bool directionChange = false;
     // Start is called before the first frame update
     void Start()

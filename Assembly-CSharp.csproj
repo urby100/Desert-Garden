@@ -85,6 +85,7 @@
     <Compile Include="Assets\BossThrowerProjectileController.cs" />
     <Compile Include="Assets\BossWaterBottle.cs" />
     <Compile Include="Assets\ChameleonBossAnimations.cs" />
+    <Compile Include="Assets\CrusherAudioController.cs" />
     <Compile Include="Assets\CrushersCatcher.cs" />
     <Compile Include="Assets\CrusherTraining.cs" />
     <Compile Include="Assets\CrusherTrainingProjectile.cs" />
@@ -95,10 +96,12 @@
     <Compile Include="Assets\GreenProjectileScript.cs" />
     <Compile Include="Assets\GroupTraining.cs" />
     <Compile Include="Assets\LeftLimiterColliderScript.cs" />
+    <Compile Include="Assets\LittleSteveAudioController.cs" />
     <Compile Include="Assets\LittleSteveBossController.cs" />
     <Compile Include="Assets\LittleStevePreBossScene2.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
+    <Compile Include="Assets\PopperAudioController.cs" />
     <Compile Include="Assets\PopperTraining.cs" />
     <Compile Include="Assets\PotionBombProjectile.cs" />
     <Compile Include="Assets\PotionSpawner.cs" />
@@ -163,9 +166,12 @@
     <Compile Include="Assets\Scripts\Scenes\StoryScene.cs" />
     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
     <Compile Include="Assets\ShadowScript.cs" />
+    <Compile Include="Assets\SteveAudioController.cs" />
     <Compile Include="Assets\SteveTraining.cs" />
+    <Compile Include="Assets\StopperAudioController.cs" />
     <Compile Include="Assets\StopperTraining.cs" />
     <Compile Include="Assets\StopperTrainingProjectileController.cs" />
+    <Compile Include="Assets\ThrowerAudioController.cs" />
     <Compile Include="Assets\ThrowerTraining.cs" />
     <Compile Include="Assets\ThrowerTrainingProjectile.cs" />
     <Compile Include="Assets\Treadmill.cs" />

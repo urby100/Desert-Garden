@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6094283689984107362}
   - component: {fileID: 460857118516400173}
   - component: {fileID: 3570321711927314243}
+  - component: {fileID: 1176392806339462201}
+  - component: {fileID: 4554922869777105859}
   m_Layer: 0
   m_Name: LittleSteve
   m_TagString: Untagged
@@ -107,6 +109,9 @@ MonoBehaviour:
   shootVelocityUp: 2.5
   runningLasts: 3
   neutral: 0
+  inTheAir: 1
+  running: 0
+  jumpedBack: 0
 --- !u!50 &6094283689984107391
 Rigidbody2D:
   serializedVersion: 4
@@ -188,3 +193,117 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 2354887302701525029, guid: 5749a1ef5003c724589b3a4686a7544b, type: 3}
+--- !u!114 &1176392806339462201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094283689984107388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a406d6d4f8af040899418a8296b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mute: 1
+  Land: {fileID: 8300000, guid: 6e21bd7c656a97447ba785d11f422e1e, type: 3}
+  Jump: {fileID: 8300000, guid: 89eb2034d9712584a90119d116c4d777, type: 3}
+  Running: {fileID: 8300000, guid: 6497e43958420144eadd662140adf921, type: 3}
+  Neutral: {fileID: 8300000, guid: 73ca5cbd56cb1bd49a7433c456288964, type: 3}
+  AudioSource: {fileID: 4554922869777105859}
+--- !u!82 &4554922869777105859
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094283689984107388}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 18
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.02272901
+      value: 0.99521637
+      inSlope: -3.5147266
+      outSlope: -3.5147266
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.21594545
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.1
+      outSlope: -1.1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
