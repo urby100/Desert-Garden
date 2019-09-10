@@ -81,6 +81,9 @@ public class UseAbility : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (GetComponent<Move>().tiredRequest) {
+            return;
+        }
         if (useWater) {//set to false in Animations.cs
             GameObject projectile = Instantiate(projectilePrefab,projectileSpawn.transform.position,new Quaternion());
             projectile.name = "WaterProjectile";

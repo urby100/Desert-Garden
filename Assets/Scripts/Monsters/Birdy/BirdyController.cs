@@ -16,7 +16,7 @@ public class BirdyController : MonoBehaviour
     int direction = 1;
     public bool attack = false;
     public bool neutral = false;
-    float attackTime;
+    public float attackTime;
     // Start is called before the first frame update
     void Start()
     {

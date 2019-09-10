@@ -22,7 +22,7 @@ public class LittleSteveAudioController : MonoBehaviour
     float runningTime;
     bool needsToLand;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mute)
         {

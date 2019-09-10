@@ -16,7 +16,7 @@ public class BossFloor1Script : MonoBehaviour
         }
         for (int i = 0; i < cactusList.Count; i++)
         {
-            if ((i + 1) >= 6)
+            if ((i + 1) >= cactusList.Count)
             {
                 cactusList[i].GetComponent<BossPopperController>().setNextPopper(cactusList[0]);
             }

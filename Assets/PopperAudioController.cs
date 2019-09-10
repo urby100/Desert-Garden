@@ -19,7 +19,7 @@ public class PopperAudioController : MonoBehaviour
     bool hideOnce = false;
     bool neutralOnce = false;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mute) {
             return;

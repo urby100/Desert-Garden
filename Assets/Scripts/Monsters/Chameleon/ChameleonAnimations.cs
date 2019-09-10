@@ -50,6 +50,7 @@ public class ChameleonAnimations : MonoBehaviour
                 if (!whentohidetimesaved)
                 {
 
+                    hideAnim = false;
                     this.GetComponent<Renderer>().enabled = true;
                     whenToHideTIme = ChameleonGameObject.GetComponent<ChameleonController>().attackTime - hidedelay;
                     whentohidetimesaved = true;
@@ -87,6 +88,7 @@ public class ChameleonAnimations : MonoBehaviour
             if (!showAnim && !attackAnim && !whentohidetimesaved && !ChameleonGameObject.GetComponent<ChameleonController>().attack)
             {
                 Hide();
+                hideAnim = true;
                 if (Time.time > hideanimtime)
                 {
                     this.GetComponent<Renderer>().enabled = false;

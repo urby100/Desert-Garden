@@ -22,7 +22,7 @@ public class SteveAudioController : MonoBehaviour
     bool neutralOnce;
     float waitingTime;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mute)
         {

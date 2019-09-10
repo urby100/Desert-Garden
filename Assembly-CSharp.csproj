@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\AfterBossSceneController.cs" />
     <Compile Include="Assets\BasketHoop.cs" />
+    <Compile Include="Assets\BirdyAudioController.cs" />
     <Compile Include="Assets\BluePotionPushScript.cs" />
     <Compile Include="Assets\BlueProjectileScript.cs" />
     <Compile Include="Assets\BossBirdFlowerCollider.cs" />
@@ -69,7 +70,9 @@
     <Compile Include="Assets\BossBirdyController.cs" />
     <Compile Include="Assets\BossCameraController.cs" />
     <Compile Include="Assets\BossChameleonController.cs" />
+    <Compile Include="Assets\BossCrawlerAudioController.cs" />
     <Compile Include="Assets\BossCrusherAnimations.cs" />
+    <Compile Include="Assets\BossCrusherAudioController.cs" />
     <Compile Include="Assets\BossCrusherController.cs" />
     <Compile Include="Assets\BossCrusherProjectileController.cs" />
     <Compile Include="Assets\BossDoorController.cs" />
@@ -77,14 +80,19 @@
     <Compile Include="Assets\BossFloor1Script.cs" />
     <Compile Include="Assets\BossFloor2Script.cs" />
     <Compile Include="Assets\BossFloor3Script.cs" />
+    <Compile Include="Assets\BossPopperAudioController.cs" />
     <Compile Include="Assets\BossPopperController.cs" />
+    <Compile Include="Assets\BossSpitterAudioController.cs" />
     <Compile Include="Assets\BossStopperColliderControler.cs" />
     <Compile Include="Assets\BossStopperController.cs" />
     <Compile Include="Assets\BossStopperProjectileController.cs" />
+    <Compile Include="Assets\BossThrowerAudioController.cs" />
     <Compile Include="Assets\BossThrowerController.cs" />
     <Compile Include="Assets\BossThrowerProjectileController.cs" />
     <Compile Include="Assets\BossWaterBottle.cs" />
+    <Compile Include="Assets\ChameleonAudioController.cs" />
     <Compile Include="Assets\ChameleonBossAnimations.cs" />
+    <Compile Include="Assets\CrawlerAudioController.cs" />
     <Compile Include="Assets\CrusherAudioController.cs" />
     <Compile Include="Assets\CrushersCatcher.cs" />
     <Compile Include="Assets\CrusherTraining.cs" />
@@ -101,6 +109,7 @@
     <Compile Include="Assets\LittleStevePreBossScene2.cs" />
     <Compile Include="Assets\LittleSteveTraining.cs" />
     <Compile Include="Assets\OnHitEffectGreen.cs" />
+    <Compile Include="Assets\PlayerAudioController.cs" />
     <Compile Include="Assets\PopperAudioController.cs" />
     <Compile Include="Assets\PopperTraining.cs" />
     <Compile Include="Assets\PotionBombProjectile.cs" />
@@ -166,6 +175,7 @@
     <Compile Include="Assets\Scripts\Scenes\StoryScene.cs" />
     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
     <Compile Include="Assets\ShadowScript.cs" />
+    <Compile Include="Assets\SpitterAudioController.cs" />
     <Compile Include="Assets\SteveAudioController.cs" />
     <Compile Include="Assets\SteveTraining.cs" />
     <Compile Include="Assets\StopperAudioController.cs" />

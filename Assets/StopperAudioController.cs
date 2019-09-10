@@ -18,7 +18,7 @@ public class StopperAudioController : MonoBehaviour
     float attackTime;
     bool neutralOnce = false;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mute)
         {

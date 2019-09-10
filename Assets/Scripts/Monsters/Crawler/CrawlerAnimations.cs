@@ -43,7 +43,7 @@ public class CrawlerAnimations : MonoBehaviour
 
         if (collision.gameObject.name == "CrusherProjectile")
         {
-            if (!collision.gameObject.GetComponent<CrusherProjectileController>().onPlayer)
+            if (collision.gameObject.GetComponent<CrusherProjectileController>().onPlayer)
             {
                 NeutralBool = true;
             }

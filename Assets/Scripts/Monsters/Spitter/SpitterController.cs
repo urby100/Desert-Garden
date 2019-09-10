@@ -14,7 +14,7 @@ public class SpitterController : MonoBehaviour
     public float fireRate = 0.7f;
     public float shootVelocity = 4f;
     public float shotDirection = -1f;
-    float fireTime;
+    public float fireTime;
     // Start is called before the first frame update
     void Start()
     {

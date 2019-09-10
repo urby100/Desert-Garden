@@ -18,7 +18,7 @@ public class CrusherAudioController : MonoBehaviour
     float repeatSound;
     bool neutralOnce = false;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (mute)
         {

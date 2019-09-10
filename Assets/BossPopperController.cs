@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BossPopperController : MonoBehaviour
 {
-    GameObject prevPopper;
-    GameObject nextPopper;
-    GameObject prevPopperBody;
-    GameObject nextPopperBody;
+    public GameObject prevPopper;
+    public GameObject nextPopper;
+    public GameObject prevPopperBody;
+    public GameObject nextPopperBody;
 
     public GameObject popEffect;
     bool effect = false;
