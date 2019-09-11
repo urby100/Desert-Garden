@@ -10,11 +10,12 @@ public class SteveAudioController : MonoBehaviour
     public AudioClip Waiting;
     public AudioClip Arrived;
     public AudioClip Neutral;
-    public AudioSource AudioSource;
+    AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
         scScript = GetComponent<SteveController>();
+        AudioSource = GetComponent<AudioSource>();
     }
     bool attackOnce;
     bool arrivedOnce;

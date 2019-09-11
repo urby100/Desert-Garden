@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ThrowerTraining : MonoBehaviour
 {
+    AudioSource audioSource;
+    public bool mute;
+    public AudioClip attackClip;
+    bool attackOnce;
+
+
     public GameObject projectileSpawnPoint;
     public GameObject projectilePrefab;
     public GameObject popper;
@@ -26,6 +32,7 @@ public class ThrowerTraining : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
 
@@ -53,6 +60,9 @@ public class ThrowerTraining : MonoBehaviour
         }
         if (Time.time > attackTime && !wait)
         {
+            if (!mute) {
+                audioSource.PlayOneShot(attackClip);
+            }
             attack = true;
             wait = true;
             throwTime = Time.time + throwDelay;

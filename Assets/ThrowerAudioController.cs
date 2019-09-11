@@ -8,11 +8,12 @@ public class ThrowerAudioController : MonoBehaviour
     ThrowerController tcScript;
     public AudioClip Attack;
     public AudioClip Neutral;
-    public AudioSource AudioSource;
+    AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
         tcScript = GetComponent<ThrowerController>();
+        AudioSource = GetComponent<AudioSource>();
     }
     bool attackOnce = false;
     float attackTime;

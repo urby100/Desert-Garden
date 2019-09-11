@@ -7,6 +7,9 @@ public class StopperTraining : MonoBehaviour
     public GameObject projectileSpawn;
     public GameObject projectile;
     Animator animator;
+    AudioSource audioSource;
+    public bool mute;
+    public AudioClip attackClip;
 
     float fireRate = 1.5f;
 
@@ -18,6 +21,7 @@ public class StopperTraining : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animationDelay = fireRate / 2;
         if (animationDelay > 0.4f)
         {
@@ -40,6 +44,10 @@ public class StopperTraining : MonoBehaviour
         }
         if (Time.time > fireTime)
         {
+            if (!mute)
+            {
+                audioSource.PlayOneShot(attackClip);
+            }
             Attack();
             attackBool = true;
             float dir = -1;

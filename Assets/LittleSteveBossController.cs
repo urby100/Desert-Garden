@@ -15,9 +15,9 @@ public class LittleSteveBossController : MonoBehaviour
     int counter = 0;
     float rotateSpeed = 12f;
     float SpeedChangeTime;
-    bool changedSpeed = false;
+    public bool changedSpeed = false;
     float changeDirTime;
-    bool changeDir = false;
+    public bool changeDir = false;
     public void SetSpeed(float s, float speedLasts)
     {
         GetComponent<TrailRenderer>().enabled = true;

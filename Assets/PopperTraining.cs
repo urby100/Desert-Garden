@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PopperTraining : MonoBehaviour
 {
+    AudioSource audioSource;
+    public bool mute;
+    public AudioClip showClip;
+    public AudioClip hideClip;
+    bool showOnce;
+    bool hideOnce;
+
     Animator animator;
     SpriteRenderer sr;
     Vector3 targetUp;
@@ -18,6 +25,7 @@ public class PopperTraining : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         targetUp = transform.position;
         targetDown = transform.position - new Vector3(0f,
         GetComponent<Renderer>().bounds.size.y
@@ -40,6 +48,11 @@ public class PopperTraining : MonoBehaviour
     {
         if (direction)
         {
+            if (!showOnce && !mute) {
+                audioSource.PlayOneShot(showClip);
+                showOnce = true;
+            }
+            hideOnce = false;
             Normal();
             transform.position = Vector3.SmoothDamp(transform.position,
                                                                 targetUp,
@@ -48,6 +61,12 @@ public class PopperTraining : MonoBehaviour
         }
         else//false - gre dol
         {
+            if (!hideOnce && !mute)
+            {
+                audioSource.PlayOneShot(hideClip);
+                hideOnce = true;
+            }
+            showOnce = false;
             Hide();
             transform.position = Vector3.SmoothDamp(transform.position,
                                                                 targetDown,

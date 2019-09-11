@@ -16,11 +16,16 @@ public class CrusherTraining : MonoBehaviour
     float attackTime;
     float projectileSpawnTime;
     int counter = 0;
-    
+
+    public AudioClip Attack;
+    AudioSource AudioSource;
+    public bool mute;
+    float repeatSound;
 
     // Start is called before the first frame update
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         projectiles = new List<GameObject>();
         projectileSpawnTime = Time.time + projectileSpawnDelay;
@@ -29,11 +34,21 @@ public class CrusherTraining : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!mute) {
+            if (Time.time > repeatSound)
+            {
+                repeatSound = Time.time + Attack.length;
+                AudioSource.PlayOneShot(Attack);
+            }
+        }
         if (fast)
         {
+            AudioSource.pitch = 1.2f;
             Fast();
         }
-        else {
+        else
+        {
+            AudioSource.pitch = 1f;
             Normal();
         }
         if (fast && !setFast) {

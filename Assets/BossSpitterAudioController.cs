@@ -8,11 +8,12 @@ public class BossSpitterAudioController : MonoBehaviour
     SpitterController scScript;
     public AudioClip Attack;
     public AudioClip Neutral;
-    public AudioSource AudioSource;
+    AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
         scScript = GetComponent<SpitterController>();
+        AudioSource = GetComponent<AudioSource>();
     }
     bool attackOnce = false;
     float attackTime;

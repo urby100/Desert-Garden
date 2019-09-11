@@ -6,7 +6,6 @@ public class BossStopperProjectileController : MonoBehaviour
 {
     public float dir;
     public float speed;
-    public BossStopperController lastSavedAttacker;
     // Start is called before the first frame update
     void Start()
     {

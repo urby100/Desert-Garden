@@ -16,7 +16,7 @@ public class BossStopperController : MonoBehaviour
     
     //sprite change delay
     float animationDelay;
-    float animationTime;
+    public float animationTime;
     float verticalDir;
     public void setFireTime() {
         hasProjectile = true;
@@ -88,7 +88,6 @@ public class BossStopperController : MonoBehaviour
             projectile.name = "BossStopperProjectile";
             projectile.GetComponent<BossStopperProjectileController>().dir = verticalDir;
             projectile.GetComponent<BossStopperProjectileController>().speed= projectileSpeed;
-            projectile.GetComponent<BossStopperProjectileController>().lastSavedAttacker = GetComponent<BossStopperController>();
             
             hasProjectile = false;
 

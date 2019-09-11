@@ -11,7 +11,7 @@ public class ScientistBossScript : MonoBehaviour
     float animLasts = 0.125f;
     float animTime;
     bool setTime = false;
-    bool tired = false;
+    public bool tired = false;
 
     bool setEnd = false;
     float endDelay = 3f;

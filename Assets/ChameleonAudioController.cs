@@ -10,12 +10,13 @@ public class ChameleonAudioController : MonoBehaviour
     public AudioClip Attack;
     public AudioClip Hide;
     public AudioClip Neutral;
-    public AudioSource AudioSource;
+    AudioSource AudioSource;
     // Start is called before the first frame update
     void Start()
     {
         ccScript = GetComponent<ChameleonController>();
         caScript = transform.GetChild(0).gameObject.GetComponent<ChameleonAnimations>();
+        AudioSource = GetComponent<AudioSource>();
     }
     bool hideOnce=true;
     bool attackOnce = false;

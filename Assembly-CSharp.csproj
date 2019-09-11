@@ -67,8 +67,10 @@
     <Compile Include="Assets\BlueProjectileScript.cs" />
     <Compile Include="Assets\BossBirdFlowerCollider.cs" />
     <Compile Include="Assets\BossBirdyAnimations.cs" />
+    <Compile Include="Assets\BossBirdyAudioController.cs" />
     <Compile Include="Assets\BossBirdyController.cs" />
     <Compile Include="Assets\BossCameraController.cs" />
+    <Compile Include="Assets\BossChameleonAudioController.cs" />
     <Compile Include="Assets\BossChameleonController.cs" />
     <Compile Include="Assets\BossCrawlerAudioController.cs" />
     <Compile Include="Assets\BossCrusherAnimations.cs" />
@@ -80,9 +82,11 @@
     <Compile Include="Assets\BossFloor1Script.cs" />
     <Compile Include="Assets\BossFloor2Script.cs" />
     <Compile Include="Assets\BossFloor3Script.cs" />
+    <Compile Include="Assets\BossLittleSteveAudioController.cs" />
     <Compile Include="Assets\BossPopperAudioController.cs" />
     <Compile Include="Assets\BossPopperController.cs" />
     <Compile Include="Assets\BossSpitterAudioController.cs" />
+    <Compile Include="Assets\BossStopperAudioController.cs" />
     <Compile Include="Assets\BossStopperColliderControler.cs" />
     <Compile Include="Assets\BossStopperController.cs" />
     <Compile Include="Assets\BossStopperProjectileController.cs" />
@@ -90,6 +94,7 @@
     <Compile Include="Assets\BossThrowerController.cs" />
     <Compile Include="Assets\BossThrowerProjectileController.cs" />
     <Compile Include="Assets\BossWaterBottle.cs" />
+    <Compile Include="Assets\BossWaterBottleAudioController.cs" />
     <Compile Include="Assets\ChameleonAudioController.cs" />
     <Compile Include="Assets\ChameleonBossAnimations.cs" />
     <Compile Include="Assets\CrawlerAudioController.cs" />
@@ -119,6 +124,7 @@
     <Compile Include="Assets\RedPotionProjectileScript.cs" />
     <Compile Include="Assets\RedProjectileScript.cs" />
     <Compile Include="Assets\SampleSceneEndController.cs" />
+    <Compile Include="Assets\ScientistBossAudioController.cs" />
     <Compile Include="Assets\ScientistBossScript.cs" />
     <Compile Include="Assets\Scripts\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />

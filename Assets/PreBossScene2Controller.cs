@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class PreBossScene2Controller : MonoBehaviour
 {
+    AudioSource playerAudioSource;
+    public bool mute;
+    public AudioClip playerWalking;
+    float walkingRepeatTime;
+
     public List<ParticleSystem> effects;
     public ParticleSystem LittleStevies;
     public GameObject LittleStevePrefab;
@@ -43,6 +48,7 @@ public class PreBossScene2Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerAudioSource = player.GetComponent<AudioSource>();
         textBox.gameObject.SetActive(false);
         player.transform.position = PlayerStartPoint.position;
         rbPlayer = player.GetComponent<Rigidbody2D>();
@@ -72,6 +78,10 @@ public class PreBossScene2Controller : MonoBehaviour
                 {
                     rbPlayer.velocity = new Vector2(movementSpeed, rbPlayer.velocity.y);
                     player.GetComponent<Animator>().SetBool("walking", true);
+                    if (Time.time > walkingRepeatTime) {
+                        playerAudioSource.PlayOneShot(playerWalking);
+                        walkingRepeatTime = Time.time + playerWalking.length;
+                    }
                 }
                 else
                 {
@@ -114,6 +124,11 @@ public class PreBossScene2Controller : MonoBehaviour
                     rbPlayer.velocity = new Vector2(movementSpeed, rbPlayer.velocity.y);
                     player.GetComponent<Animator>().SetBool("walking", true);
                     player.GetComponent<Animator>().SetBool("standing", false);
+                    if (Time.time > walkingRepeatTime)
+                    {
+                        playerAudioSource.PlayOneShot(playerWalking);
+                        walkingRepeatTime = Time.time + playerWalking.length;
+                    }
                 }
                 else
                 {

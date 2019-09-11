@@ -12,6 +12,10 @@ public class LittleSteveTraining : MonoBehaviour
     public GameObject NormalPoint;
     public GameObject FastPoint;
     Animator animator;
+    AudioSource AudioSource;
+    public AudioClip Running;
+    float runningSoundTime;
+    public bool mute = false;
 
     float speedChangeDelay = 1.2f;
     float speedChangeTime;
@@ -21,18 +25,29 @@ public class LittleSteveTraining : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Time.time > runningSoundTime)
+        {
+            if (!mute)
+            {
+                AudioSource.PlayOneShot(Running);
+                runningSoundTime = Time.time + Running.length;
+            }
+        }
         if (fast)
         {
+            AudioSource.pitch = 1.2f;
 
             transform.position = Vector2.MoveTowards(transform.position, FastPoint.transform.position, speed * Time.deltaTime);
         }
         else
         {
+            AudioSource.pitch = 1f;
             if (!speedChange ) {
                 i= Random.Range(0, 2);
                 speedChange = true;
