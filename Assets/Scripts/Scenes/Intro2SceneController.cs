@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Intro2SceneController : MonoBehaviour
 {
+    public bool mute;
+    public AudioClip planeFlying;
+    public AudioClip planeBreaks;
+    float repeatPlaneSound;
+    AudioSource audioSourcePlane;
+
+
 
     public GameObject player;
     public GameObject playerFalling;
@@ -52,6 +59,7 @@ public class Intro2SceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSourcePlane = planeObject.GetComponent<AudioSource>();
         SkipBox.text = "Press " + GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         playerOnPlane();
         DialogText.text = "";
@@ -65,9 +73,18 @@ public class Intro2SceneController : MonoBehaviour
     {
         if (!move)
         {
-            planeSpeed = planeSpeed - (slowing*Time.deltaTime);
-            if (planeSpeed < 0) {
+
+            planeSpeed = planeSpeed - (slowing * Time.deltaTime);
+            if (planeSpeed < 0)
+            {
                 planeSpeed = 0;
+            }
+        }
+        else {
+            if (!mute && Time.time > repeatPlaneSound)
+            {
+                repeatPlaneSound = Time.time + planeFlying.length;
+                audioSourcePlane.PlayOneShot(planeFlying);
             }
         }
             planeObject.transform.position =
@@ -105,6 +122,9 @@ public class Intro2SceneController : MonoBehaviour
                         {
                             sceneNumber = 2;
                             move = false;
+                            if (!mute) {
+                                audioSourcePlane.PlayOneShot(planeBreaks);
+                            }
                             planeObject.transform.Find("PlaneBody").GetComponent<Animator>().enabled = false;
                             playerLooking();
                             newLineTime = Time.time + newLineDelay;

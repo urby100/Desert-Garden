@@ -6,6 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class AfterBossSceneController : MonoBehaviour
 {
+
+    public bool mute;
+    public AudioClip walkingSound;
+    public AudioClip rocketSound;
+    public AudioClip waterSound;
+    public AudioClip explosionSound;
+    bool waterOnce = false;
+    AudioSource audioSourcePlayer;
+    float playerWalkingRepeatTime;
+    AudioSource audioSourceScientist;
+    float scientistWalkingRepeatTime;
+    AudioSource audioSourceRocket;
+    float rocketRepeatTime;
+    AudioSource audioSourceEffects;
+
+
     public GameObject explosionEffects;
     public GameObject abilitySpawnPoint;
     public GameObject nuke;
@@ -48,6 +64,11 @@ public class AfterBossSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSourcePlayer = player.GetComponent<AudioSource>();
+        audioSourceScientist = scientist2.GetComponent<AudioSource>();
+        audioSourceRocket = nuke.GetComponent<AudioSource>();
+        audioSourceEffects = explosionEffects.GetComponent<AudioSource>();
+
         TurnOffExplosionEffects();
         originalPos = camTransform.position;
         scientist2.transform.position = scientist2points[0].transform.position;
@@ -109,6 +130,12 @@ public class AfterBossSceneController : MonoBehaviour
                     player.transform.position =
                         Vector3.MoveTowards(player.transform.position, playerpoints[1].transform.position, moveSpeed * Time.deltaTime);
                     playerwalking();
+
+                    if (!mute && Time.time > playerWalkingRepeatTime)
+                    {
+                        audioSourcePlayer.PlayOneShot(walkingSound);
+                        playerWalkingRepeatTime = Time.time + walkingSound.length;
+                    }
                 }
                 else
                 {
@@ -128,6 +155,11 @@ public class AfterBossSceneController : MonoBehaviour
                     // walking animation
                     Scientist2walking();
                     //
+                    if (!mute && Time.time > scientistWalkingRepeatTime)
+                    {
+                        audioSourceScientist.PlayOneShot(walkingSound);
+                        scientistWalkingRepeatTime = Time.time + walkingSound.length;
+                    }
                 }
                 else
                 {
@@ -158,7 +190,11 @@ public class AfterBossSceneController : MonoBehaviour
                 }
                 float step = nukeSpeed * Time.deltaTime;
                 nuke.transform.position = Vector2.MoveTowards(nuke.transform.position, nukeGoal.transform.position, step);
-
+                if (!mute && Time.time > rocketRepeatTime)
+                {
+                    audioSourceRocket.PlayOneShot(rocketSound);
+                    rocketRepeatTime = Time.time + rocketSound.length;
+                }
                 if (nuke.transform.position.x == nukeGoal.transform.position.x)
                 {
                     Destroy(nuke);
@@ -324,6 +360,10 @@ public class AfterBossSceneController : MonoBehaviour
 
                 if (Time.time <= useAbilityStart)
                 {
+                    if (!waterOnce) {
+                        audioSourcePlayer.PlayOneShot(waterSound);
+                        waterOnce = true;
+                    }
                     GameObject projectile = Instantiate(projectilePrefab, abilitySpawnPoint.transform.position, new Quaternion());
                     projectile.name = "WaterProjectile";
                     projectile.GetComponent<WaterProjectile>().direction = 1;
@@ -380,8 +420,13 @@ public class AfterBossSceneController : MonoBehaviour
             camTransform.localPosition = originalPos;
         }
     }
+    bool explodeOnce = false;
     void Explosion()
     {
+        if (!explodeOnce) {
+            audioSourceEffects.PlayOneShot(explosionSound);
+            explodeOnce = true;
+        }
         ShakeEffect();
         
     }

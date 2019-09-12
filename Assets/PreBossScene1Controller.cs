@@ -6,6 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class PreBossScene1Controller : MonoBehaviour
 {
+
+    public bool mute;
+    public AudioClip walkingSound;
+    public AudioClip explosionSound;
+
+    AudioSource audioSourcePlayer;
+    float playerWalkingRepeatTime;
+    AudioSource audioSourceCopilot;
+    float copilotWalkingRepeatTime;
+    AudioSource audioSourceScientist;
+    float scientistWalkingRepeatTime;
+    AudioSource audioSourceExplosion;
+
+
+
     public GameObject explosionGameObject;
     List<ParticleSystem>[] particles=new List<ParticleSystem>[3];
     public Transform camTransform;
@@ -68,7 +83,11 @@ public class PreBossScene1Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSourcePlayer=player.GetComponent<AudioSource>();
+        audioSourceCopilot = copilot.GetComponent<AudioSource>();
+        audioSourceScientist = scientist1.GetComponent<AudioSource>();
+        audioSourceExplosion = explosionGameObject.GetComponent<AudioSource>();
+
         particles[0] = new List<ParticleSystem>();
         particles[1] = new List<ParticleSystem>();
         particles[2] = new List<ParticleSystem>();
@@ -113,6 +132,11 @@ public class PreBossScene1Controller : MonoBehaviour
                     // walking animation
                     playerwalking();
                     //
+                    if (!mute && Time.time > playerWalkingRepeatTime) {
+                        audioSourcePlayer.PlayOneShot(walkingSound);
+                        playerWalkingRepeatTime = Time.time + walkingSound.length;
+                    }
+
                 }
                 else
                 {
@@ -129,6 +153,11 @@ public class PreBossScene1Controller : MonoBehaviour
                     // walking animation
                     copilotwalking();
                     //
+                    if (!mute && Time.time > copilotWalkingRepeatTime)
+                    {
+                        audioSourceCopilot.PlayOneShot(walkingSound);
+                        copilotWalkingRepeatTime = Time.time + walkingSound.length;
+                    }
                 }
                 else
                 {
@@ -227,6 +256,12 @@ public class PreBossScene1Controller : MonoBehaviour
                                         scientist1points[1].transform.position, scientistSpeed * Time.deltaTime);
                         // walking animation
                         Scientist1walking();
+
+                        if (!mute && Time.time > scientistWalkingRepeatTime)
+                        {
+                            audioSourceScientist.PlayOneShot(walkingSound);
+                            scientistWalkingRepeatTime = Time.time + walkingSound.length;
+                        }
                     }
                     else {
                         Scientist1standing();
@@ -246,6 +281,11 @@ public class PreBossScene1Controller : MonoBehaviour
                                 scientist1points[1].transform.position, scientistSpeed * Time.deltaTime);
                 // walking animation
                 Scientist1walking();
+                if (!mute && Time.time > scientistWalkingRepeatTime)
+                {
+                    audioSourceScientist.PlayOneShot(walkingSound);
+                    scientistWalkingRepeatTime = Time.time + walkingSound.length;
+                }
                 if (scientist1.transform.position == scientist1points[1].transform.position) {
                     sceneNumber++;
                     DialogText.text = alpha + pilotsTalk[iterator2];
@@ -353,6 +393,11 @@ public class PreBossScene1Controller : MonoBehaviour
                             copilot.GetComponent<Rigidbody2D>().velocity = new Vector2(-movementSpeed, copilot.GetComponent<Rigidbody2D>().velocity.y);
                             // walking animation
                             copilotwalking();
+                            if (!mute && Time.time > copilotWalkingRepeatTime)
+                            {
+                                audioSourceCopilot.PlayOneShot(walkingSound);
+                                copilotWalkingRepeatTime = Time.time + walkingSound.length;
+                            }
                         }
                     }
                 }
@@ -365,6 +410,11 @@ public class PreBossScene1Controller : MonoBehaviour
                     // walking animation
                     copilotwalking();
                     //
+                    if (!mute && Time.time > copilotWalkingRepeatTime)
+                    {
+                        audioSourceCopilot.PlayOneShot(walkingSound);
+                        copilotWalkingRepeatTime = Time.time + walkingSound.length;
+                    }
                 }
                 else
                 {
@@ -380,6 +430,11 @@ public class PreBossScene1Controller : MonoBehaviour
                     // walking animation
                     playerwalking();
                     //
+                    if (!mute && Time.time > playerWalkingRepeatTime)
+                    {
+                        audioSourcePlayer.PlayOneShot(walkingSound);
+                        playerWalkingRepeatTime = Time.time + walkingSound.length;
+                    }
                 }
                 else
                 {
@@ -416,6 +471,7 @@ public class PreBossScene1Controller : MonoBehaviour
     {
         ShakeEffect();
         if (!effectOnce) {
+            audioSourceExplosion.PlayOneShot(explosionSound);
             foreach (ParticleSystem myParticleSystem in particles[explosionCounter]) {
                 myParticleSystem.time = 0;
                 myParticleSystem.Play();

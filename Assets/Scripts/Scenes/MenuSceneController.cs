@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class MenuSceneController : MonoBehaviour
 {
+    public bool mute;
+    public AudioClip show;
+    public AudioClip hide;
+
     public GameObject planeObject;
+    AudioSource audioSourcePlane;
+    public AudioClip planeFlying;
+    float repeatSoundPlaneFlying;
+
     public GameObject scientistsObject;
     public List<GameObject> planepoints = new List<GameObject>();
     float planeChangeDirectionTime;
@@ -22,9 +30,9 @@ public class MenuSceneController : MonoBehaviour
     public List<GameObject> cactusList = new List<GameObject>();
     float cactusDontShowTime;
     float cactusShowAliveTime;
-    float cactusDontShow=1f;
+    float cactusDontShow = 1f;
     float cactusShowAlive = 5f;
-    bool cactusShow=false;
+    bool cactusShow = false;
     int cactusIndex;
     GameObject cactus;
 
@@ -35,32 +43,35 @@ public class MenuSceneController : MonoBehaviour
         pointsIterator = 0;
         numberOfPoints = planepoints.Count - 1;
         addedHeightVector = new Vector3(0, 0, 0);
+        audioSourcePlane = planeObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!cactusShow && Time.time> cactusDontShowTime) {
+        if (!cactusShow && Time.time > cactusDontShowTime)
+        {
             cactusShow = true;
             cactusIndex = Random.Range(0, cactusList.Count - 1);
-            cactus = Instantiate(cactusList[cactusIndex], new Vector3(Random.Range(cactusSpawnPoints[0].transform.position.x, 
+            cactus = Instantiate(cactusList[cactusIndex], new Vector3(Random.Range(cactusSpawnPoints[0].transform.position.x,
                                                                                 cactusSpawnPoints[1].transform.position.x),
-                                                                                cactusSpawnPoints[0].transform.position.y, 1), 
+                                                                                cactusSpawnPoints[0].transform.position.y, 1),
                                                                                 Quaternion.identity);
             cactus.GetComponent<CactusPopUpScript>().scientists = scientistsObject;
+            cactus.GetComponent<CactusPopUpScript>().mute = mute;
+            cactus.GetComponent<CactusPopUpScript>().show = show;
+            cactus.GetComponent<CactusPopUpScript>().hide = hide;
+
             scientistsObject.GetComponent<MenuScientists>().cactus = cactus;
             cactusShowAliveTime = Time.time + cactusShowAlive;
         }
-        if (cactusShow && Time.time > cactusShowAliveTime )
+        if (cactusShow && Time.time > cactusShowAliveTime)
         {
             cactusShow = false;
+            scientistsObject.GetComponent<MenuScientists>().cactus = null;
             cactus.GetComponent<CactusPopUpScript>().direction = false;
             cactusDontShowTime = Time.time + cactusDontShow;
         }
-        if (cactus != null) {
-            //obrni proti scientistoma
-        }
-        //dodaj scientista, ki se sprehodita do kaktusa in mu malo pomahata
         if (direction == 1)
         {
             planeObject.transform.rotation = new Quaternion(0, 180, 0, 0);
@@ -69,19 +80,27 @@ public class MenuSceneController : MonoBehaviour
         {
             planeObject.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
-        if (Time.time > planeChangeDirectionTime && changeDirection) {
+        if (Time.time > planeChangeDirectionTime && changeDirection)
+        {
             changeDirection = false;
         }
         if (Vector2.Distance(planeObject.transform.position, planepoints[pointsIterator].transform.position + addedHeightVector) > 0.5f)
         {
-            if (!changeDirection) {
-                planeObject.transform.position = Vector2.MoveTowards(planeObject.transform.position, planepoints[pointsIterator].transform.position+ addedHeightVector, planeSpeed * Time.deltaTime);
+            if (!changeDirection)
+            {
+                if (!mute && Time.time> repeatSoundPlaneFlying)
+                {
+                    repeatSoundPlaneFlying = Time.time + planeFlying.length;
+                    audioSourcePlane.PlayOneShot(planeFlying);
+                }
+                planeObject.transform.position = Vector2.MoveTowards(planeObject.transform.position, planepoints[pointsIterator].transform.position + addedHeightVector, planeSpeed * Time.deltaTime);
 
             }
         }
         else
         {
-            if (!changeDirection) {
+            if (!changeDirection)
+            {
                 planeObject.transform.position = planepoints[pointsIterator].transform.position;
                 pointsIterator = pointsIterator + direction;
                 if (pointsIterator >= numberOfPoints)
@@ -97,7 +116,7 @@ public class MenuSceneController : MonoBehaviour
                 changeDirection = true;
                 planeChangeDirectionTime = Time.time + planeChangeDirectionDelay;
                 addedHeightVector = new Vector3(0, Random.Range(0, addedHeight), 0);
-                planeObject.transform.position = planeObject.transform.position+addedHeightVector;
+                planeObject.transform.position = planeObject.transform.position + addedHeightVector;
             }
         }
     }

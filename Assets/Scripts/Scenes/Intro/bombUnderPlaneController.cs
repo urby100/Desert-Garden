@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class bombUnderPlaneController : MonoBehaviour
 {
+    public bool mute;
+    public AudioClip boomSound;
+    AudioSource audioSource;
+
     public GameObject airplane;
     public List<Sprite> bombSprites;
     public GameObject signStage1;
@@ -15,15 +19,25 @@ public class bombUnderPlaneController : MonoBehaviour
     SpriteRenderer bomb;
     bool screwdriverHitBomb = false;
     float timeExplode;
+    bool explodeOnce = false;
     public float explodeDelay = 2f;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         TurnOffExplosionEffects();
         bomb = gameObject.GetComponent<SpriteRenderer>();
     }
     void TurnOnExplosionEffects()
     {
+        if (explodeOnce)
+        {
+            return;
+        }
+        else {
+            explodeOnce = true;
+        }
+        audioSource.PlayOneShot(boomSound);
         foreach (Transform t in explosionEffects.transform)
         {
             t.gameObject.GetComponent<ParticleSystem>().Play();
@@ -69,7 +83,9 @@ public class bombUnderPlaneController : MonoBehaviour
             copilotOnPlane.GetComponent<copilotOnPlaneController>().DialogText.gameObject.SetActive(false);
             airplane.GetComponent<AirplaneController>().shoot = true;
             TurnOnExplosionEffects();
-            gameObject.SetActive(false);
+            gameObject.GetComponent<SpriteRenderer>().sprite=null;
+            gameObject.GetComponent<PolygonCollider2D>().enabled=false;
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

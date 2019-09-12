@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class MenuScientists : MonoBehaviour
 {
+    public bool mute;
+    public AudioClip walking;
+    float walkingRepeatTime;
+
+    AudioSource audioSource1;
+    AudioSource audioSource2;
+
     public GameObject scientist1;
     public GameObject scientist2;
     public GameObject cactus;
@@ -17,6 +24,8 @@ public class MenuScientists : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource1 = scientist1.GetComponent<AudioSource>();
+        audioSource2 = scientist2.GetComponent<AudioSource>();
 
     }
 
@@ -75,6 +84,12 @@ public class MenuScientists : MonoBehaviour
         }
         else
         {
+            if (!mute && Time.time > walkingRepeatTime) {
+                audioSource1.PlayOneShot(walking);
+                audioSource2.PlayOneShot(walking);
+                walkingRepeatTime = Time.time + walking.length;
+            }
+
             Scientist1walking();
             Scientist2walking();
         }

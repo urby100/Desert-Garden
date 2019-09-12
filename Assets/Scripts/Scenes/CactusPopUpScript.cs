@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class CactusPopUpScript : MonoBehaviour
 {
+    AudioSource audioSource;
+    public bool mute;
+    public AudioClip show;
+    public AudioClip hide;
+
+    bool showOnce;
+    bool hideOnce;
+
+
     GameObject popEffect;
     bool effect = false;
     GameObject child;
@@ -18,6 +27,7 @@ public class CactusPopUpScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         popEffect = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LandEffect.prefab", typeof(GameObject));
         child =this.gameObject.transform.GetChild(0).gameObject;
         
@@ -26,7 +36,7 @@ public class CactusPopUpScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (gameObject.transform.position.x > scientists.transform.position.x)
         {
@@ -38,6 +48,10 @@ public class CactusPopUpScript : MonoBehaviour
         }
         if (direction)
         {
+            if (!showOnce && !mute) {
+                audioSource.PlayOneShot(show);
+                showOnce = true;
+            }
             if (!effect)
             {
                 var em = popEffect.GetComponent<ParticleSystem>().emission;
@@ -59,6 +73,11 @@ public class CactusPopUpScript : MonoBehaviour
         }
         else
         {
+            if (!hideOnce && !mute)
+            {
+                audioSource.PlayOneShot(hide);
+                hideOnce = true;
+            }
             effect = false;
             child.transform.position = Vector3.SmoothDamp(child.transform.position,
                                                                 targetDown,
@@ -67,7 +86,7 @@ public class CactusPopUpScript : MonoBehaviour
 
         }
         if (!direction && child.transform.position == targetDown) {
-            Destroy(gameObject);
+            Destroy(gameObject,hide.length);
         }
     }
 }

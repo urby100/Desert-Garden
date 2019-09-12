@@ -6,14 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class StoryScene : MonoBehaviour
 {
+    public bool mute;
+    public AudioClip walking;
+    public AudioClip planeMoving;
+
+
     public GameObject scientist1;
+    AudioSource audioSourceScientist1;
     public List<GameObject> scientist1points;
     public GameObject scientist2;
+    AudioSource audioSourceScientist2;
     public List<GameObject> scientist2points;
     float scientistSpeed = 1.5f;
     public GameObject player;
+    AudioSource audioSourcePlayer;
     public List<GameObject> playerpoints;
     public GameObject copilot;
+    AudioSource audioSourceCopilot;
     public List<GameObject> copilotpoints;
     float sceneNumber = 1;
     public float movementSpeed = 4f;
@@ -22,6 +31,7 @@ public class StoryScene : MonoBehaviour
     public GameObject playerSitting;
     public GameObject copilotSitting;
     public GameObject planeObject;
+    AudioSource audioSourcePlane;
     public List<GameObject> planepoints;
     float planeSpeed = 2f;
 
@@ -49,6 +59,12 @@ public class StoryScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSourceCopilot = copilot.GetComponent<AudioSource>();
+        audioSourcePlayer = player.GetComponent<AudioSource>();
+        audioSourcePlane = planeObject.GetComponent<AudioSource>();
+        audioSourceScientist1 = scientist1.GetComponent<AudioSource>();
+        audioSourceScientist2 = scientist2.GetComponent<AudioSource>();
+
         skipBox.text = "Press "+ GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         scientist1.transform.position = scientist1points[0].transform.position;
         scientist2.transform.position = scientist2points[0].transform.position;
@@ -77,7 +93,9 @@ public class StoryScene : MonoBehaviour
                 {
                     move = playerpoints[1].transform.position - player.transform.position;
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
-
+                    if (!mute && !audioSourcePlayer.isPlaying) {
+                        audioSourcePlayer.PlayOneShot(walking);
+                    }
                     // walking animation
                     playerwalking();
                     //
@@ -91,6 +109,10 @@ public class StoryScene : MonoBehaviour
                 }
                 if (copilot.transform.position.x < copilotpoints[1].transform.position.x)
                 {
+                    if (!mute && !audioSourceCopilot.isPlaying)
+                    {
+                        audioSourceCopilot.PlayOneShot(walking);
+                    }
                     move = copilotpoints[1].transform.position - copilot.transform.position;
                     copilot.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * movementSpeed, copilot.GetComponent<Rigidbody2D>().velocity.y);
 
@@ -145,7 +167,10 @@ public class StoryScene : MonoBehaviour
                 {
                     move = playerpoints[2].transform.position - player.transform.position;
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
-
+                    if (!mute && !audioSourcePlayer.isPlaying)
+                    {
+                        audioSourcePlayer.PlayOneShot(walking);
+                    }
                     // walking animation
                     playerwalking();
                     //
@@ -157,6 +182,10 @@ public class StoryScene : MonoBehaviour
                 }
                 if (copilot.transform.position.x < copilotpoints[2].transform.position.x)
                 {
+                    if (!mute && !audioSourceCopilot.isPlaying)
+                    {
+                        audioSourceCopilot.PlayOneShot(walking);
+                    }
                     move = copilotpoints[2].transform.position - copilot.transform.position;
                     copilot.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * movementSpeed, copilot.GetComponent<Rigidbody2D>().velocity.y);
 
@@ -180,7 +209,10 @@ public class StoryScene : MonoBehaviour
                 skipBox.gameObject.SetActive(false);
                 planeObject.transform.position =
                     Vector3.MoveTowards(planeObject.transform.position, planepoints[1].transform.position, planeSpeed * Time.deltaTime);
-
+                if (!mute && !audioSourcePlane.isPlaying)
+                {
+                    audioSourcePlane.PlayOneShot(planeMoving);
+                }
                 if (planeObject.transform.position.x == planepoints[1].transform.position.x)
                 {
                     sceneNumber = 5;
@@ -195,7 +227,15 @@ public class StoryScene : MonoBehaviour
             case 5://scientist walk and talk back to base
                    //scientist walk animation
                 Scientist1walking();
+                if (!mute && !audioSourceScientist1.isPlaying)
+                {
+                    audioSourceScientist1.PlayOneShot(walking);
+                }
                 Scientist2walking();
+                if (!mute && !audioSourceScientist2.isPlaying)
+                {
+                    audioSourceScientist2.PlayOneShot(walking);
+                }
                 //
                 DialogText.gameObject.SetActive(true);
                 skipBox.gameObject.SetActive(true);
