@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class SampleSceneEndController : MonoBehaviour
 {
+    public bool mute;
+
+    public AudioClip walking;
+
+    AudioSource audioSourcePlayer;
+    float repeatSound;
+    AudioSource audioSourceCopilot;
+
     public GameObject player;
     public List<GameObject> playerpoints;
     public GameObject copilot;
@@ -35,6 +43,9 @@ public class SampleSceneEndController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSourcePlayer = player.GetComponent<AudioSource>();
+        audioSourceCopilot = copilot.GetComponent<AudioSource>();
+
         skipBox.text = "Press " + GetComponent<Keybindings>().attack1.ToString() + " to skip.";
 
         player.transform.position = playerpoints[0].transform.position;
@@ -55,7 +66,11 @@ public class SampleSceneEndController : MonoBehaviour
         move = copilotpoints[1].transform.position - copilot.transform.position;
         copilot.GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, copilot.GetComponent<Rigidbody2D>().velocity.y);
         copilotwalking();
-
+        if (Time.time > repeatSound) {
+            repeatSound = Time.time + walking.length;
+            audioSourceCopilot.PlayOneShot(walking);
+            audioSourcePlayer.PlayOneShot(walking);
+        }
         DialogText.gameObject.SetActive(true);
         skipBox.gameObject.SetActive(true);
         if (Input.GetKeyDown(GetComponent<Keybindings>().attack1))

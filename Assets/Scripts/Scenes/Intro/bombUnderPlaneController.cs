@@ -79,7 +79,10 @@ public class bombUnderPlaneController : MonoBehaviour
             }
         }
         if (Time.time > timeExplode && screwdriverHitBomb) {
-            screwdriver.GetComponent<ScrewdriverController>().goToSign = true;
+            if (screwdriver)
+            {
+                screwdriver.GetComponent<ScrewdriverController>().goToSign = true;
+            }
             copilotOnPlane.GetComponent<copilotOnPlaneController>().DialogText.gameObject.SetActive(false);
             airplane.GetComponent<AirplaneController>().shoot = true;
             TurnOnExplosionEffects();

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3570321711927314243}
   - component: {fileID: 1176392806339462201}
   - component: {fileID: 4554922869777105859}
+  - component: {fileID: 6400672595668713851}
   m_Layer: 0
   m_Name: LittleSteve
   m_TagString: Untagged
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a406d6d4f8af040899418a8296b7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mute: 1
+  mute: 0
   Land: {fileID: 8300000, guid: 6e21bd7c656a97447ba785d11f422e1e, type: 3}
   Jump: {fileID: 8300000, guid: 89eb2034d9712584a90119d116c4d777, type: 3}
   Running: {fileID: 8300000, guid: 6497e43958420144eadd662140adf921, type: 3}
@@ -307,3 +308,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6400672595668713851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6094283689984107388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ca78d0384b17e4fb401b94ee5b2973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
