@@ -3813,7 +3813,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 750bb277ab6f91046ad2af455332fa83, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5831,6 +5831,8 @@ MonoBehaviour:
   hide: {fileID: 8300000, guid: d29d8154bc5e8524daa74c929d541905, type: 3}
   planeObject: {fileID: 1899460753614762680}
   planeFlying: {fileID: 8300000, guid: baefcceff7bb7274f90e566d193db329, type: 3}
+  popEffect: {fileID: 6278638808430738844, guid: e71616cde35391545b8ed7c6ce486815,
+    type: 3}
   scientistsObject: {fileID: 1810615489}
   planepoints:
   - {fileID: 1125278563}
@@ -5967,7 +5969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mute: 0
-  walking: {fileID: 8300000, guid: fed51cffcd1e0ea41ab9d5ad8d99d897, type: 3}
+  walking: {fileID: 8300000, guid: 97e07d5cbbd054b4ab8dd6e22319a579, type: 3}
   scientist1: {fileID: 4424843500230558866}
   scientist2: {fileID: 4087868958864325339}
   cactus: {fileID: 0}

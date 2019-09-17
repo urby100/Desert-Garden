@@ -2606,7 +2606,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -605463727
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 82
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -2646,7 +2646,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -7383,7 +7383,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -605463727
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 82
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -7423,7 +7423,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -13011,7 +13011,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.45, y: 2.5, z: -8.08}
+  m_LocalPosition: {x: 2.6399994, y: 2.5, z: -8.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5847854084056648536}
@@ -14350,7 +14350,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -605463727
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 82
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -14390,7 +14390,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -19171,7 +19171,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -605463727
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 82
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -19211,7 +19211,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -24988,7 +24988,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -605463727
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 82
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -25028,7 +25028,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -29720,7 +29720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986637597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.68, y: 0.5, z: 0}
+  m_LocalPosition: {x: 3.87, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1652511845}
@@ -29866,11 +29866,7 @@ MonoBehaviour:
   pointsSpawn: {fileID: 1652511844}
   projectilePrefab: {fileID: 3861830825425696971, guid: 172d026921866b746820bab77ac3a81a,
     type: 3}
-  projectileList:
-  - {fileID: 7161238743592170192, guid: cba20a5aacceeb842aff84c1ed54e73b, type: 3}
-  - {fileID: 8486696251959087257, guid: 8018cf2e5495e4f49b1b56b2ee47326b, type: 3}
-  - {fileID: 8407183107955072605, guid: bae6fbeef35d94f48840a2844cc29e3f, type: 3}
-  - {fileID: 6094283689984107388, guid: 23805dfa524757744a3060bdf4ab4434, type: 3}
+  projectileList: []
   useWater: 0
   useAbility: 0
   canUseWater: 1
@@ -30299,7 +30295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033081087}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.84, y: -0.77, z: -9.849609}
+  m_LocalPosition: {x: 1.84, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 731713578}
@@ -33967,7 +33963,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -605463727
   m_SortingLayer: 6
-  m_SortingOrder: 34
+  m_SortingOrder: 82
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -34007,7 +34003,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
