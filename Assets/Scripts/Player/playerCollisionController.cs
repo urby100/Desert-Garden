@@ -14,7 +14,6 @@ public class playerCollisionController : MonoBehaviour
         sceneName = SceneManager.GetActiveScene().name;
 
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -36,28 +35,6 @@ public class playerCollisionController : MonoBehaviour
             Destroy(particle, 0.4f);
         }
         prev_vel = gameObject.GetComponent<Rigidbody2D>().velocity.y;
-        //walking effect
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 && gameObject.GetComponent<Rigidbody2D>().velocity.y == 0)
-        {/*
-            var em = landEffect.GetComponent<ParticleSystem>().emission;
-            em.rateOverTime = 25;
-            var gm = landEffect.GetComponent<ParticleSystem>().main.gravityModifier;
-            gm.constant = 0.5f;
-            var sh = landEffect.GetComponent<ParticleSystem>().shape;
-            sh.shapeType = ParticleSystemShapeType.Cone;
-            GameObject particle = Instantiate(landEffect, gameObject.transform.position+new Vector3(0,-0.5f,0), gameObject.transform.rotation);
-            particle.name = "MoveEffectGuy";
-            Destroy(particle, 0.4f);*/
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        /*
-        if (collision.gameObject.name == "BossLittleSteve")
-        {
-            GetComponent<Move>().hurtRequest = true;
-
-        }*/
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

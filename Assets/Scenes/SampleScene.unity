@@ -24009,9 +24009,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782584774}
-  - component: {fileID: 782584775}
   - component: {fileID: 782584777}
   - component: {fileID: 782584776}
+  - component: {fileID: 782584775}
   m_Layer: 11
   m_Name: Chameleon
   m_TagString: Untagged
@@ -33312,7 +33312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChameleonGameObject: {fileID: 782584773}
-  playerObject: {fileID: 986637597}
   NeutralBool: 0
   showAnim: 0
   attackAnim: 0

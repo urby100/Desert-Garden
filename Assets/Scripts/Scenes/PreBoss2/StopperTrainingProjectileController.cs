@@ -5,7 +5,6 @@ using UnityEngine;
 public class StopperTrainingProjectileController : MonoBehaviour
 {
     public float globalDirection = -1;
-    float revSpeed = 360f;
     float[,] throwingPower = new float[,] {
         { 1.5f, 6 },
         { 2, 5 },
@@ -19,9 +18,9 @@ public class StopperTrainingProjectileController : MonoBehaviour
     {
         int i = Random.Range(0, throwingPower.GetLength(0));
         //* 0.8f scaling ...
-        
-        GetComponent<Rigidbody2D>().AddForce(globalDirection * Vector2.right * throwingPower[i,0]*0.8f, ForceMode2D.Impulse);
-        GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwingPower[i, 1] *0.9f, ForceMode2D.Impulse);
+
+        GetComponent<Rigidbody2D>().AddForce(globalDirection * Vector2.right * throwingPower[i, 0] * 0.8f, ForceMode2D.Impulse);
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * throwingPower[i, 1] * 0.9f, ForceMode2D.Impulse);
         GetComponent<Rigidbody2D>().AddTorque(-3, ForceMode2D.Force);
     }
 
@@ -29,11 +28,12 @@ public class StopperTrainingProjectileController : MonoBehaviour
     void FixedUpdate()
     {
 
-       // GetComponent<Rigidbody2D>().MoveRotation(GetComponent<Rigidbody2D>().rotation + revSpeed * Time.fixedDeltaTime);
+        // GetComponent<Rigidbody2D>().MoveRotation(GetComponent<Rigidbody2D>().rotation + revSpeed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Ground Collider Top") {
+        if (collision.gameObject.name == "Ground Collider Top")
+        {
             Destroy(gameObject);
         }
     }

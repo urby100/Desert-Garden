@@ -46,7 +46,5 @@ public class ChameleonController : MonoBehaviour
             attack = true;
             attackTime = Time.time + attackSpeed;
         }
-
-
     }
 }

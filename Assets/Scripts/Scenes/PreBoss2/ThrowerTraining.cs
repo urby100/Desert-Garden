@@ -16,9 +16,6 @@ public class ThrowerTraining : MonoBehaviour
     Animator animator;
 
     bool attack = false;
-    bool catchAnim = false;
-    float catchDelay = 0.1f;
-    float catchTime;
     public bool wait = false;
 
     float attackSpeedMin = 0.75f;

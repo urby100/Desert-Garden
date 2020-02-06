@@ -8,13 +8,9 @@ public class GreenPotionPuddleScript : MonoBehaviour
     public GameObject puddleObject;
     float decreaseTime;
     float decreaseRate = 1f;
-    public bool increaseSize = false;
     float sizeIncrement = 0.2f;
     float minSize = 0.2f;
     float maxSize = 2f;
-    float destroyTime;
-    float destroyDelay = 2f;
-    bool destroy = false;
     // Start is called before the first frame update
     void Start()
     {

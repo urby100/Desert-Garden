@@ -15,7 +15,6 @@ public class Treadmill : MonoBehaviour
 
     public bool fast = false;
     bool setFast = false;
-    float speed = 0.1f;
     
     Animator animator;
     

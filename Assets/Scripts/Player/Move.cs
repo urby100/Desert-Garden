@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class Move : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -16,9 +15,6 @@ public class Move : MonoBehaviour
     public bool hurtRequest;
     public bool sceneDontMoveRequest;
     public bool invincible = false;
-    float xPosition;
-
-
     public float movementSpeed = 6f;
     public float jumpVelocity = 7f;
     public float fallMultiplier = 10f;
@@ -26,7 +22,6 @@ public class Move : MonoBehaviour
     public float gravity = 1f;
     float jumpCounter = 0f;
     int maxJumps = 1;
-    
 
     void Awake()
     {
@@ -41,10 +36,11 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
-       
         if (tiredRequest)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector3(transform.position.x,FindClosesGround().position.y+1f,transform.position.z), 6*Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position,
+                                                    new Vector3(transform.position.x, FindClosesGround().position.y + 1f, transform.position.z),
+                                                    6 * Time.deltaTime);
             return;
         }
     }
@@ -68,20 +64,6 @@ public class Move : MonoBehaviour
 
     void FixedUpdate()
     {
-        /* if (Input.GetKeyDown(KeyCode.T)) {
-            Time.timeScale = Time.timeScale+0.1f;
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Time.timeScale = Time.timeScale-0.1f;
-        }
-        if (Input.GetKey(KeyCode.Y))
-        {
-            tiredRequest = true;
-        }else if (Input.GetKey(KeyCode.X))
-        {
-            tiredRequest = false;
-        }*/
         if (Input.GetKey(kb.jump))
         {
             jumpCounter++;
@@ -110,7 +92,7 @@ public class Move : MonoBehaviour
         {
             rb.gravityScale = fallMultiplier;
         }
-        else if (rb.velocity.y > 0 && !(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))//normal jump
+        else if (rb.velocity.y > 0 && !Input.GetKey(kb.jump))//normal jump
         {
             rb.gravityScale = lowJumpMultiplier;
         }
@@ -118,7 +100,7 @@ public class Move : MonoBehaviour
         {
             rb.gravityScale = gravity;
         }
-        if (tiredRequest || hurtRequest || sceneDontMoveRequest)//če je umrl ali bil zadet ali je v sceni
+        if (tiredRequest || hurtRequest || sceneDontMoveRequest)
         {
             moveInput = 0;
         }
@@ -130,30 +112,21 @@ public class Move : MonoBehaviour
         {
             transform.rotation = new Quaternion(0, 0, 0, 1);
         }
-        if (crouchRequest && rb.velocity.y == 0)//če je na tleh in se hoče skloniti se ne sme premikati...
+        if (crouchRequest && rb.velocity.y == 0)
         {
             moveInput = 0;
         }
         if (sceneDontMoveRequest)
         {
-            if (SceneManager.GetActiveScene().name == "Boss")
-            {
-
-            }
-            else
-            {
-                rb.velocity = Vector2.zero;
-            }
+            rb.velocity = Vector2.zero;
         }
         else
         {
             rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
         }
         //jump
-
         if (tiredRequest || hurtRequest)
         {
-
             return;
         }
         if (jumpRequest && jumpCounter <= maxJumps)
@@ -164,7 +137,6 @@ public class Move : MonoBehaviour
         }
         if (rb.velocity.y == 0)
         {
-
             jumpCounter = 0;
             jumpRequest = false;
         }

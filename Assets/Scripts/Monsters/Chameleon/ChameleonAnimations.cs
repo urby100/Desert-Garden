@@ -5,7 +5,6 @@ using UnityEngine;
 public class ChameleonAnimations : MonoBehaviour
 {
     public GameObject ChameleonGameObject;
-    public GameObject playerObject;
     Animator animator;
     public bool NeutralBool = false;
     public bool showAnim = false;
@@ -19,10 +18,6 @@ public class ChameleonAnimations : MonoBehaviour
     float attackanimtime;
     float showanimtime;
     float hideanimtime;
-    
-
-
-
 
     // Start is called before the first frame update
     void Start()

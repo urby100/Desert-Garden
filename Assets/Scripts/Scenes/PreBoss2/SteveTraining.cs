@@ -6,18 +6,15 @@ public class SteveTraining : MonoBehaviour
 {
     Animator animator;
     public bool fast = false;
-    bool setFast = false;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (fast)
         {
             Fast();

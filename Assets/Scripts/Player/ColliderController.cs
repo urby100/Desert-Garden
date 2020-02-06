@@ -6,12 +6,6 @@ public class ColliderController : MonoBehaviour
 {
     public CapsuleCollider2D upright;
     public CapsuleCollider2D crouching;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -20,9 +14,6 @@ public class ColliderController : MonoBehaviour
             GetComponent<CapsuleCollider2D>().enabled = true;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezeRotation;
-        }
-        if (gameObject.GetComponent<Move>().hurtRequest) {//odstrani collider
-            //iščem idejo
         }
         else if (gameObject.GetComponent<Move>().tiredRequest) {//odstrani collider
             GetComponent<CapsuleCollider2D>().enabled = false;
@@ -35,9 +26,5 @@ public class ColliderController : MonoBehaviour
             upright.enabled = true;
             crouching.enabled = false;
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-       // Debug.Log(collision.gameObject.name);
     }
 }

@@ -9,8 +9,6 @@ public class StoryScene : MonoBehaviour
     public bool mute;
     public AudioClip walking;
     public AudioClip planeMoving;
-
-
     public GameObject scientist1;
     AudioSource audioSourceScientist1;
     public List<GameObject> scientist1points;
@@ -55,7 +53,7 @@ public class StoryScene : MonoBehaviour
     int iterator2 = 0;
     Vector2 move = Vector2.zero;
     float newsceneTime;
-    float newsceneDelay=5f;
+    float newsceneDelay = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +63,7 @@ public class StoryScene : MonoBehaviour
         audioSourceScientist1 = scientist1.GetComponent<AudioSource>();
         audioSourceScientist2 = scientist2.GetComponent<AudioSource>();
 
-        skipBox.text = "Press "+ GetComponent<Keybindings>().attack1.ToString() + " to skip.";
+        skipBox.text = "Press " + GetComponent<Keybindings>().attack1.ToString() + " to skip.";
         scientist1.transform.position = scientist1points[0].transform.position;
         scientist2.transform.position = scientist2points[0].transform.position;
         player.transform.position = playerpoints[0].transform.position;
@@ -93,7 +91,8 @@ public class StoryScene : MonoBehaviour
                 {
                     move = playerpoints[1].transform.position - player.transform.position;
                     player.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * movementSpeed, player.GetComponent<Rigidbody2D>().velocity.y);
-                    if (!mute && !audioSourcePlayer.isPlaying) {
+                    if (!mute && !audioSourcePlayer.isPlaying)
+                    {
                         audioSourcePlayer.PlayOneShot(walking);
                     }
                     // walking animation
@@ -304,7 +303,8 @@ public class StoryScene : MonoBehaviour
         go.transform.Rotate(0, 180, 0, Space.World);
     }
 
-    void Scientist1walking() {
+    void Scientist1walking()
+    {
         scientist1.GetComponent<Animator>().SetBool("walking", true);
         scientist1.GetComponent<Animator>().SetBool("standing", false);
         scientist1.GetComponent<Animator>().SetBool("waving", false);

@@ -22,11 +22,9 @@ public class PreBossScene1Controller : MonoBehaviour
 
 
     public GameObject explosionGameObject;
-    List<ParticleSystem>[] particles=new List<ParticleSystem>[3];
+    List<ParticleSystem>[] particles = new List<ParticleSystem>[3];
     public Transform camTransform;
     bool effectOnce = false;
-    bool shake = false;
-    
     float shakeDuration = 1f;
     float shakeAmount = 0.1f;
     float decreaseFactor = 1.0f;
@@ -83,7 +81,7 @@ public class PreBossScene1Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSourcePlayer=player.GetComponent<AudioSource>();
+        audioSourcePlayer = player.GetComponent<AudioSource>();
         audioSourceCopilot = copilot.GetComponent<AudioSource>();
         audioSourceScientist = scientist1.GetComponent<AudioSource>();
         audioSourceExplosion = explosionGameObject.GetComponent<AudioSource>();
@@ -93,7 +91,8 @@ public class PreBossScene1Controller : MonoBehaviour
         particles[2] = new List<ParticleSystem>();
         foreach (Transform t in explosionGameObject.transform)
         {
-            if (c >= particles.Length) {
+            if (c >= particles.Length)
+            {
                 break;
             }
             GetExplosionParticles(t);
@@ -132,7 +131,8 @@ public class PreBossScene1Controller : MonoBehaviour
                     // walking animation
                     playerwalking();
                     //
-                    if (!mute && Time.time > playerWalkingRepeatTime) {
+                    if (!mute && Time.time > playerWalkingRepeatTime)
+                    {
                         audioSourcePlayer.PlayOneShot(walkingSound);
                         playerWalkingRepeatTime = Time.time + walkingSound.length;
                     }
@@ -203,14 +203,14 @@ public class PreBossScene1Controller : MonoBehaviour
                             exploded = true;
                             effectOnce = false;
                             shakeDuration = 1f;
-                            shakeAmount =0.12f;
+                            shakeAmount = 0.12f;
                             turnObject(scientist1);
                         }
                     }
                 }
                 else
                 {
-                   
+
                     DialogText.gameObject.SetActive(true);
                     skipBox.gameObject.SetActive(true);
                 }
@@ -263,7 +263,8 @@ public class PreBossScene1Controller : MonoBehaviour
                             scientistWalkingRepeatTime = Time.time + walkingSound.length;
                         }
                     }
-                    else {
+                    else
+                    {
                         Scientist1standing();
                     }
                     if (iterator2 == 2 && !explosion && !exploded)
@@ -286,7 +287,8 @@ public class PreBossScene1Controller : MonoBehaviour
                     audioSourceScientist.PlayOneShot(walkingSound);
                     scientistWalkingRepeatTime = Time.time + walkingSound.length;
                 }
-                if (scientist1.transform.position == scientist1points[1].transform.position) {
+                if (scientist1.transform.position == scientist1points[1].transform.position)
+                {
                     sceneNumber++;
                     DialogText.text = alpha + pilotsTalk[iterator2];
                     exploded = false;
@@ -306,7 +308,7 @@ public class PreBossScene1Controller : MonoBehaviour
                 {
                     if (Time.time > waitForExplosion)
                     {
-                        BaseState = 2+explosionCounter;
+                        BaseState = 2 + explosionCounter;
                         if (!turnOnce)
                         {
                             DialogText.gameObject.SetActive(false);
@@ -324,7 +326,7 @@ public class PreBossScene1Controller : MonoBehaviour
                             turnOnce = false;
                             effectOnce = false;
                             shakeDuration = 1f;
-                            shakeAmount =0.14f;
+                            shakeAmount = 0.14f;
                         }
                     }
                 }
@@ -352,12 +354,13 @@ public class PreBossScene1Controller : MonoBehaviour
                     {
                         iterator = 0;
                         iterator2++;
-                        if (iterator2 == 2) {
+                        if (iterator2 == 2)
+                        {
                             exploded = false;
                         }
                         if (iterator2 == pilotsTalk.Count)
                         {
-                            sceneNumber ++;
+                            sceneNumber++;
                         }
                         else
                         {//novi stavek
@@ -384,7 +387,8 @@ public class PreBossScene1Controller : MonoBehaviour
                         }
                         if (iterator2 >= 4 && exploded)
                         {
-                            if (!turnOnce) {
+                            if (!turnOnce)
+                            {
 
                                 turnObject(copilot);
                                 turnOnce = true;
@@ -452,7 +456,7 @@ public class PreBossScene1Controller : MonoBehaviour
     {
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.2f, player.GetComponent<Rigidbody2D>().velocity.y);
         copilot.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.2f, player.GetComponent<Rigidbody2D>().velocity.y);
-        scientist1.transform.position =Vector3.MoveTowards(scientist1.transform.position,
+        scientist1.transform.position = Vector3.MoveTowards(scientist1.transform.position,
                                  scientist1points[1].transform.position, 0.2f * Time.deltaTime);
 
         if (shakeDuration > 0)
@@ -470,9 +474,11 @@ public class PreBossScene1Controller : MonoBehaviour
     void Explosion()
     {
         ShakeEffect();
-        if (!effectOnce) {
+        if (!effectOnce)
+        {
             audioSourceExplosion.PlayOneShot(explosionSound);
-            foreach (ParticleSystem myParticleSystem in particles[explosionCounter]) {
+            foreach (ParticleSystem myParticleSystem in particles[explosionCounter])
+            {
                 myParticleSystem.time = 0;
                 myParticleSystem.Play();
             }
@@ -521,8 +527,9 @@ public class PreBossScene1Controller : MonoBehaviour
     {
         go.transform.Rotate(0, 180, 0, Space.World);
     }
-    void BaseNormal() {
-        BaseAnim.SetBool("Normal",true);
+    void BaseNormal()
+    {
+        BaseAnim.SetBool("Normal", true);
         BaseAnim.SetBool("Explosion 1", false);
         BaseAnim.SetBool("Explosion 2", false);
         BaseAnim.SetBool("Explosion 3", false);
@@ -549,7 +556,8 @@ public class PreBossScene1Controller : MonoBehaviour
         BaseAnim.SetBool("Explosion 2", false);
         BaseAnim.SetBool("Explosion 3", true);
     }
-    void SetBaseAnim() {
+    void SetBaseAnim()
+    {
         switch (BaseState)
         {
             case 1:
@@ -568,7 +576,8 @@ public class PreBossScene1Controller : MonoBehaviour
                 break;
         }
     }
-    void GetExplosionParticles(Transform t) {
+    void GetExplosionParticles(Transform t)
+    {
         foreach (Transform child in t)
         {
             if (child.gameObject.GetComponent<ParticleSystem>())

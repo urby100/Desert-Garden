@@ -11,9 +11,6 @@ public class Intro2SceneController : MonoBehaviour
     public AudioClip planeBreaks;
     float repeatPlaneSound;
     AudioSource audioSourcePlane;
-
-
-
     public GameObject player;
     public GameObject playerFalling;
     public GameObject copilot;
@@ -23,11 +20,8 @@ public class Intro2SceneController : MonoBehaviour
     public List<GameObject> planepoints;
     float planeSpeed = 4f;
     float sceneNumber = 1;
-
     float newsceneTime;
     float newsceneDelay = 5f;
-
-
     List<string> pilotsTalk = new List<string>() {
         "Hey, we're right above the drop zone. Pull the lever to drop the bomb.",
         "Uhhh, boss?",
@@ -40,7 +34,7 @@ public class Intro2SceneController : MonoBehaviour
         "Yeah, that scientist is taking this joke way too far.",
         "Ok, I think this is the right one."
     };
-    string bailOut= "Wrong one. Bail out, Bail out!";
+    string bailOut = "Wrong one. Bail out, Bail out!";
     float mistakeAwareDelay = 2f;
     float mistakeAwareTime;
     string huh = "Huh? ";
@@ -80,15 +74,16 @@ public class Intro2SceneController : MonoBehaviour
                 planeSpeed = 0;
             }
         }
-        else {
+        else
+        {
             if (!mute && Time.time > repeatPlaneSound)
             {
                 repeatPlaneSound = Time.time + planeFlying.length;
                 audioSourcePlane.PlayOneShot(planeFlying);
             }
         }
-            planeObject.transform.position =
-                Vector3.MoveTowards(planeObject.transform.position, planepoints[1].transform.position, planeSpeed * Time.deltaTime);
+        planeObject.transform.position =
+            Vector3.MoveTowards(planeObject.transform.position, planepoints[1].transform.position, planeSpeed * Time.deltaTime);
         switch (sceneNumber)
         {
             case 1:
@@ -122,7 +117,8 @@ public class Intro2SceneController : MonoBehaviour
                         {
                             sceneNumber = 2;
                             move = false;
-                            if (!mute) {
+                            if (!mute)
+                            {
                                 audioSourcePlane.PlayOneShot(planeBreaks);
                             }
                             planeObject.transform.Find("PlaneBody").GetComponent<Animator>().enabled = false;
@@ -187,7 +183,7 @@ public class Intro2SceneController : MonoBehaviour
                     }
                     else
                     {
-                        if (iterator < huh.Length )
+                        if (iterator < huh.Length)
                         {
                             DialogText.text = DialogText.text.Replace(alpha, "");
                             DialogText.text = DialogText.text.Insert(iterator, alpha);
