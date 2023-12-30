@@ -14,17 +14,18 @@ public class ColliderController : MonoBehaviour
             GetComponent<CapsuleCollider2D>().enabled = true;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
             GetComponent<Rigidbody2D>().constraints=RigidbodyConstraints2D.FreezeRotation;
+            if (gameObject.GetComponent<Move>().crouchRequest) {//zmanjša collider
+                upright.enabled = false;
+                crouching.enabled = true;
+            }else {
+                upright.enabled = true;
+                crouching.enabled = false;
+            }
         }
         else if (gameObject.GetComponent<Move>().tiredRequest) {//odstrani collider
-            GetComponent<CapsuleCollider2D>().enabled = false;
+                upright.enabled = false;
+                crouching.enabled = false;
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
-        }
-        else if (gameObject.GetComponent<Move>().crouchRequest) {//zmanjša collider
-            upright.enabled = false;
-            crouching.enabled = true;
-        }else {
-            upright.enabled = true;
-            crouching.enabled = false;
         }
     }
 }

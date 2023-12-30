@@ -9,11 +9,11 @@ public class BossFloor2Script : MonoBehaviour
     public GameObject player;
     public GameObject PushEffects;
     bool pushBack = false;
-    bool pushOnce = false;
+    bool pushOnce = true;
     public GameObject cam;
     public Vector3 originalPos;
     float pushForce = 6;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public List<GameObject> bossCrushers;
 
     float shakeAmount = 0.03f;
@@ -69,7 +69,8 @@ public class BossFloor2Script : MonoBehaviour
         }
         if (pushBack)
         {
-            rb.velocity = new Vector2(-1 * pushForce, rb.velocity.y);
+            // rb.velocity = new Vector3(-1 * pushForce, rb.velocity.y, 0);
+            rb.AddForce(transform.right * -1 * pushForce * 30);
             ShakeEffect();
             if (player.transform.position.x < StopPushBackPoint.transform.position.x)
             {

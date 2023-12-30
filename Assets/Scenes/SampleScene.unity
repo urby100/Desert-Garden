@@ -13441,8 +13441,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532681664}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.75, y: -2.803, z: 0.08537509}
-  m_LocalScale: {x: 2.6919923, y: 2.4055023, z: 1}
+  m_LocalPosition: {x: 4.268, y: -2.803, z: 0.08537509}
+  m_LocalScale: {x: 5.9195995, y: 2.4055023, z: 1}
   m_Children: []
   m_Father: {fileID: 1036033820}
   m_RootOrder: 0
@@ -29877,9 +29877,7 @@ MonoBehaviour:
   throwerProjectileSpeed: 5
   throwerProjectileAliveDelay: 2
   throwerAttackSpeed: 0.7
-  throwerAttackDelay: 4
   throwerAttackLastsDelay: 2
-  throwerAttackTime: 0
   throwerAttackLastsTime: 0
   throwerAttackSpeedTime: 0
   throwerAttack: 0
@@ -29895,7 +29893,6 @@ MonoBehaviour:
   stopperProjectileUpForce: 2.5
   crusherProjectile: {fileID: 8407183107955072605, guid: bae6fbeef35d94f48840a2844cc29e3f,
     type: 3}
-  ground: {fileID: 873906106}
   crusherAbility: 0
   crusherAttack: 0
   crusherAttackLasts: 8
@@ -29910,7 +29907,6 @@ MonoBehaviour:
   littleSteveMovementSpeed: 3
   littleSteveShootVelocityUp: 2.5
   littleSteveRunningLasts: 3
-  steveAttackDelay: 4
 --- !u!114 &986637609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33891,7 +33887,7 @@ MonoBehaviour:
   - {fileID: 1765606712}
   - {fileID: 1036033820}
   - {fileID: 1586114907}
-  parallaxingAmount: 2.3
+  parallaxingAmount: 4
 --- !u!1 &1676885559
 GameObject:
   m_ObjectHideFlags: 0
@@ -40432,7 +40428,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076067085}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
